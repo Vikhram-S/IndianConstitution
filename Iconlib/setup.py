@@ -21,12 +21,20 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/Vikhram-S/Iconlib',
     classifiers=[
-        'Programming Language :: Python :: 3',
+        'Development Status :: 4 - Beta',  # Change this based on your release stage
+        'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',
-        'Intended Audience :: Developers',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Topic :: Software Development :: Libraries',
+        'Topic :: Education',
+        'Topic :: Utilities',
     ],
+    keywords='constitution india python library educational',
     python_requires='>=3.7',
     extras_require={
         'dev': ['pytest', 'flake8'],
@@ -38,7 +46,9 @@ setup(
     },
     project_urls={
         'Documentation': 'https://github.com/Vikhram-S/Iconlib/blob/main/README.md',
-        'Source Repository': 'https://github.com/Vikhram-S/Iconlib',
+        'Source': 'https://github.com/Vikhram-S/Iconlib',
         'Issue Tracker': 'https://github.com/Vikhram-S/Iconlib/issues',
     },
+    license='Apache License 2.0',  # Explicit license field
+    zip_safe=False,  # Ensures compatibility with some environments
 )
