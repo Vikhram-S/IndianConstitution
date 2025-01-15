@@ -25,7 +25,6 @@ setup(
         'License :: OSI Approved :: Apache Software License',
         'Operating System :: OS Independent',
         'Intended Audience :: Developers',
-        'Intended Audience :: Civil Enthusiasts',
         'Topic :: Software Development :: Libraries',
     ],
     python_requires='>=3.7',
