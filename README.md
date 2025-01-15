@@ -112,7 +112,7 @@ article: The article number (integer).
 title: The title of the article (string).
 description: The description of the article (string).
 # License
-This package is licensed under the MIT License. See the LICENSE file for more information.
+This package is licensed under the Apache License 2.0. See the LICENSE file for more information.
 
 # Contributing
 Contributions to the IconLib project are welcome! If you have suggestions or improvements, feel free to fork the repository, make changes, and create a pull request. For large changes, please open an issue first to discuss what you would like to change.
