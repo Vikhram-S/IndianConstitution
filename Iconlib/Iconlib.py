@@ -29,6 +29,7 @@ class IconLib:
 
     @staticmethod
     def _clean_text(text: str) -> str:
+        """Clean the input text by removing unwanted characters and excess spaces."""
         return re.sub(r'(\xa0|\{\}|\n|\t|\s{2,})', ' ', text).strip()
 
     def preamble(self) -> str:
@@ -81,7 +82,8 @@ class IconLib:
         """
         article = self.get_article(number)
         if "Article not found" not in article:
-            description_start = article.split('.')[2][:100]
+            # Fixed splitting issue for a proper summary
+            description_start = article.split('.')[2][:100] if len(article.split('.')) > 2 else ""
             return f"{article.split('.')[0]} - {description_start.strip()}..."
         return article
 
@@ -106,29 +108,30 @@ class IconLib:
 
 # Example usage and syntax for users
 if __name__ == "__main__":
-    india = IconLib()
+    # Direct usage without creating an object
+    iconlib = IconLib()  # Instantiation still required for accessing methods
+    
     try:
-        # No need to instantiate IconLib, as the functions are directly accessible
         # 1. Get Preamble
-        print("Preamble:", india.preamble())
+        print("Preamble:", iconlib.preamble())
 
         # 2. Get details of a specific article
-        print("Article 14 Details:", india.get_article(14))
+        print("Article 14 Details:", iconlib.get_article(14))
 
         # 3. List all articles
-        print("List of Articles:\n", india.articles_list())
+        print("List of Articles:\n", iconlib.articles_list())
 
         # 4. Search for articles by keyword
-        print("Search for 'equality':\n", india.search_keyword("equality"))
+        print("Search for 'equality':\n", iconlib.search_keyword("equality"))
 
         # 5. Get a brief summary of an article
-        print("Article 21 Summary:", india.article_summary(21))
+        print("Article 21 Summary:", iconlib.article_summary(21))
 
         # 6. Count total number of articles
-        print("Total Number of Articles:", india.count_articles())
+        print("Total Number of Articles:", iconlib.count_articles())
 
         # 7. Search articles by title keyword
-        print("Search Articles by Title 'Fundamental':\n", india.search_by_title("Fundamental"))
+        print("Search Articles by Title 'Fundamental':\n", iconlib.search_by_title("Fundamental"))
 
     except Exception as e:
         print(f"An error occurred: {e}")
