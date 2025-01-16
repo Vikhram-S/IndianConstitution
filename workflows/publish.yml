@@ -1,0 +1,36 @@
+name: Publish Iconlib to PyPI
+
+# Trigger the workflow when you push to the main branch
+on:
+  push:
+    branches:
+      - main  # Trigger on pushes to the main branch
+    paths:
+      - '**/*.py'  # Trigger only when Python files are modified
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner for GitHub Actions
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2  # Checkout the repository to the runner
+
+    - name: Set up Python
+      uses: actions/setup-python@v2  # Set up the Python environment
+      with:
+        python-version: '3.9'  # Specify the Python version (latest available version)
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip  # Upgrade pip to the latest version
+        pip install build twine  # Install build and twine for packaging and uploading
+
+    - name: Build package
+      run: python3 -m build  # Build the package using Python's build module
+
+    - name: Upload package to PyPI
+      env:
+        TWINE_USERNAME: ${{ secrets.Vikhram_S }}  # Use the PyPI username from GitHub secrets
+        TWINE_PASSWORD: ${{ secrets.Qazwsxedcrfv@#12345m }}  # Use the PyPI password or API token from GitHub secrets
+      run: python3 -m twine upload dist/*  # Upload the built package to PyPI
