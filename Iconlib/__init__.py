@@ -4,49 +4,50 @@ This module provides functionality to retrieve articles, search keywords,
 list articles, and much more from a JSON file containing Constitution data.
 """
 
-from os.path import abspath, join, dirname
-from typing import List, Dict
-import json
+from .iconlib import IconLib
 
 __title__ = 'IconLib'
 __version__ = '1.0'
 __author__ = 'Vikhram S'
 __license__ = 'Apache License 2.0'
 
+# Exported symbols for top-level import
+__all__ = [
+    'IconLib',
+    'get_preamble',
+    'get_article',
+    'list_articles',
+    'search_keyword',
+    'get_article_summary',
+    'count_total_articles',
+    'search_by_title',
+]
 
-def _path_to(file: str) -> str:
-    """
-    Generate the absolute path to a given file within the package directory.
-    :param file: File name or relative path.
-    :return: Absolute path to the file.
-    """
-    return abspath(join(dirname(__file__), file))
+# Functions for easier direct usage
+def get_preamble(iconlib_instance: IconLib) -> str:
+    """Retrieve the Preamble of the Constitution."""
+    return iconlib_instance.preamble()
 
+def get_article(iconlib_instance: IconLib, number: int) -> str:
+    """Retrieve the details of a specific article."""
+    return iconlib_instance.get_article(number)
 
-class IconLib:
-    def __init__(self, data_file: str = 'constitution_of_india.json'):
-        """
-        Initialize the IconLib class and load the Constitution data.
-        :param data_file: Path to the JSON file containing the data.
-        """
-        self.data = self._load_data(_path_to(data_file))
+def list_articles(iconlib_instance: IconLib) -> str:
+    """List all articles in the Constitution."""
+    return iconlib_instance.articles_list()
 
-    @staticmethod
-    def _load_data(file_path: str) -> List[Dict]:
-        """
-        Load Constitution data from the JSON file.
-        :param file_path: Path to the JSON file.
-        :return: List of data dictionaries from the file.
-        """
-        try:
-            with open(file_path, 'r', encoding='utf-8') as file:
-                return json.load(file)
-        except FileNotFoundError:
-            raise FileNotFoundError(f"The file {file_path} does not exist.")
-        except json.JSONDecodeError:
-            raise ValueError("Invalid JSON format in the file.")
+def search_keyword(iconlib_instance: IconLib, keyword: str) -> str:
+    """Search for a keyword in the Constitution."""
+    return iconlib_instance.search_keyword(keyword)
 
-    # Add your methods here (e.g., preamble, get_article, etc.)
-    # ...
+def get_article_summary(iconlib_instance: IconLib, number: int) -> str:
+    """Provide a brief summary of the specified article."""
+    return iconlib_instance.article_summary(number)
 
-__all__ = ['IconLib']
+def count_total_articles(iconlib_instance: IconLib) -> int:
+    """Count the total number of articles in the Constitution."""
+    return iconlib_instance.count_articles()
+
+def search_by_title(iconlib_instance: IconLib, title_keyword: str) -> str:
+    """Search for articles by title keyword."""
+    return iconlib_instance.search_by_title(title_keyword)
