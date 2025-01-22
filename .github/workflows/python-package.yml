@@ -1,3 +1,4 @@
+# Name of the workflow 
 name: Iconlib CI Workflow
 
 # Trigger events
@@ -15,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-2019, macos-latest]
         python-version: ["3.8", "3.9", "3.10", "3.11"]
 
     runs-on: ${{ matrix.os }}
@@ -35,7 +36,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          ${{ "if (Test-Path requirements.txt) { pip install -r requirements.txt }" if matrix.os == 'windows-2019' else "if [ -f requirements.txt ]; then pip install -r requirements.txt; fi" }}
 
       # Step 4: Verify Python package
       - name: Verify Python package
