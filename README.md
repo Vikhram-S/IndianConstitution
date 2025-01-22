@@ -1,4 +1,4 @@
-# iconlib <small> (v0.1) </small>
+# iconlib <small> (v0.3) </small>
 Python module to interact with the Constitution of India data and retrieve articles, details, summaries, and search functionalities.
 
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/iconlib?label=Python)
