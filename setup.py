@@ -8,7 +8,7 @@ with open(os.path.join(this_directory, "README.md"), encoding="utf-8") as fh:
 
 setup(
     name='iconlib',
-    version='0.3',
+    version='0.4',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
@@ -32,9 +32,6 @@ setup(
     ],
     keywords='constitution india python library educational',
     python_requires='>=3.7',
-    extras_require={
-        'dev': ['pytest', 'flake8'],
-    },
     entry_points={
         'console_scripts': [
             'iconlib-cli=iconlib.__main__:main',
