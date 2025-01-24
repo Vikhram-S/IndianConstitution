@@ -1,0 +1,6 @@
+include README.md
+recursive-include indianconstitution *.py
+include constitution_of_india.json
+global-exclude __pycache__
+global-exclude *.pyc
+global-exclude *.pyo
