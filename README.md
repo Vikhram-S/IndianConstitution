@@ -1,26 +1,22 @@
-# iconlib <small> (v0.3) </small>
+# indianconstitution <small> (v0.5) </small>
 Python module to interact with the Constitution of India data and retrieve articles, details, summaries, and search functionalities.
 
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/iconlib?label=Python)
-![PyPI - License](https://img.shields.io/pypi/l/iconlib?label=License&color=red)
-![Maintenance](https://img.shields.io/maintenance/yes/2025?label=Maintained)
-![PyPI](https://img.shields.io/pypi/v/iconlib?label=PyPi)
-![PyPI - Status](https://img.shields.io/pypi/status/iconlib?label=Status)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indianconstitution?label=Python) ![PyPI - License](https://img.shields.io/pypi/l/indianconstitution?label=License&color=red) ![Maintenance](https://img.shields.io/maintenance/yes/2025?label=Maintained) ![PyPI](https://img.shields.io/pypi/v/indianconstitution?label=PyPi) ![PyPI - Status](https://img.shields.io/pypi/status/indianconstitution?label=Status)
 
 ## Installation
 You can install it using pip from the repository as:
 
-    pip install iconlib
+    pip install indianconstitution
 
 ## Usage
-Iconlib can be used as a Python module to interact with the Constitution of India data.
+`indianconstitution` can be used as a Python module to interact with the Constitution of India data.
 
 ### Python Module Usage
 Here are examples of all current features:
 
 ```python
-    >>> from iconlib import IconLib
-    >>> india = IconLib()
+    >>> from indianconstitution import IndianConstitution
+    >>> india = IndianConstitution('constitution_data.json')
     >>> india.preamble()
     'We, the people of India, having solemnly resolved to constitute India into a Sovereign, Socialist, Secular, Democratic Republic...'
     >>> india.get_article(14)
@@ -36,13 +32,13 @@ Here are examples of all current features:
     >>> india.search_by_title('Fundamental')
     'Article 12: Definition of State\nArticle 13: Laws inconsistent with or in derogation of the fundamental rights\n...'
 ```
-## license
+
+## License
 This project is released under the Apache License 2.0.
 
 The Constitution data is compiled from publicly available sources.
 
-constitution_of_india.json
-
 ## Developer Information
 Developer: Vikhram S.
 Email: vikhrams@saveetha.ac.in
+
