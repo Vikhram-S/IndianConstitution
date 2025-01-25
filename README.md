@@ -43,3 +43,12 @@ The Constitution data is compiled from publicly available sources.
 Developer: Vikhram S.
 Email: vikhrams@saveetha.ac.in
 
+![License](https://img.shields.io/badge/license-Apache%202.0-blue)
+
+## License
+This project is licensed under the Apache License 2.0. See the [LICENSE](./LICENSE) file for details.
+
+## Copyright
+© 2025 Vikhram S
+
+
