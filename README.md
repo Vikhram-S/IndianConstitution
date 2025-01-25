@@ -34,7 +34,8 @@ Here are examples of all current features:
 ```
 
 ## License
-This project is released under the Apache License 2.0.
+This project is licensed under the Apache License 2.0. See the [LICENSE](./LICENSE) file for details.
+
 
 The Constitution data is compiled from publicly available sources.
 
