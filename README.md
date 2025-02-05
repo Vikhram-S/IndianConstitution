@@ -97,7 +97,7 @@ The Constitution data is compiled from publicly available resources, ensuring au
 
 ## Developer Information
 **Author**: Vikhram S  
-📧 **Email**: [vikhrams@saveetha.ac.in](mailto:vikhrams@saveetha.ac.in)
+**Email**: [vikhrams@saveetha.ac.in](mailto:vikhrams@saveetha.ac.in)
 
 ---
 
