@@ -1,13 +1,9 @@
-# indianconstitution <small> (v0.5.8) </small>
+# IndianConstitution <small> (v0.6.0) </small>
 Python module to interact with the Constitution of India data and retrieve articles, details, summaries, and search functionalities.
 
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indianconstitution?label=Python) ![PyPI - License](https://img.shields.io/pypi/l/indianconstitution?label=License&color=red) ![Maintenance](https://img.shields.io/maintenance/yes/2025?label=Maintained) ![PyPI](https://img.shields.io/pypi/v/indianconstitution?label=PyPi) ![PyPI - Status](https://img.shields.io/pypi/status/indianconstitution?label=Status)    
-   
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indianconstitution?label=Python) ![PyPI - License](https://img.shields.io/pypi/l/indianconstitution?label=License&color=red) ![Maintenance](https://img.shields.io/maintenance/yes/2025?label=Maintained) ![PyPI](https://img.shields.io/pypi/v/indianconstitution?label=PyPi) ![PyPI - Status](https://img.shields.io/pypi/status/indianconstitution?label=Status)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/indianconstitution?label=Monthly%20Downloads) 
 ![Total Downloads](https://static.pepy.tech/badge/indianconstitution?label=Total%20Downloads)
-
-
-
 
 ---
 
@@ -31,7 +27,20 @@ The `indianconstitution` module provides:
 ---
 
 ## Usage
-Here’s how to get started with `indianconstitution`:
+Here is how to get started with `indianconstitution`:
+
+
+**Example:**
+
+```python
+from indianconstitution import IndianConstitution
+
+# Load the module with the correct path to the JSON file
+india = IndianConstitution()
+
+# Example usage
+print(india.preamble())
+```
 
 ### Python Module Example
 
@@ -39,7 +48,7 @@ Here’s how to get started with `indianconstitution`:
 from indianconstitution import IndianConstitution
 
 # Load the module with your Constitution data
-india = IndianConstitution('constitution_data.json')
+india = IndianConstitution()
 
 # Access the Preamble
 print(india.preamble())
@@ -103,4 +112,3 @@ The Constitution data is compiled from publicly available resources, ensuring au
 
 ## Copyright
 © 2025 Vikhram S. All rights reserved.
-
