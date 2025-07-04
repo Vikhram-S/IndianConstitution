@@ -111,4 +111,4 @@ The Constitution data is compiled from publicly available resources, ensuring au
 ---
 
 ## Copyright
-© 2025 Vikhram S. All rights reserved.
+©2025 Vikhram S. All rights reserved.
