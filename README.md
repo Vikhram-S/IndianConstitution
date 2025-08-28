@@ -1,4 +1,4 @@
-# IndianConstitution <small> (v0.6.0) </small>
+# IndianConstitution <small> (v0.6.1) </small>
 Python module to interact with the Constitution of India data and retrieve articles, details, summaries, and search functionalities.
 
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indianconstitution?label=Python) ![PyPI - License](https://img.shields.io/pypi/l/indianconstitution?label=License&color=red) ![Maintenance](https://img.shields.io/maintenance/yes/2025?label=Maintained) ![PyPI](https://img.shields.io/pypi/v/indianconstitution?label=PyPi) ![PyPI - Status](https://img.shields.io/pypi/status/indianconstitution?label=Status)
