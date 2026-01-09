@@ -1,7 +1,8 @@
 # IndianConstitution <small> (v0.7) </small>
 Python module to interact with the Constitution of India data and retrieve articles, details, summaries, and search functionalities.
 
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indianconstitution?label=Python) ![PyPI - License](https://img.shields.io/pypi/l/indianconstitution?label=License&color=red) ![Maintenance](https://img.shields.io/maintenance/yes/2026?label=Maintained) ![PyPI](https://img.shields.io/pypi/v/indianconstitution?label=PyPi) ![PyPI - Status](https://img.shields.io/pypi/status/indianconstitution?label=Status)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indianconstitution?label=Python) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18200430.svg)](https://doi.org/10.5281/zenodo.18200430)
+ ![PyPI - License](https://img.shields.io/pypi/l/indianconstitution?label=License&color=red) ![Maintenance](https://img.shields.io/maintenance/yes/2026?label=Maintained) ![PyPI](https://img.shields.io/pypi/v/indianconstitution?label=PyPi) ![PyPI - Status](https://img.shields.io/pypi/status/indianconstitution?label=Status)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/indianconstitution?label=Monthly%20Downloads) 
 ![Total Downloads](https://static.pepy.tech/badge/indianconstitution?label=Total%20Downloads)
 ![SemVer](https://img.shields.io/badge/versioning-SemVer-blue)
