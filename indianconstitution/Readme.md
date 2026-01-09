@@ -1,44 +1,116 @@
-# indianconstitution <small> (v0.5) </small>
+# IndianConstitution <small> (v0.7) </small>
 Python module to interact with the Constitution of India data and retrieve articles, details, summaries, and search functionalities.
 
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indianconstitution?label=Python) ![PyPI - License](https://img.shields.io/pypi/l/indianconstitution?label=License&color=red) ![Maintenance](https://img.shields.io/maintenance/yes/2025?label=Maintained) ![PyPI](https://img.shields.io/pypi/v/indianconstitution?label=PyPi) ![PyPI - Status](https://img.shields.io/pypi/status/indianconstitution?label=Status)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indianconstitution?label=Python) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18200430.svg)](https://doi.org/10.5281/zenodo.18200430)
+ ![PyPI - License](https://img.shields.io/pypi/l/indianconstitution?label=License&color=red) ![Maintenance](https://img.shields.io/maintenance/yes/2026?label=Maintained) ![PyPI](https://img.shields.io/pypi/v/indianconstitution?label=PyPi) ![PyPI - Status](https://img.shields.io/pypi/status/indianconstitution?label=Status)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/indianconstitution?label=Monthly%20Downloads) 
+![Total Downloads](https://static.pepy.tech/badge/indianconstitution?label=Total%20Downloads)
+![SemVer](https://img.shields.io/badge/versioning-SemVer-blue)
+
+---
 
 ## Installation
-You can install it using pip from the repository as:
+You can install the package directly from PyPI:
 
-    pip install indianconstitution
-
-## Usage
-`indianconstitution` can be used as a Python module to interact with the Constitution of India data.
-
-### Python Module Usage
-Here are examples of all current features:
-
-```python
-    >>> from indianconstitution import IndianConstitution
-    >>> india = IndianConstitution('constitution_data.json')
-    >>> india.preamble()
-    'We, the people of India, having solemnly resolved to constitute India into a Sovereign, Socialist, Secular, Democratic Republic...'
-    >>> india.get_article(14)
-    'Article 14: Equality before law. The State shall not deny to any person equality before the law or the equal protection of the laws within the territory of India.'
-    >>> india.articles_list()
-    'Article 14: Equality before law\nArticle 15: Prohibition of discrimination on grounds of religion, race, caste, sex or place of birth\n...'
-    >>> india.search_keyword('equality')
-    'Article 14: Equality before law. The State shall not deny to any person equality before the law or the equal protection of the laws within the territory of India.'
-    >>> india.article_summary(21)
-    'Article 21: Protection of life and personal liberty. No person shall be deprived of his life or personal liberty except according to procedure established by law.'
-    >>> india.count_articles()
-    448
-    >>> india.search_by_title('Fundamental')
-    'Article 12: Definition of State\nArticle 13: Laws inconsistent with or in derogation of the fundamental rights\n...'
+```bash
+pip install indianconstitution
 ```
 
-## License
-This project is released under the Apache License 2.0.
+---
 
-The Constitution data is compiled from publicly available sources.
+## Features
+The `indianconstitution` module provides:
+
+- Full access to the Constitution of India data.
+- Retrieval of individual articles and summaries.
+- Keyword-based search for articles.
+- Count of total articles and search by title functionality.
+
+---
+
+## Usage
+Here is how to get started with `indianconstitution`:
+
+
+**Example:**
+
+```python
+from indianconstitution import IndianConstitution
+
+# Load the module with the correct path to the JSON file
+india = IndianConstitution()
+
+# Example usage
+print(india.preamble())
+```
+
+### Python Module Example
+
+```python
+from indianconstitution import IndianConstitution
+
+# Load the module with your Constitution data
+india = IndianConstitution()
+
+# Access the Preamble
+print(india.preamble())
+
+# Retrieve specific articles
+print(india.get_article(14))  # Outputs details of Article 14
+
+# List all articles
+print(india.articles_list())
+
+# Search for a keyword in the Constitution
+print(india.search_keyword('equality'))
+
+# Get a summary of an article
+print(india.article_summary(21))
+
+# Count the total number of articles
+print(india.count_articles())
+
+# Search articles by title
+print(india.search_by_title('Fundamental'))
+```
+
+---
+
+## Key Functionalities
+
+| Function                | Description                                                   |
+|-------------------------|---------------------------------------------------------------|
+| `preamble()`            | Returns the Preamble of the Constitution of India.           |
+| `get_article(number)`   | Retrieves the full content of the specified article.          |
+| `articles_list()`       | Lists all articles in the Constitution with titles.           |
+| `search_keyword(word)`  | Finds all occurrences of a specific keyword in the Constitution text. |
+| `article_summary(num)`  | Returns a summary of the specified article.                   |
+| `count_articles()`      | Counts the total number of articles in the Constitution.      |
+| `search_by_title(title)`| Searches articles by their titles and returns matching results.|
+
+---
+
+## Development
+This project is actively maintained. Contributions, suggestions, and feedback are welcome. Please refer to the LICENSE file for usage terms.
+
+---
+
+## License
+This project is licensed under the Apache License 2.0.
+See the LICENSE file for more details.
+
+---
+
+## Data Source
+The Constitution data is compiled from publicly available resources, ensuring authenticity and accuracy.
+
+---
 
 ## Developer Information
-Developer: Vikhram S.
-Email: vikhrams@saveetha.ac.in
+**Author**: Vikhram S  
+**Email**: [vikhrams@saveetha.ac.in](mailto:vikhrams@saveetha.ac.in)
 
+---
+
+## Copyright
+&copy; 2025 Vikhram S. All rights reserved.
