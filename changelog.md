@@ -6,7 +6,7 @@ The project follows **Semantic Versioning (SemVer)**: `MAJOR.MINOR.PATCH`.
 
 ---
 
-## [1.0.0] – 26 January 2026 🇮🇳
+## [1.0.1] – 26 January 2026 🇮🇳
 ### Republic Day Stable Release
 
 This release marks the **first stable (v1.0.0) version** of *IndianConstitution*, signifying API maturity, long-term support intent, and readiness for production, academic, and research use.
