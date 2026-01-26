@@ -1,116 +1,219 @@
-# IndianConstitution <small> (v0.7) </small>
-Python module to interact with the Constitution of India data and retrieve articles, details, summaries, and search functionalities.
+# IndianConstitution <small> (v.1.0.1) </small>
+Advanced Python library for accessing and analyzing the Constitution of India with DataFrame support, fuzzy search, export capabilities, and more.
 
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indianconstitution?label=Python) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18200430.svg)](https://doi.org/10.5281/zenodo.18200430)
- ![PyPI - License](https://img.shields.io/pypi/l/indianconstitution?label=License&color=red) ![Maintenance](https://img.shields.io/maintenance/yes/2026?label=Maintained) ![PyPI](https://img.shields.io/pypi/v/indianconstitution?label=PyPi) ![PyPI - Status](https://img.shields.io/pypi/status/indianconstitution?label=Status)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indianconstitution?label=Python) ![PyPI - License](https://img.shields.io/pypi/l/indianconstitution?label=License&color=red) ![Maintenance](https://img.shields.io/maintenance/yes/2026?label=Maintained) ![PyPI](https://img.shields.io/pypi/v/indianconstitution?label=PyPi) ![PyPI - Status](https://img.shields.io/pypi/status/indianconstitution?label=Status)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/indianconstitution?label=Monthly%20Downloads) 
 ![Total Downloads](https://static.pepy.tech/badge/indianconstitution?label=Total%20Downloads)
 ![SemVer](https://img.shields.io/badge/versioning-SemVer-blue)
-
+![Wheel](https://img.shields.io/pypi/wheel/indianconstitution)
+![Docs](https://img.shields.io/badge/docs-available-brightgreen)
 ---
 
-## Installation
-You can install the package directly from PyPI:
+## 🚀 Installation
 
+### Basic Installation
+
+#### Using pip (PyPI)
 ```bash
 pip install indianconstitution
 ```
 
----
+### With Advanced Features
+```bash
+# For DataFrame and visualization support
+pip install indianconstitution[advanced]
 
-## Features
-The `indianconstitution` module provides:
+# For fuzzy search capabilities
+pip install indianconstitution[fuzzy]
 
-- Full access to the Constitution of India data.
-- Retrieval of individual articles and summaries.
-- Keyword-based search for articles.
-- Count of total articles and search by title functionality.
-
----
-
-## Usage
-Here is how to get started with `indianconstitution`:
-
-
-**Example:**
-
-```python
-from indianconstitution import IndianConstitution
-
-# Load the module with the correct path to the JSON file
-india = IndianConstitution()
-
-# Example usage
-print(india.preamble())
+# For all advanced features
+pip install indianconstitution[all]
 ```
 
-### Python Module Example
+**Note:** Optional dependencies can also be installed separately:
+```bash
+# After conda install, add optional features
+conda install pandas matplotlib
+pip install fuzzywuzzy python-Levenshtein
+```
+
+---
+
+## ✨ Features
+
+### Core Features
+- ✅ Full access to the Constitution of India data
+- ✅ Retrieval of individual articles and summaries
+- ✅ Keyword-based search for articles
+- ✅ Count of total articles and search by title functionality
+
+### Advanced Features
+- 🐼 **DataFrame Support**: Convert to pandas DataFrame for advanced data manipulation
+- 🔍 **Advanced Search**: Regex and fuzzy search capabilities
+- 📊 **Statistical Analysis**: Get insights about the Constitution
+- 📤 **Export Functionality**: Export to JSON, CSV, Markdown formats
+- 🔗 **Relationship Mapping**: Find articles that reference each other
+- 📈 **Visualization**: Word frequency charts and data visualization
+- 🔄 **Method Chaining**: Fluent API design for complex operations
+- 💻 **CLI Tool**: Command-line interface for quick access
+- ⚡ **Performance**: Caching and optimized data structures
+- 🎯 **Dictionary-like Access**: Access articles like `constitution[14]`
+
+---
+
+## 📖 Usage
+
+### Basic Usage
 
 ```python
 from indianconstitution import IndianConstitution
 
-# Load the module with your Constitution data
+# Initialize
 india = IndianConstitution()
 
 # Access the Preamble
 print(india.preamble())
 
-# Retrieve specific articles
-print(india.get_article(14))  # Outputs details of Article 14
+# Get a specific article
+print(india.get_article(14))
 
-# List all articles
-print(india.articles_list())
-
-# Search for a keyword in the Constitution
+# Search for articles
 print(india.search_keyword('equality'))
 
-# Get a summary of an article
-print(india.article_summary(21))
+# Count articles
+print(f"Total articles: {india.count_articles()}")
+```
 
-# Count the total number of articles
-print(india.count_articles())
+### Advanced Usage
 
-# Search articles by title
-print(india.search_by_title('Fundamental'))
+#### DataFrame Support (pandas-like interface)
+
+```python
+import pandas as pd
+from indianconstitution import IndianConstitution
+
+india = IndianConstitution()
+
+# Convert to DataFrame
+df = india.to_dataframe()
+
+# Use pandas operations
+print(df.head())
+print(df.describe())
+
+# Filter articles
+fundamental_rights = df[df['title'].str.contains('Fundamental', case=False)]
+print(fundamental_rights[['article', 'title', 'word_count']])
+
+# Sort by word count
+longest_articles = df.nlargest(10, 'word_count')
+print(longest_articles[['article', 'title', 'word_count']])
+```
+
+#### Advanced Search
+
+```python
+# Regex search
+results = india.search_regex(r'\b(equality|liberty|fraternity)\b', case_sensitive=False)
+for article in results:
+    print(f"Article {article['article']}: {article['title']}")
+
+# Fuzzy search (handles typos and partial matches)
+results = india.fuzzy_search('fundamental rights', threshold=70, limit=10)
+for article in results:
+    print(f"Article {article['article']}: {article['title']}")
+```
+
+#### Export Functionality
+
+```python
+# Export to JSON
+india.export_json('constitution.json')
+
+# Export to CSV (requires pandas)
+india.export_csv('constitution.csv')
+
+# Export to Markdown
+india.export_markdown('constitution.md')
+```
+
+#### Statistical Analysis
+
+```python
+# Get comprehensive statistics
+stats = india.get_statistics()
+print(f"Total Articles: {stats['total_articles']}")
+print(f"Total Words: {stats['total_words']:,}")
+print(f"Average Words per Article: {stats['average_words_per_article']}")
+print(f"Longest Article: {stats['longest_article']['title']}")
 ```
 
 ---
 
-## Key Functionalities
+## 💻 Command-Line Interface (CLI)
 
-| Function                | Description                                                   |
-|-------------------------|---------------------------------------------------------------|
-| `preamble()`            | Returns the Preamble of the Constitution of India.           |
-| `get_article(number)`   | Retrieves the full content of the specified article.          |
-| `articles_list()`       | Lists all articles in the Constitution with titles.           |
-| `search_keyword(word)`  | Finds all occurrences of a specific keyword in the Constitution text. |
-| `article_summary(num)`  | Returns a summary of the specified article.                   |
-| `count_articles()`      | Counts the total number of articles in the Constitution.      |
-| `search_by_title(title)`| Searches articles by their titles and returns matching results.|
+The library includes a CLI tool for quick access:
+
+```bash
+# Get a specific article
+indianconstitution get 14
+
+# Search for articles
+indianconstitution search equality
+
+# Fuzzy search
+indianconstitution search --fuzzy "fundamental rights"
+
+# Export to JSON
+indianconstitution export json constitution.json
+
+# Show statistics
+indianconstitution stats
+
+# Display the Preamble
+indianconstitution preamble
+```
 
 ---
 
-## Development
-This project is actively maintained. Contributions, suggestions, and feedback are welcome. Please refer to the LICENSE file for usage terms.
+## 🔧 Requirements
+
+### Core Requirements
+- Python 3.7+
+
+### Optional Dependencies
+- `pandas>=1.3.0` - For DataFrame support and CSV export
+- `matplotlib>=3.3.0` - For visualization features
+- `fuzzywuzzy>=0.18.0` - For fuzzy search
+- `python-Levenshtein>=0.12.0` - For faster fuzzy search
+
+Install all optional dependencies:
+```bash
+pip install indianconstitution[all]
+```
 
 ---
 
-## License
+## 📄 License
+
 This project is licensed under the Apache License 2.0.
 See the LICENSE file for more details.
 
 ---
 
-## Data Source
+## 📧 Contact
+
+**Author**: Vikhram S  
+**Email**: [vikhrams@saveetha.ac.in](mailto:vikhrams@saveetha.ac.in)  
+**GitHub**: [https://github.com/Vikhram-S/IndianConstitution](https://github.com/Vikhram-S/IndianConstitution)
+
+---
+
+## 🙏 Acknowledgments
+
 The Constitution data is compiled from publicly available resources, ensuring authenticity and accuracy.
 
 ---
 
-## Developer Information
-**Author**: Vikhram S  
-**Email**: [vikhrams@saveetha.ac.in](mailto:vikhrams@saveetha.ac.in)
-
----
-
 ## Copyright
-&copy; 2025 Vikhram S. All rights reserved.
+&copy; 2026 Vikhram S. All rights reserved.
