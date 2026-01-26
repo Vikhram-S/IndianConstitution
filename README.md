@@ -215,5 +215,13 @@ The Constitution data is compiled from publicly available resources, ensuring au
 
 ---
 
+## 📚 Citation
+
+If you use **IndianConstitution** in academic research, policy work, or publications, please cite it using the `CITATION.cff` file available in this repository.
+
+GitHub will automatically generate citation formats (APA, BibTeX, etc.) from this file.
+
+---
+
 ## Copyright
 &copy; 2026 Vikhram S. All rights reserved.
