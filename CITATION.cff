@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+title: IndianConstitution
+message: "If you use this software in research, policy work, education, or civic technology, please cite it."
+type: software
+
+authors:
+  - family-names: S
+    given-names: Vikhram
+    email: vikhrams@saveetha.ac.in
+    affiliation: Independent Researcher / Open-Source Developer
+
+version: 1.0.1
+date-released: 2026-01-25
+
+repository-code: https://github.com/Vikhram-S/IndianConstitution
+url: https://pypi.org/project/IndianConstitution/
+
+keywords:
+  - Constitution of India
+  - legal informatics
+  - public policy
+  - civic technology
+  - AI
+  - NLP
+  - structured data
+  - computational law
+  - GovTech
+  - Python
+
+license: Apache-2.0
+
+abstract: >
+  IndianConstitution is an open-source, AI- and NLP-enabled, structured data–driven
+  Python framework that provides programmatic access to the Constitution of India.
+  It is designed to support legal research, public policy analysis, education,
+  and civic technology through advanced search, data analysis, and CLI tools.
