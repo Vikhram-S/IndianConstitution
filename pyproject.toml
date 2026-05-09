@@ -1,0 +1,81 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "indianconstitution"
+version = "1.0.0"
+description = "The most developer-friendly way to explore the Constitution of India"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "Apache-2.0"
+keywords = ["constitution", "india", "legal", "data-science", "cli"]
+authors = [
+  { name = "Vikhram S", email = "vikhram@example.com" },
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Legal Industry",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+  "pydantic>=2.0.0",
+  "typer[all]>=0.9.0",
+  "rich>=13.0.0",
+  "diskcache>=5.6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0.0",
+  "pytest-cov>=4.0.0",
+  "ruff>=0.1.0",
+  "mypy>=1.0.0",
+  "hypothesis>=6.0.0",
+]
+data = [
+  "pandas>=2.0.0",
+  "networkx>=3.0.0",
+]
+ai = [
+  "sentence-transformers>=2.2.0",
+]
+docs = [
+  "mkdocs>=1.4.0",
+  "mkdocs-material>=9.0.0",
+  "mkdocstrings[python]>=0.20.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/vikhram-s/indianconstitution"
+Documentation = "https://indianconstitution.readthedocs.io/"
+Repository = "https://github.com/vikhram-s/indianconstitution"
+Issues = "https://github.com/vikhram-s/indianconstitution/issues"
+
+[project.scripts]
+indianconstitution = "indianconstitution.cli.main:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/indianconstitution"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "N", "UP", "B", "T20"]
+ignore = []
+
+[tool.mypy]
+python_version = "3.8"
+strict = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=indianconstitution --cov-report=term-missing"
