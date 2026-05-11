@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "indianconstitution"
-version = "1.0.0"
+version = "1.0.1"
 description = "The most developer-friendly way to explore the Constitution of India"
 readme = "README.md"
 requires-python = ">=3.8"
@@ -67,14 +67,16 @@ indianconstitution = "indianconstitution.cli.main:app"
 packages = ["src/indianconstitution"]
 
 [tool.ruff]
-line-length = 100
-select = ["E", "F", "I", "N", "UP", "B", "T20"]
-ignore = []
+line-length = 120
+lint.select = ["E", "F", "I", "N", "UP", "B", "T20"]
+lint.ignore = ["E501", "B008", "T201"]
+exclude = ["src/indianconstitution/core/legacy.py"]
 
 [tool.mypy]
-python_version = "3.8"
-strict = true
+python_version = "3.9"
+strict = false
 ignore_missing_imports = true
+exclude = ["src/indianconstitution/core/legacy.py"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

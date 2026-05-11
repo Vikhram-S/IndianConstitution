@@ -1,15 +1,14 @@
 import json
 from pathlib import Path
-from typing import List, Optional, Union, Dict
-from functools import lru_cache
+from typing import Dict, List, Optional, Union
 
+from ..export.engine import Exporter
+from ..search.engine import SearchEngine
+from .graph import ConstitutionGraph
 from .models import Article, ConstitutionData
 
 DATA_PATH = Path(__file__).parent.parent / "data" / "constitution.json"
 
-from ..search.engine import SearchEngine
-from ..export.engine import Exporter
-from .graph import ConstitutionGraph
 
 class Constitution:
     """
@@ -30,6 +29,7 @@ class Constitution:
         """Lazy load the constitution data."""
         if self._data is None:
             self._load_data()
+        assert self._data is not None
         return self._data
 
     def _load_data(self) -> None:
@@ -37,7 +37,7 @@ class Constitution:
         if not self._data_path.exists():
             raise FileNotFoundError(f"Constitution data not found at {self._data_path}")
             
-        with open(self._data_path, "r", encoding="utf-8") as f:
+        with open(self._data_path, encoding="utf-8") as f:
             raw_data = json.load(f)
             
         # Handle the legacy flat list format if necessary
@@ -69,12 +69,15 @@ class Constitution:
         """Search articles using the specialized search engine."""
         if self._data is None:
             self._load_data()
+        assert self._search_engine is not None
         return self._search_engine.keyword_search(query, limit)
 
     def export(self, format: str, path: Union[str, Path]):
         """Export the constitution to JSON, CSV, or Markdown."""
         if self._data is None:
             self._load_data()
+        
+        assert self._exporter is not None
             
         if format == "json":
             self._exporter.to_json(path)
@@ -89,6 +92,7 @@ class Constitution:
         """Get articles related to the given article via references."""
         if self._data is None:
             self._load_data()
+        assert self._graph is not None
         return {
             "references": self._graph.get_references(number),
             "referenced_by": self._graph.get_referenced_by(number)

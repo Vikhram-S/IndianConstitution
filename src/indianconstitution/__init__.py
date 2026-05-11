@@ -1,12 +1,10 @@
-"""
-IndianConstitution: The most developer-friendly way to explore the Constitution of India.
-"""
+from typing import Optional
 
 from .core.engine import Constitution
 from .core.models import Article, Part, Schedule
 
 __version__ = "1.0.0"
-__all__ = ["Constitution", "Article", "Part", "Schedule"]
+__all__ = ["Constitution", "Article", "Part", "Schedule", "get_constitution", "get_article", "search"]
 
 # Singleton instance for convenience
 _instance = None
@@ -19,7 +17,7 @@ def get_constitution() -> Constitution:
     return _instance
 
 # Expose common methods at package level for ease of use
-def get_article(number: str) -> Article:
+def get_article(number: str) -> Optional[Article]:
     """Retrieve an article by number."""
     return get_constitution().get_article(number)
 

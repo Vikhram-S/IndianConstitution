@@ -1,7 +1,9 @@
 import re
 from collections import defaultdict
-from typing import List, Set, Dict, Any, Optional
+from typing import Dict, List, Set
+
 from ..core.models import Article
+
 
 class SearchEngine:
     """

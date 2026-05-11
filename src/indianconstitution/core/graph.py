@@ -1,5 +1,6 @@
 import re
-from typing import List, Dict, Set, Tuple
+from typing import List, Set, Tuple
+
 from .models import Article
 
 try:
@@ -33,16 +34,18 @@ class ConstitutionGraph:
         
         for article in self.articles:
             u = str(article.number)
-            self.graph.add_node(u, title=article.title)
+            if self.graph is not None:
+                self.graph.add_node(u, title=article.title)
             
             references = self._extract_references(article.content)
             for v in references:
                 if v in article_numbers and v != u:
-                    self.graph.add_edge(u, v)
+                    if self.graph is not None:
+                        self.graph.add_edge(u, v)
 
     def get_references(self, number: str) -> List[str]:
         """Get list of articles that the given article references."""
-        if not NETWORKX_AVAILABLE:
+        if not NETWORKX_AVAILABLE or self.graph is None:
             return []
         if number not in self.graph:
             return []
@@ -50,7 +53,7 @@ class ConstitutionGraph:
 
     def get_referenced_by(self, number: str) -> List[str]:
         """Get list of articles that reference the given article."""
-        if not NETWORKX_AVAILABLE:
+        if not NETWORKX_AVAILABLE or self.graph is None:
             return []
         if number not in self.graph:
             return []
@@ -58,7 +61,7 @@ class ConstitutionGraph:
 
     def get_central_articles(self, limit: int = 10) -> List[Tuple[str, float]]:
         """Identify 'central' articles using PageRank (most referenced)."""
-        if not NETWORKX_AVAILABLE:
+        if not NETWORKX_AVAILABLE or self.graph is None:
             return []
         pagerank = nx.pagerank(self.graph)
         sorted_nodes = sorted(pagerank.items(), key=lambda x: x[1], reverse=True)

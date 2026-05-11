@@ -1,8 +1,10 @@
 from typing import List
+
 from rich.console import Console
-from rich.table import Table
-from rich.panel import Panel
 from rich.markdown import Markdown
+from rich.panel import Panel
+from rich.table import Table
+
 from ..core.models import Article
 
 console = Console()

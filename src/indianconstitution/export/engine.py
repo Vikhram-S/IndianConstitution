@@ -1,8 +1,10 @@
-import json
 import csv
+import json
 from pathlib import Path
 from typing import List, Union
+
 from ..core.models import Article
+
 
 class Exporter:
     """Handles exporting constitution data to various formats."""

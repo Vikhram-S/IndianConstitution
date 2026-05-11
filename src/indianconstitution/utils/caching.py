@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
-from typing import Any, Callable, Optional
-import functools
+from typing import Any, Optional
+
 from diskcache import Cache
 
 CACHE_DIR = Path.home() / ".indianconstitution" / "cache"
