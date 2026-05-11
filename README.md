@@ -1,19 +1,14 @@
-# IndianConstitution
+# 🇮🇳 IndianConstitution <small>(v1.1.0)</small>
 
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indianconstitution?label=Python&logo=python&logoColor=white)](https://pypi.org/project/indianconstitution/)
-[![PyPI - License](https://img.shields.io/pypi/l/indianconstitution?label=License&color=blue)](https://opensource.org/licenses/Apache-2.0)
-[![Maintenance](https://img.shields.io/maintenance/yes/2026?label=Maintained&logo=github)](https://github.com/Vikhram-S/IndianConstitution)
-[![PyPI](https://img.shields.io/pypi/v/indianconstitution?label=PyPi&logo=pypi&logoColor=white)](https://pypi.org/project/indianconstitution/)
-[![PyPI - Status](https://img.shields.io/pypi/status/indianconstitution?label=Status)](https://pypi.org/project/indianconstitution/)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/indianconstitution?label=Monthly%20Downloads&logo=pypi&logoColor=white)](https://pypi.org/project/indianconstitution/)
-[![Total Downloads](https://static.pepy.tech/badge/indianconstitution?label=Total%20Downloads)](https://pepy.tech/project/indianconstitution)
-[![SemVer](https://img.shields.io/badge/versioning-SemVer-blue?logo=semver&logoColor=white)](https://semver.org/)
-[![Wheel](https://img.shields.io/pypi/wheel/indianconstitution?label=Wheel&logo=python&logoColor=white)](https://pypi.org/project/indianconstitution/)
+[![PyPI - Version](https://img.shields.io/pypi/v/indianconstitution?logo=pypi&logoColor=white&color=blue)](https://pypi.org/project/indianconstitution/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indianconstitution?logo=python&logoColor=white)](https://pypi.org/project/indianconstitution/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/indianconstitution?logo=pypi&logoColor=white&color=black)](https://pepy.tech/project/indianconstitution)
 [![Documentation Status](https://img.shields.io/badge/docs-latest-brightgreen.svg?logo=read-the-docs&logoColor=white)](https://indianconstitution.readthedocs.io/)
+[![License](https://img.shields.io/pypi/l/indianconstitution?color=red)](https://opensource.org/licenses/Apache-2.0)
 
-> **The most developer-friendly way to explore the Constitution of India.**
+> **The definitive Python library for the Sovereign Democratic Republic.**
 
-`indianconstitution` is a professional, high-performance Python library designed for legal researchers, data scientists, and developers. It provides structured, programmatic access to the Articles, Parts, and Schedules of the Constitution of India.
+`indianconstitution` is a professional-grade, high-performance framework designed for legal professionals, researchers, and developers. It provides structured, programmatic access to the Articles, Parts, and Schedules of the Constitution of India with an elite CLI and AI-ready architecture.
 
 ---
 

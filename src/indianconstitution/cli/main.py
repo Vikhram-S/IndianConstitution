@@ -32,7 +32,7 @@ def display_header():
     creator_text.append("\nAn Elite CLI Tool for the Sovereign Democratic Republic", style="italic cyan")
     creator_text.append("\n\nCreated by: ", style="bold white")
     creator_text.append("Vikhram S", style="bold green")
-    creator_text.append(" | Version: 1.0.1\n", style="bold magenta")
+    creator_text.append(" | Version: 1.1.0\n", style="bold magenta")
 
     panel = Panel(
         Align.center(logo_text + creator_text),
