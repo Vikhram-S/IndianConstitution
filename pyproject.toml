@@ -48,15 +48,9 @@ data = [
 ai = [
   "sentence-transformers>=2.2.0",
 ]
-docs = [
-  "mkdocs>=1.4.0",
-  "mkdocs-material>=9.0.0",
-  "mkdocstrings[python]>=0.20.0",
-]
 
 [project.urls]
 Homepage = "https://github.com/vikhram-s/indianconstitution"
-Documentation = "https://indianconstitution.readthedocs.io/"
 Repository = "https://github.com/vikhram-s/indianconstitution"
 Issues = "https://github.com/vikhram-s/indianconstitution/issues"
 
