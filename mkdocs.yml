@@ -1,6 +1,6 @@
 site_name: IndianConstitution
 site_description: The most developer-friendly way to explore the Constitution of India.
-site_url: https://vikhram-s.github.io/IndianConstitution/
+site_url: https://indianconstitution.readthedocs.io/
 
 theme:
   name: material
