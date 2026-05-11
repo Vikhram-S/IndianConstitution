@@ -1,6 +1,6 @@
 # CLI API
 
-::: indianconstitution.cli  # Use the correct module path
+::: indianconstitution.cli.main
     options:
       show_root_heading: true
 

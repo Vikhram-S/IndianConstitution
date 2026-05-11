@@ -40,6 +40,7 @@ nav:
       - Core: api/core.md
       - CLI: api/cli.md
   - Contributing: contributing.md
+  - Code of Conduct: code_of_conduct.md
   - License: license.md
 
 markdown_extensions:
