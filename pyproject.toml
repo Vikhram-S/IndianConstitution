@@ -11,7 +11,7 @@ requires-python = ">=3.8"
 license = "Apache-2.0"
 keywords = ["constitution", "india", "legal", "data-science", "cli"]
 authors = [
-  { name = "Vikhram S", email = "vikhram@example.com" },
+  { name = "Vikhram S", email = "vikhrams@saveetha.ac.in" },
 ]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
