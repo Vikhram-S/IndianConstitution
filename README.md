@@ -3,7 +3,6 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/indianconstitution?logo=pypi&logoColor=white&color=blue)](https://pypi.org/project/indianconstitution/)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indianconstitution?logo=python&logoColor=white)](https://pypi.org/project/indianconstitution/)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/indianconstitution?logo=pypi&logoColor=white&color=black)](https://pepy.tech/project/indianconstitution)
-[![Documentation Status](https://img.shields.io/badge/docs-latest-brightgreen.svg?logo=read-the-docs&logoColor=white)](https://indianconstitution.readthedocs.io/)
 [![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue?logo=github&logoColor=white)](https://vikhram-s.github.io/IndianConstitution/)
 [![License](https://img.shields.io/pypi/l/indianconstitution?color=red)](https://opensource.org/licenses/Apache-2.0)
 
