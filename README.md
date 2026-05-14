@@ -2,8 +2,15 @@
 
 [![PyPI - Version](https://img.shields.io/pypi/v/indianconstitution?logo=pypi&logoColor=white&color=blue)](https://pypi.org/project/indianconstitution/)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indianconstitution?logo=python&logoColor=white)](https://pypi.org/project/indianconstitution/)
+[![CI Status](https://github.com/Vikhram-S/IndianConstitution/actions/workflows/ci.yml/badge.svg)](https://github.com/Vikhram-S/IndianConstitution/actions)
+[![CodeQL](https://github.com/Vikhram-S/IndianConstitution/actions/workflows/codeql.yml/badge.svg)](https://github.com/Vikhram-S/IndianConstitution/actions/workflows/codeql.yml)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Vikhram-S/IndianConstitution/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Vikhram-S/IndianConstitution)
+[![Snyk Security](https://snyk.io/test/github/Vikhram-S/IndianConstitution/badge.svg)](https://snyk.io/test/github/Vikhram-S/IndianConstitution)
+[![DeepSource](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/Vikhram-S/IndianConstitution/)
+[![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://github.com/Vikhram-S/IndianConstitution/network/updates)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/indianconstitution?logo=pypi&logoColor=white&color=black)](https://pepy.tech/project/indianconstitution)
 [![License](https://img.shields.io/pypi/l/indianconstitution?color=red)](https://opensource.org/licenses/Apache-2.0)
+[![Donate via UPI](https://img.shields.io/badge/Donate-UPI-orange?logo=google-pay&logoColor=white)](#-donations)
 
 > **The definitive Python library for the Sovereign Democratic Republic.**
 
@@ -116,3 +123,17 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 ## Copyright
 
 Copyright (c) 2026 Vikhram S. All rights reserved.
+
+---
+
+## 💰 Donations
+
+If you find this project useful and would like to support its maintenance and development, you can donate via UPI. Your contributions help keep the project alive and free for everyone!
+
+**UPI ID**: `vikhrams@saveetha.ac.in` (GPay)
+
+<p align="left">
+  <img src="https://img.shields.io/badge/UPI-Donate%20Now-orange?style=for-the-badge&logo=google-pay&logoColor=white" alt="UPI Donation">
+</p>
+
+*Thank you for your support!* 🇮🇳

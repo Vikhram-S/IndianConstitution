@@ -5,14 +5,17 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: read
+
 jobs:
   build-n-publish:
     name: Build and publish to PyPI
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
       with:
         python-version: "3.10"
     - name: Install pypa/build
@@ -22,6 +25,6 @@ jobs:
       run: |
         python -m build --sdist --wheel --outdir dist/
     - name: Publish distribution 📦 to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
+      uses: pypa/gh-action-pypi-publish@68e62d4871ad9d14a9d55f114e6ac71f0b408ec0 # v1.8.14
       with:
         password: ${{ secrets.PYPI_API_TOKEN }}
