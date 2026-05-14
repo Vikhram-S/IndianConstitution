@@ -129,16 +129,6 @@ Copyright (c) 2026 Vikhram S. All rights reserved.
 
 ## ❤️ Support the Project
 
-If this project helps you, consider supporting its continued development and maintenance.
-
-Your support helps with:
-- maintaining and improving the package
-- adding new features and datasets
-- long-term open-source sustainability
-- keeping the project free and accessible
-
-## ❤️ Support the Project
-
 If this project provides value to you or your organization, consider supporting its continued development and maintenance.
 
 Support helps fund:
