@@ -42,7 +42,7 @@ dev = [
   "hypothesis>=6.0.0",
 ]
 data = [
-  "pandas>=2.0.0",
+  "pandas>=2.3.3",
   "networkx>=3.0.0",
 ]
 ai = [
