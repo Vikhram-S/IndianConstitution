@@ -1,14 +1,15 @@
-# 🇮🇳 IndianConstitution <small>(v1.1.0)</small>
+# IndianConstitution <small>(v1.1.0)</small>
 
 [![PyPI - Version](https://img.shields.io/pypi/v/indianconstitution?logo=pypi&logoColor=white&color=blue)](https://pypi.org/project/indianconstitution/)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/indianconstitution?logo=python&logoColor=white)](https://pypi.org/project/indianconstitution/)
-[![CI Status](https://github.com/Vikhram-S/IndianConstitution/actions/workflows/ci.yml/badge.svg)](https://github.com/Vikhram-S/IndianConstitution/actions)
+[![PyPI Downloads](https://static.pepy.tech/badge/indianconstitution)](https://pepy.tech/project/indianconstitution)
+[![Monthly Downloads](https://static.pepy.tech/badge/indianconstitution/month)](https://pepy.tech/project/indianconstitution)
+[![Python Versions](https://img.shields.io/pypi/pyversions/indianconstitution?logo=python&logoColor=white)](https://pypi.org/project/indianconstitution/)
+[![CI](https://github.com/Vikhram-S/IndianConstitution/actions/workflows/ci.yml/badge.svg)](https://github.com/Vikhram-S/IndianConstitution/actions)
+[![Codacy](https://github.com/Vikhram-S/IndianConstitution/actions/workflows/codacy.yml/badge.svg)](https://github.com/Vikhram-S/IndianConstitution/actions/workflows/codacy.yml)
 [![CodeQL](https://github.com/Vikhram-S/IndianConstitution/actions/workflows/codeql.yml/badge.svg)](https://github.com/Vikhram-S/IndianConstitution/actions/workflows/codeql.yml)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Vikhram-S/IndianConstitution/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Vikhram-S/IndianConstitution)
-[![Snyk Security](https://snyk.io/test/github/Vikhram-S/IndianConstitution/badge.svg)](https://snyk.io/test/github/Vikhram-S/IndianConstitution)
-[![DeepSource](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/Vikhram-S/IndianConstitution/)
-[![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://github.com/Vikhram-S/IndianConstitution/network/updates)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/indianconstitution?logo=pypi&logoColor=white&color=black)](https://pepy.tech/project/indianconstitution)
+[![Typing](https://img.shields.io/badge/typing-PEP%20561-blue?logo=python)](https://peps.python.org/pep-0561/)
+[![Ruff](https://img.shields.io/badge/lint-ruff-black?logo=ruff)](https://github.com/astral-sh/ruff)
 [![License](https://img.shields.io/pypi/l/indianconstitution?color=red)](https://opensource.org/licenses/Apache-2.0)
 [![Donate via UPI](https://img.shields.io/badge/Donate-UPI-orange?logo=google-pay&logoColor=white)](#-donations)
 
@@ -126,14 +127,34 @@ Copyright (c) 2026 Vikhram S. All rights reserved.
 
 ---
 
-## 💰 Donations
+## ❤️ Support the Project
 
-If you find this project useful and would like to support its maintenance and development, you can donate via UPI. Your contributions help keep the project alive and free for everyone!
+If this project helps you, consider supporting its continued development and maintenance.
 
-**UPI ID**: `vikhrams15@okhdfcbank` (Google Pay)
+Your support helps with:
+- maintaining and improving the package
+- adding new features and datasets
+- long-term open-source sustainability
+- keeping the project free and accessible
+
+## ❤️ Support the Project
+
+If this project provides value to you or your organization, consider supporting its continued development and maintenance.
+
+Support helps fund:
+- ongoing package maintenance and improvements
+- new features, datasets, and documentation
+- infrastructure, testing, and release automation
+- long-term open-source sustainability
+
+### Support via UPI (Unified Payments Interface)
+
+**UPI ID:** `vikhrams15@okhdfcbank`
 
 <p align="left">
-  <img src="https://img.shields.io/badge/UPI-Donate%20Now-orange?style=for-the-badge&logo=google-pay&logoColor=white" alt="UPI Donation">
+  <a href="upi://pay?pa=vikhrams15@okhdfcbank&pn=Vikhram%20S&cu=INR">
+    <img src="https://img.shields.io/badge/Support%20Development-UPI-orange?style=for-the-badge&logo=google-pay&logoColor=white" alt="Support via UPI">
+  </a>
 </p>
 
-*Thank you for your support!* 🇮🇳
+Contributions, feature requests, issue reports, documentation improvements, and GitHub stars are also appreciated.
