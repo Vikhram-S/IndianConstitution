@@ -130,7 +130,7 @@ Copyright (c) 2026 Vikhram S. All rights reserved.
 
 If you find this project useful and would like to support its maintenance and development, you can donate via UPI. Your contributions help keep the project alive and free for everyone!
 
-**UPI ID**: `vikhrams@saveetha.ac.in` (GPay)
+**UPI ID**: `vikhrams15@okhdfcbank` (Google Pay)
 
 <p align="left">
   <img src="https://img.shields.io/badge/UPI-Donate%20Now-orange?style=for-the-badge&logo=google-pay&logoColor=white" alt="UPI Donation">
