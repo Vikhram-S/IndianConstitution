@@ -46,7 +46,7 @@ data = [
   "networkx>=3.0.0",
 ]
 ai = [
-  "sentence-transformers>=2.2.0",
+  "sentence-transformers>=5.1.2",
 ]
 
 [project.urls]
