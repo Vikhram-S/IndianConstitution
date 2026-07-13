@@ -1,0 +1,37 @@
+site_name: IndianConstitution
+site_description: The most developer-friendly way to explore the Constitution of India
+site_author: Vikhram S
+
+theme:
+  name: material
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - CLI Guide: cli.md
+  - API Reference: api.md
+  - Search: search.md
+  - Semantic Search: semantic-search.md
+  - Examples: examples.md
+  - FAQ: faq.md
+  - Contributing: contributing.md
+
+plugins:
+  - search
