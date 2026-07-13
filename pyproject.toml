@@ -74,4 +74,4 @@ exclude = ["src/indianconstitution/core/legacy.py"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "--cov=indianconstitution --cov-report=term-missing"
+addopts = "--cov=src/indianconstitution --cov-report=term-missing"
