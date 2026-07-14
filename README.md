@@ -1,215 +1,81 @@
 # IndianConstitution
 
-A concise, high-performance Python toolkit for the Constitution of India.
+[![PyPI - Version](https://img.shields.io/pypi/v/indianconstitution?logo=pypi&logoColor=white&color=blue)](https://pypi.org/project/indianconstitution/) [![PyPI Downloads](https://static.pepy.tech/badge/indianconstitution)](https://pepy.tech/project/indianconstitution) [![Monthly Downloads](https://static.pepy.tech/badge/indianconstitution/month)](https://pepy.tech/project/indianconstitution) [![CI](https://github.com/Vikhram-S/IndianConstitution/actions/workflows/ci.yml/badge.svg)](https://github.com/Vikhram-S/IndianConstitution/actions) [![License](https://img.shields.io/pypi/l/indianconstitution?color=red)](https://opensource.org/licenses/Apache-2.0)
 
-`indianconstitution` is the definitive open-source Python library for accessing, searching, analyzing, and integrating the Constitution of India into software, legal research, AI systems, educational tools, and civic technology. Built with a focus on developer experience, it provides a pythonic API, an elegant CLI, advanced search capabilities (including semantic search), and robust data export features.
+A high-performance, developer-first Python framework for programmatically analyzing, searching, and integrating the Constitution of India into production systems.
 
-**Why use `indianconstitution`?**
-*   **Intuitive API**: Chainable, type-hinted access to Articles, Parts, Schedules, and the Preamble.
-*   **High Performance**: Uses an inverted index for sub-millisecond keyword searches.
-*   **AI & Data Science Ready**: Native semantic search integration and seamless pandas DataFrame export.
-*   **Professional CLI**: A beautiful, terminal-native experience powered by Typer and Rich.
-*   **Fully Offline**: No API keys, no rate limits, and 100% local operation.
+`indianconstitution` serves as the foundational legal data infrastructure for AI applications, civic technology, and legal research. Engineered for reliability and scale, it provides a strictly-typed Pythonic API, an advanced local search engine, and seamless data interoperability.
 
----
+## Core Capabilities
 
-## Project Status
-
-| Metric | Status |
-| :--- | :--- |
-| **PyPI** | [![PyPI - Version](https://img.shields.io/pypi/v/indianconstitution?logo=pypi&logoColor=white&color=blue)](https://pypi.org/project/indianconstitution/) [![PyPI Downloads](https://static.pepy.tech/badge/indianconstitution)](https://pepy.tech/project/indianconstitution) [![Monthly Downloads](https://static.pepy.tech/badge/indianconstitution/month)](https://pepy.tech/project/indianconstitution) |
-| **Environment** | [![Python Versions](https://img.shields.io/pypi/pyversions/indianconstitution?logo=python&logoColor=white)](https://pypi.org/project/indianconstitution/) [![License](https://img.shields.io/pypi/l/indianconstitution?color=red)](https://opensource.org/licenses/Apache-2.0) |
-| **Quality** | [![CI](https://github.com/Vikhram-S/IndianConstitution/actions/workflows/ci.yml/badge.svg)](https://github.com/Vikhram-S/IndianConstitution/actions) [![Codacy](https://github.com/Vikhram-S/IndianConstitution/actions/workflows/codacy.yml/badge.svg)](https://github.com/Vikhram-S/IndianConstitution/actions/workflows/codacy.yml) [![Typing](https://img.shields.io/badge/typing-PEP%20561-blue?logo=python)](https://peps.python.org/pep-0561/) [![Ruff](https://img.shields.io/badge/lint-ruff-black?logo=ruff)](https://github.com/astral-sh/ruff) |
-| **Security** | [![CodeQL](https://github.com/Vikhram-S/IndianConstitution/actions/workflows/codeql.yml/badge.svg)](https://github.com/Vikhram-S/IndianConstitution/actions/workflows/codeql.yml) [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Vikhram-S/IndianConstitution/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Vikhram-S/IndianConstitution) |
-| **Support** | [![Donate via UPI](https://img.shields.io/badge/Donate-UPI-orange?logo=google-pay&logoColor=white)](#support-the-project) |
-
----
-
-## Features Matrix
-
-| Capability | Supported |
-| :--- | :---: |
-| Articles, Parts & Schedules | ✅ |
-| Preamble Access | ✅ |
-| CLI Interface | ✅ |
-| Fast Keyword Search | ✅ |
-| Semantic Search (AI) | ✅ |
-| CSV & JSON Export | ✅ |
-| Pandas Integration | ✅ |
-| Full Type Hints | ✅ |
-| Local Disk Caching | ✅ |
-
----
-
-## Visual Previews
-
-### CLI Preview
-![CLI Preview](docs/images/cli_preview.png)
-*A look at the interactive terminal interface.*
-
-### Python Example
-![Python Example](docs/images/python_example.png)
-*Pythonic API usage with type hints.*
-
-### Keyword Search
-![Search Example](docs/images/search_example.png)
-*Blazing-fast inverted index search.*
-
-### Semantic Search
-![Semantic Search](docs/images/semantic_search.png)
-*Context-aware search for legal concepts without exact keyword matches.*
-
----
+- **Strictly Typed API:** Fully annotated programmatic access to Articles, Parts, Schedules, and the Preamble, designed for integration into robust, type-checked Python applications.
+- **High-Performance Search:** Implements a localized inverted index for sub-millisecond lexical search without external dependencies.
+- **Semantic & AI-Ready:** Native embeddings integration for semantic search, enabling retrieval-augmented generation (RAG) and legal AI workflows.
+- **Data Engineering Integrations:** Native export capabilities to standard analytical formats (CSV, JSON) and direct compatibility with pandas and NetworkX.
+- **Zero-Dependency Core:** The base installation is 100% offline, operates with zero rate limits, and requires no external API keys.
 
 ## Quick Start
 
-### Installation
+Install the package via standard python tooling:
 
 ```bash
 # Standard installation
 pip install indianconstitution
 
-# With Data Science capabilities (pandas)
+# Include data science (pandas, networkx) integrations
 pip install "indianconstitution[data]"
 
-# With AI/Semantic Search capabilities
+# Include AI capabilities (sentence-transformers)
 pip install "indianconstitution[ai]"
 ```
 
-### Basic Usage
+### Programmatic Access
 
 ```python
-from indianconstitution import get_constitution, get_article
+from indianconstitution import get_article, search
 
-# Load the entire constitution
-ic = get_constitution()
-print(f"Preamble: {ic.preamble}")
+# Type-hinted article retrieval
+article = get_article("21A")
+print(f"Article {article.number}: {article.title}")
+print(article.content)
 
-# Get a specific article
-article_21a = get_article("21A")
-print(f"Article {article_21a.number}: {article_21a.title}")
-print(article_21a.content)
+# Sub-millisecond localized search
+results = search("right to privacy")
+for match in results:
+    print(f"Article {match.number}: {match.title}")
 ```
 
-### Searching
-
-```python
-from indianconstitution import search
-
-# Fast keyword search
-results = search("freedom of speech")
-for article in results:
-    print(f"Article {article.number}: {article.title}")
-```
-
-### Semantic Search (AI)
+### Semantic Search (AI Integration)
 
 ```python
 from indianconstitution import Constitution
 
 ic = Constitution()
-# Find articles conceptually related to "protection of children"
-results = ic.semantic_search("safeguarding minors and young people")
-for article in results:
-    print(f"Article {article.number}: {article.title}")
+# Contextual retrieval without strict keyword matching
+results = ic.semantic_search("protection against self incrimination")
 ```
 
-### Exporting Data
+## Command Line Interface (CLI)
 
-```python
-from indianconstitution import get_constitution
-
-ic = get_constitution()
-ic.export(format="json", path="constitution.json")
-ic.export(format="csv", path="constitution.csv")
-```
-
-### Command Line Interface
+The package includes a comprehensive, terminal-native CLI powered by Typer and Rich.
 
 ```bash
-# View an article
+# Display an article
 indianconstitution get 14
 
-# Search the text
+# Full-text search
 indianconstitution search "equality"
 
-# View the preamble
-indianconstitution preamble
-
-# Show dataset statistics
+# View repository metrics
 indianconstitution stats
 ```
 
----
-
-## Real-world Use Cases
-
-*   **Legal Research**: Quickly retrieve interrelated articles and build graphs of references.
-*   **Constitutional Law**: Compare semantic nuances and analyze terminology distribution.
-*   **Universities & Education**: Integrate interactive CLI tools into political science curriculums.
-*   **AI Agents & LLMs**: Provide a clean, structured corpus for grounding agentic applications.
-*   **RAG (Retrieval-Augmented Generation)**: High-quality indexed embeddings for custom legal chatbots.
-*   **Civic Tech**: Build open-source dashboards and apps for citizen awareness.
-*   **Data Analysis**: Export directly to Pandas and NetworkX to study structural complexity.
-
----
-
 ## Documentation
 
-Full documentation is available at [https://vikhram-s.github.io/IndianConstitution/](https://vikhram-s.github.io/IndianConstitution/).
+Comprehensive documentation, API reference, and advanced usage examples can be found at [vikhram-s.github.io/IndianConstitution](https://vikhram-s.github.io/IndianConstitution/).
 
-*   [Getting Started](docs/getting-started.md)
-*   [CLI Guide](docs/cli.md)
-*   [API Reference](docs/api.md)
-*   [Search](docs/search.md)
-*   [Semantic Search](docs/semantic-search.md)
-*   [Examples](docs/examples.md)
-*   [FAQ](docs/faq.md)
-*   [Contributing](docs/contributing.md)
+## Citation & Licensing
 
----
+If you integrate this library into academic or research workflows, please cite it using the provided `CITATION.cff`.
 
-## Citation
-
-If you use this software in your research or project, please cite it using the accompanying `CITATION.cff` file.
-
-**APA Format:**
-> S, V. (2026). IndianConstitution (Version 1.2.0) [Computer software]. https://github.com/Vikhram-S/IndianConstitution
-
----
-
-## Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on setting up your environment, running tests, and submitting PRs.
-
-## License
-
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
-
-## Copyright
-
-Copyright (c) 2026 Vikhram S. All rights reserved.
-
----
-
-## Support the Project
-
-If this project provides value to you or your organization, consider supporting its continued development and maintenance.
-
-Support helps fund:
-*   ongoing package maintenance and improvements
-*   new features, datasets, and documentation
-*   infrastructure, testing, and release automation
-*   long-term open-source sustainability
-
-### Support via UPI (Unified Payments Interface)
-
-**UPI ID:** `vikhrams15@okhdfcbank`
-
-<p align="left">
-  <a href="upi://pay?pa=vikhrams15@okhdfcbank&pn=Vikhram%20S&cu=INR">
-    <img src="https://img.shields.io/badge/Support%20Development-UPI-orange?style=for-the-badge&logo=google-pay&logoColor=white" alt="Support via UPI">
-  </a>
-</p>
-
-Contributions, feature requests, issue reports, documentation improvements, and GitHub stars are also appreciated.
+Licensed under the Apache License 2.0. Copyright (c) 2026 Vikhram S.
