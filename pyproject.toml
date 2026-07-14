@@ -43,7 +43,8 @@ dev = [
 ]
 data = [
   "pandas>=2.0.0",
-  "networkx>=2.8.0",
+  "networkx>=3.0.0",
+  "scipy>=1.10.0",
 ]
 ai = [
   "sentence-transformers>=2.2.0",
