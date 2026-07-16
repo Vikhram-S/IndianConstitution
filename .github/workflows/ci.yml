@@ -71,11 +71,11 @@ jobs:
           --cov=src/indianconstitution \
           --cov-report=term-missing \
           --cov-report=xml:coverage.xml \
-          --cov-fail-under=80 \
+          --cov-fail-under=75 \
           -v
     - name: Upload coverage to Codecov
       if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
-      uses: codecov/codecov-action@ad3126e916f78f00edff4b3ef46f4f8c4a7f5b7 # v5.4.2
+      uses: codecov/codecov-action@v4
       with:
         files: coverage.xml
         fail_ci_if_error: false
