@@ -3,7 +3,7 @@ from typing import Optional
 from .core.engine import Constitution
 from .core.models import Article, Part, Schedule
 
-__version__ = "1.2.2"
+__version__ = "1.3.0"
 __all__ = ["Constitution", "Article", "Part", "Schedule", "get_constitution", "get_article", "search"]
 
 # Singleton instance for convenience

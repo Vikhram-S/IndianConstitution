@@ -1,9 +1,127 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
+message: >-
+  If you use this software in your research, please cite it using the
+  metadata below. Citing software is important for reproducibility and
+  proper attribution of scientific work (Smith et al., 2016).
+type: software
+title: >-
+  IndianConstitution: A Developer-First, Research-Grade Python Framework
+  for the Constitution of India
+abstract: >-
+  IndianConstitution is a high-performance, strictly-typed Python library
+  providing programmatic access to the complete text of the Constitution of
+  India (448 articles, 12 schedules, Preamble, 106th Amendment Act 2023).
+  It implements a zero-dependency inverted-index search engine with O(1)
+  per-token lookup, NetworkX-backed graph analysis for cross-article
+  reference modelling, optional semantic search via sentence-transformers,
+  and native interoperability with the scientific Python stack. The public
+  API is fully type-annotated with 100% mypy strict-mode compliance. Designed
+  for legal NLP, RAG pipelines, civic AI, and constitutional informatics.
 authors:
-- family-names: "S"
-  given-names: "Vikhram"
-title: "IndianConstitution"
-version: 1.2.2
-date-released: 2026-07-14
+  - family-names: "S"
+    given-names: "Vikhram"
+    affiliation: "Saveetha Engineering College, Chennai, Tamil Nadu, India"
+    email: "vikhrams@saveetha.ac.in"
+    orcid: ""
+version: "1.3.0"
+date-released: "2026-07-16"
+doi: ""
 url: "https://github.com/Vikhram-S/IndianConstitution"
+repository-code: "https://github.com/Vikhram-S/IndianConstitution"
+repository-artifact: "https://pypi.org/project/indianconstitution/"
+license: "Apache-2.0"
+keywords:
+  - "Constitution of India"
+  - "legal NLP"
+  - "constitutional informatics"
+  - "information retrieval"
+  - "inverted index"
+  - "civic AI"
+  - "civic technology"
+  - "legal data science"
+  - "retrieval-augmented generation"
+  - "RAG"
+  - "graph analysis"
+  - "legal AI"
+  - "NLP"
+  - "Python"
+  - "open-source"
+  - "research software"
+  - "reproducibility"
+identifiers:
+  - type: "url"
+    value: "https://pypi.org/project/indianconstitution/"
+    description: "PyPI release page"
+  - type: "url"
+    value: "https://vikhram-s.github.io/IndianConstitution/"
+    description: "Official documentation"
+references:
+  - type: article
+    title: "Attention is All You Need"
+    authors:
+      - family-names: "Vaswani"
+        given-names: "Ashish"
+      - family-names: "Shazeer"
+        given-names: "Noam"
+    year: 2017
+    journal: "Advances in Neural Information Processing Systems"
+    volume: 30
+    notes: "Foundational architecture enabling the semantic search integration in [ai] extra."
+  - type: software
+    title: "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks"
+    authors:
+      - family-names: "Reimers"
+        given-names: "Nils"
+      - family-names: "Gurevych"
+        given-names: "Iryna"
+    year: 2019
+    url: "https://github.com/UKPLab/sentence-transformers"
+    notes: "Optional AI semantic search dependency in the [ai] extra."
+  - type: article
+    title: "Software citation principles"
+    authors:
+      - family-names: "Smith"
+        given-names: "Arfon M."
+      - family-names: "Katz"
+        given-names: "Daniel S."
+      - family-names: "Niemeyer"
+        given-names: "Kyle E."
+    year: 2016
+    journal: "PeerJ Computer Science"
+    doi: "10.7717/peerj-cs.86"
+    notes: "Foundational reference for the software citation standards used here."
+  - type: software
+    title: "Pydantic: Data validation using Python type annotations"
+    authors:
+      - family-names: "Colvin"
+        given-names: "Samuel"
+    year: 2022
+    url: "https://docs.pydantic.dev/"
+    notes: "Core data validation layer for all constitutional data models."
+  - type: software
+    title: "NetworkX: Network Analysis in Python"
+    authors:
+      - family-names: "Hagberg"
+        given-names: "Aric A."
+      - family-names: "Schult"
+        given-names: "Daniel A."
+    year: 2008
+    url: "https://networkx.org/"
+    notes: "Graph analysis backend for cross-article constitutional reference modelling."
+preferred-citation:
+  type: software
+  title: >-
+    IndianConstitution: A Developer-First, Research-Grade Python Framework
+    for the Constitution of India
+  authors:
+    - family-names: "S"
+      given-names: "Vikhram"
+      affiliation: "Saveetha Engineering College, Chennai, Tamil Nadu, India"
+      email: "vikhrams@saveetha.ac.in"
+  version: "1.3.0"
+  date-released: "2026-07-16"
+  doi: ""
+  url: "https://github.com/Vikhram-S/IndianConstitution"
+  repository-code: "https://github.com/Vikhram-S/IndianConstitution"
+  repository-artifact: "https://pypi.org/project/indianconstitution/"
+  license: "Apache-2.0"
