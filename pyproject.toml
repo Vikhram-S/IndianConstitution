@@ -180,8 +180,6 @@ ignore = [
   "E501",   # line too long (handled by formatter)
   "B008",   # do not perform function calls in default arguments
   "T201",   # print statements (allowed in CLI)
-  "ANN101", # missing type annotation for self
-  "ANN102", # missing type annotation for cls
   "D107",   # missing docstring in __init__ (prefer class docstring)
   "D203",   # one-blank-line-before-class (conflicts with D211)
   "D213",   # multi-line-summary-second-line (conflicts with D212)

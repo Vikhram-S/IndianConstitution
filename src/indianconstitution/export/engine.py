@@ -8,7 +8,7 @@ from ..core.models import Article
 
 class Exporter:
     """Handles exporting constitution data to various formats."""
-    
+
     def __init__(self, articles: List[Article]):
         self.articles = articles
 
@@ -22,17 +22,13 @@ class Exporter:
         """Export articles to a CSV file."""
         if not self.articles:
             return
-            
+
         fieldnames = ["number", "title", "content"]
         with open(path, "w", encoding="utf-8", newline="") as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             for a in self.articles:
-                writer.writerow({
-                    "number": a.number,
-                    "title": a.title,
-                    "content": a.content
-                })
+                writer.writerow({"number": a.number, "title": a.title, "content": a.content})
 
     def to_markdown(self, path: Union[str, Path]):
         """Export articles to a Markdown file."""

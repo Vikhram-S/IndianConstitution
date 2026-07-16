@@ -14,7 +14,7 @@ class Constitution:
     """Main entry point for accessing the Constitution of India.
     Uses lazy loading and caching for optimal performance.
     """
-    
+
     def __init__(self, data_path: Optional[Path] = None):
         self._data_path = data_path or DATA_PATH
         self._data: Optional[ConstitutionData] = None
@@ -35,10 +35,10 @@ class Constitution:
         """Internal method to load and parse JSON data."""
         if not self._data_path.exists():
             raise FileNotFoundError(f"Constitution data not found at {self._data_path}")
-            
+
         with open(self._data_path, encoding="utf-8") as f:
             raw_data = json.load(f)
-            
+
         # Handle the legacy flat list format if necessary
         if isinstance(raw_data, list):
             preamble = ""
@@ -51,7 +51,7 @@ class Constitution:
             self._data = ConstitutionData(preamble=preamble, articles=articles)
         else:
             self._data = ConstitutionData(**raw_data)
-            
+
         # Build indexes
         self._article_map = {str(a.number): a for a in self._data.articles}
         self._search_engine = SearchEngine(self._data.articles)
@@ -75,9 +75,9 @@ class Constitution:
         """Export the constitution to JSON, CSV, or Markdown."""
         if self._data is None:
             self._load_data()
-        
+
         assert self._exporter is not None
-            
+
         if format == "json":
             self._exporter.to_json(path)
         elif format == "csv":
@@ -94,7 +94,7 @@ class Constitution:
         assert self._graph is not None
         return {
             "references": self._graph.get_references(number),
-            "referenced_by": self._graph.get_referenced_by(number)
+            "referenced_by": self._graph.get_referenced_by(number),
         }
 
     @property

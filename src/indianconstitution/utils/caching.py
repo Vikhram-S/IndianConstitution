@@ -6,13 +6,15 @@ from diskcache import Cache
 
 CACHE_DIR = Path.home() / ".indianconstitution" / "cache"
 
+
 def ensure_cache_dir():
     """Ensure the cache directory exists."""
     os.makedirs(CACHE_DIR, exist_ok=True)
 
+
 class DiskCache:
     """Wrapper around diskcache for easy use in the library."""
-    
+
     def __init__(self, directory: Optional[Path] = None):
         self.directory = directory or CACHE_DIR
         ensure_cache_dir()
@@ -30,6 +32,7 @@ class DiskCache:
 
     def clear(self):
         self.cache.clear()
+
 
 # Global cache instance
 default_cache = DiskCache()

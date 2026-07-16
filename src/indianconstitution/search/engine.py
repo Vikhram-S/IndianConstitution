@@ -9,7 +9,7 @@ class SearchEngine:
     """Advanced search engine for the Constitution.
     Implements an inverted index for O(1) keyword lookups.
     """
-    
+
     def __init__(self, articles: List[Article]):
         self.articles = articles
         self._index: Dict[str, Set[int]] = defaultdict(set)
@@ -18,7 +18,7 @@ class SearchEngine:
     def _tokenize(self, text: str) -> List[str]:
         """Convert text to lowercase tokens, removing non-alphanumeric chars."""
         # Simple tokenization: lowercase and split by non-word characters
-        tokens = re.findall(r'\w+', text.lower())
+        tokens = re.findall(r"\w+", text.lower())
         # Filter out common stop words if needed, but for legal text we keep most
         return tokens
 
@@ -39,18 +39,18 @@ class SearchEngine:
 
         # Find sets of article indices for each token
         sets = [self._index.get(token, set()) for token in query_tokens]
-        
+
         # Intersection of all sets (AND search)
         if not sets:
             return []
-            
+
         matching_indices = sets[0]
         for s in sets[1:]:
             matching_indices = matching_indices.intersection(s)
-            
+
         # Convert indices back to Article objects
         results = [self.articles[i] for i in matching_indices]
-        
+
         # Sort by article number or some relevance (here just original order)
         return results[:limit]
 
