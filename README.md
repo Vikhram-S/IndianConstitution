@@ -8,7 +8,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/indianconstitution?logo=pypi&logoColor=white&color=006DAE&style=for-the-badge)](https://pypi.org/project/indianconstitution/)
 [![Downloads](https://img.shields.io/pypi/dm/indianconstitution?logo=pypi&logoColor=white&color=FF6B35&style=for-the-badge)](https://pypi.org/project/indianconstitution/)
-[![Total Downloads](https://static.pepy.tech/badge/indianconstitution?style=for-the-badge)](https://pepy.tech/project/indianconstitution)
+[![Total Downloads](https://img.shields.io/pepy/dt/indianconstitution?style=for-the-badge&color=blue)](https://pepy.tech/project/indianconstitution)
 [![CI](https://img.shields.io/github/actions/workflow/status/Vikhram-S/IndianConstitution/ci.yml?branch=main&style=for-the-badge&logo=github&label=CI)](https://github.com/Vikhram-S/IndianConstitution/actions)
 [![OpenSSF Scorecard](https://img.shields.io/ossf-scorecard/github.com/Vikhram-S/IndianConstitution?label=OpenSSF%20Scorecard&style=for-the-badge)](https://securityscorecards.dev/viewer/?uri=github.com/Vikhram-S/IndianConstitution)
 
@@ -16,7 +16,7 @@
 [![Python](https://img.shields.io/pypi/pyversions/indianconstitution?style=for-the-badge&logo=python)](https://pypi.org/project/indianconstitution/)
 [![Typed](https://img.shields.io/badge/type%20checked-mypy-blue?style=for-the-badge)](http://mypy-lang.org/)
 [![Ruff](https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge)](https://github.com/astral-sh/ruff)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18200429.svg)](https://doi.org/10.5281/zenodo.18200429)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18200429-blue?style=for-the-badge)](https://doi.org/10.5281/zenodo.18200429)
 
 <br>
 
