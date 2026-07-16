@@ -66,13 +66,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -e ".[dev,data]"
     - name: Run tests with coverage
-      run: |
-        pytest tests/ \
-          --cov=src/indianconstitution \
-          --cov-report=term-missing \
-          --cov-report=xml:coverage.xml \
-          --cov-fail-under=75 \
-          -v
+      run: pytest tests/ --cov=src/indianconstitution --cov-report=term-missing --cov-report=xml:coverage.xml --cov-fail-under=75 -v
     - name: Upload coverage to Codecov
       if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
       uses: codecov/codecov-action@v4
