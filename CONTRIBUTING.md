@@ -2,7 +2,7 @@
 
 Thank you for considering contributing to `indianconstitution`! This guide describes how to contribute effectively, whether you are a researcher, legal technologist, or software developer.
 
-We hold contributions to the same quality standard expected by venues like NeurIPS, ACL, and EMNLP — clear, reproducible, well-tested, and thoroughly documented.
+We hold contributions to a high standard — clear, reproducible, well-tested, and thoroughly documented.
 
 ---
 

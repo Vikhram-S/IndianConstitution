@@ -21,9 +21,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.3.0] - 2026-07-16
 
 ### Added
-- **Elite README**: Research-grade landing page with Abstract section, RAG pipeline examples,
-  reproducibility checklist for NeurIPS/ACL/EMNLP authors, Acknowledgements, and social badges.
-- **ACL-format citation**: Added ACL Anthology citation format alongside BibTeX, APA, and IEEE.
+- **README overhaul**: Research-grade landing page with Abstract section, RAG pipeline examples,
+  reproducibility checklist, Acknowledgements, and social badges.
+- **ACL Anthology citation**: Added ACL Anthology citation format alongside BibTeX, APA, and IEEE.
 - **Enhanced CITATION.cff**: Upgraded to full CFF 1.2.0 schema with `identifiers`, `references`
   (5 entries including Smith et al. 2016 software citation principles), and `preferred-citation`.
 - **Extended PyPI keywords**: Added `constitutional-informatics`, `legal-ai`, `civic-ai`,
@@ -32,14 +32,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `Internet :: WWW/HTTP :: Indexing/Search`, `Natural Language :: English`,
   and `Programming Language :: Python :: 3 :: Only`.
 - **Improved SECURITY.md**: Updated supported versions table to cover v1.2.x and v1.3.x.
-- **Improved CONTRIBUTING.md**: Full NeurIPS-style development guide with pre-commit hooks,
+- **Improved CONTRIBUTING.md**: Research-grade development guide with pre-commit hooks,
   Hypothesis property-based testing, coverage requirements, and PR checklist.
 
 ### Changed
 - Description in `pyproject.toml` expanded to highlight NLP, RAG, civic AI, and informatics.
 - README benchmarks table now includes semantic search latency (`[ai]` extra).
 - README architecture diagram expanded with `Amendment` model node.
-- CITATION.cff abstract expanded to match publication-quality abstract standards.
+- CITATION.cff abstract expanded to publication-quality standards.
 
 ---
 
