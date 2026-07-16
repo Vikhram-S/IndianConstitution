@@ -6,8 +6,7 @@ from ..core.models import Article
 
 
 class SearchEngine:
-    """
-    Advanced search engine for the Constitution.
+    """Advanced search engine for the Constitution.
     Implements an inverted index for O(1) keyword lookups.
     """
     
@@ -56,8 +55,7 @@ class SearchEngine:
         return results[:limit]
 
     def fuzzy_search(self, query: str, limit: int = 10) -> List[Article]:
-        """
-        Fuzzy search using basic string matching.
+        """Fuzzy search using basic string matching.
         Note: Could be enhanced with fuzzywuzzy or similar if available.
         """
         # Placeholder for fuzzy logic, currently falls back to keyword if simple

@@ -66,8 +66,7 @@ app = typer.Typer(
 
 @app.callback(invoke_without_command=True)
 def main_callback(ctx: typer.Context):
-    """
-    [bold gold1]IndianConstitution CLI[/bold gold1] - A premium terminal experience.
+    """[bold gold1]IndianConstitution CLI[/bold gold1] - A premium terminal experience.
     """
     if ctx.invoked_subcommand is None:
         display_header()

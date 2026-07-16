@@ -270,7 +270,7 @@ If you use `indianconstitution` in academic research, a thesis, or any published
   title        = {{IndianConstitution: A Developer-First, Research-Grade
                    Python Framework for the Constitution of India}},
   year         = {2026},
-  version      = {1.3.0},
+  version      = {1.3.1},
   publisher    = {PyPI},
   url          = {https://github.com/Vikhram-S/IndianConstitution},
   doi          = {10.5281/zenodo.18200429},
@@ -282,17 +282,17 @@ If you use `indianconstitution` in academic research, a thesis, or any published
 
 ### APA 7th Edition
 
-> S, Vikhram. (2026). *IndianConstitution: A Developer-First, Research-Grade Python Framework for the Constitution of India* (Version 1.3.0) [Software]. PyPI. https://doi.org/10.5281/zenodo.18200429
+> S, Vikhram. (2026). *IndianConstitution: A Developer-First, Research-Grade Python Framework for the Constitution of India* (Version 1.3.1) [Software]. PyPI. https://doi.org/10.5281/zenodo.18200429
 
 ### IEEE
 
-> V. S, "IndianConstitution: A Developer-First, Research-Grade Python Framework for the Constitution of India," version 1.3.0, 2026. [Online]. Available: https://github.com/Vikhram-S/IndianConstitution. DOI: 10.5281/zenodo.18200429.
+> V. S, "IndianConstitution: A Developer-First, Research-Grade Python Framework for the Constitution of India," version 1.3.1, 2026. [Online]. Available: https://github.com/Vikhram-S/IndianConstitution. DOI: 10.5281/zenodo.18200429.
 
 ### ACL Anthology
 
 ```
 Vikhram S. 2026. IndianConstitution: A Developer-First, Research-Grade Python Framework
-for the Constitution of India. Software release v1.3.0.
+for the Constitution of India. Software release v1.3.1.
 Available: https://github.com/Vikhram-S/IndianConstitution
 ```
 

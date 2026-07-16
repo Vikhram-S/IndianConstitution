@@ -11,8 +11,7 @@ DATA_PATH = Path(__file__).parent.parent / "data" / "constitution.json"
 
 
 class Constitution:
-    """
-    Main entry point for accessing the Constitution of India.
+    """Main entry point for accessing the Constitution of India.
     Uses lazy loading and caching for optimal performance.
     """
     

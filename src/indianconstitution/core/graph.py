@@ -10,8 +10,7 @@ except ImportError:
     NETWORKX_AVAILABLE = False
 
 class ConstitutionGraph:
-    """
-    Analyzes and manages relationships between Articles.
+    """Analyzes and manages relationships between Articles.
     Maps how articles reference each other (e.g., Article 32 references Article 13).
     """
     
