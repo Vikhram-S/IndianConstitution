@@ -16,7 +16,7 @@
 [![Python](https://img.shields.io/pypi/pyversions/indianconstitution?style=for-the-badge&logo=python)](https://pypi.org/project/indianconstitution/)
 [![Typed](https://img.shields.io/badge/type%20checked-mypy-blue?style=for-the-badge)](http://mypy-lang.org/)
 [![Ruff](https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge)](https://github.com/astral-sh/ruff)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18200429-blue?style=for-the-badge)](https://doi.org/10.5281/zenodo.18200429)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21407500-blue?style=for-the-badge)](https://doi.org/10.5281/zenodo.21407500)
 
 <br>
 
