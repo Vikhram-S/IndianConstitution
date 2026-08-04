@@ -4,7 +4,6 @@
 
 ### *A Developer-First, Research-Grade Python Framework for the Constitution of India*
 
-<br>
 
 [![PyPI](https://img.shields.io/pypi/v/indianconstitution?logo=pypi&logoColor=white&color=006DAE&style=for-the-badge)](https://pypi.org/project/indianconstitution/)
 [![Downloads](https://img.shields.io/pypi/dm/indianconstitution?logo=pypi&logoColor=white&color=FF6B35&style=for-the-badge)](https://pypi.org/project/indianconstitution/)
@@ -16,9 +15,9 @@
 [![Python](https://img.shields.io/pypi/pyversions/indianconstitution?style=for-the-badge&logo=python)](https://pypi.org/project/indianconstitution/)
 [![Typed](https://img.shields.io/badge/type%20checked-mypy-blue?style=for-the-badge)](http://mypy-lang.org/)
 [![Ruff](https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge)](https://github.com/astral-sh/ruff)
+
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21407500-blue?style=for-the-badge)](https://doi.org/10.5281/zenodo.21407500)
 
-<br>
 
 > **Sub-millisecond search · Strictly-typed API · Graph analysis · AI/RAG-ready · Zero external dependencies in core**
 
