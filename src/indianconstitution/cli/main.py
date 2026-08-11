@@ -9,7 +9,7 @@ from rich.panel import Panel
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.text import Text
 
-from .. import get_constitution
+from .. import __version__, get_constitution
 from . import rich_utils
 
 # Initialize global console
@@ -33,7 +33,7 @@ def display_header():
     creator_text.append("\nAn Elite CLI Tool for the Sovereign Democratic Republic", style="italic cyan")
     creator_text.append("\n\nCreated by: ", style="bold white")
     creator_text.append("Vikhram S", style="bold green")
-    creator_text.append(" | Version: 1.1.0\n", style="bold magenta")
+    creator_text.append(f" | Version: {__version__}\n", style="bold magenta")
 
     panel = Panel(
         Align.center(logo_text + creator_text),
@@ -55,7 +55,7 @@ def get_const_instance():
         console=console,
     ) as progress:
         progress.add_task(description="[cyan]Initializing Constitution Engine...", total=None)
-        time.sleep(0.3)
+        time.sleep(0.1)
         return get_constitution()
 
 
@@ -86,13 +86,13 @@ def get(
 
     with Progress(SpinnerColumn(), TextColumn(f"[cyan]Fetching Article {number}..."), transient=True) as progress:
         progress.add_task(description="", total=None)
-        time.sleep(0.2)
+        time.sleep(0.1)
         article = const.get_article(number)
 
     if article:
         rich_utils.print_article(article)
     else:
-        console.print(f"[bold red]✖ Error:[/bold red] Article {number} not found.")
+        console.print(f"[bold red]Error:[/bold red] Article {number} not found.")
 
 
 @app.command()
@@ -106,13 +106,13 @@ def search(
 
     with Progress(SpinnerColumn(), TextColumn(f"[cyan]Searching for '{query}'..."), transient=True) as progress:
         progress.add_task(description="", total=None)
-        time.sleep(0.3)
+        time.sleep(0.1)
         results = const.search(query, limit=limit)
 
     if results:
-        rich_utils.print_articles_table(results, title=f"✨ Results for '{query}'")
+        rich_utils.print_articles_table(results, title=f"Results for '{query}'")
     else:
-        console.print(f"[bold yellow]⚠ No articles found matching '{query}'.[/bold yellow]")
+        console.print(f"[bold yellow]No articles found matching '{query}'.[/bold yellow]")
 
 
 @app.command()
@@ -136,9 +136,9 @@ def export(
         progress.add_task(description="", total=None)
         try:
             const.export(format, output)
-            console.print(f"✨ [bold green]Successfully exported to [underline]{output}[/underline][/bold green]")
+            console.print(f"[bold green]Successfully exported to [underline]{output}[/underline][/bold green]")
         except Exception as e:
-            console.print(f"[bold red]✖ Failed to export:[/bold red] {e}")
+            console.print(f"[bold red]Failed to export:[/bold red] {e}")
 
 
 @app.command()
@@ -151,21 +151,21 @@ def related(number: str = typer.Argument(..., help="Article number")):
         SpinnerColumn(), TextColumn(f"[cyan]Finding relationships for Article {number}..."), transient=True
     ) as progress:
         progress.add_task(description="", total=None)
-        time.sleep(0.3)
-        related = const.get_related_articles(number)
+        time.sleep(0.1)
+        related_data = const.get_related_articles(number)
 
-    if related["references"]:
+    if related_data["references"]:
         console.print(f"\n[bold cyan]Articles referenced by {number}:[/bold cyan]")
-        for ref in related["references"]:
-            console.print(f"  [gold1]•[/gold1] Article {ref}")
+        for ref in related_data["references"]:
+            console.print(f"  [gold1]*[/gold1] Article {ref}")
 
-    if related["referenced_by"]:
+    if related_data["referenced_by"]:
         console.print(f"\n[bold cyan]Articles referencing {number}:[/bold cyan]")
-        for ref in related["referenced_by"]:
-            console.print(f"  [gold1]•[/gold1] Article {ref}")
+        for ref in related_data["referenced_by"]:
+            console.print(f"  [gold1]*[/gold1] Article {ref}")
 
-    if not related["references"] and not related["referenced_by"]:
-        console.print(f"[bold yellow]⚠ No direct relationships found for Article {number}.[/bold yellow]")
+    if not related_data["references"] and not related_data["referenced_by"]:
+        console.print(f"[bold yellow]No direct relationships found for Article {number}.[/bold yellow]")
 
 
 @app.command()
@@ -176,7 +176,7 @@ def stats():
 
     with Progress(SpinnerColumn(), TextColumn("[cyan]Calculating Statistics..."), transient=True) as progress:
         progress.add_task(description="", total=None)
-        time.sleep(0.4)
+        time.sleep(0.1)
         articles = const.data.articles
         total_words = sum(len(a.content.split()) for a in articles)
 
