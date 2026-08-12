@@ -134,8 +134,7 @@ class Constitution:
         assert self._graph_obj is not None
         if self._graph_obj.graph is None:
             raise RuntimeError(
-                "NetworkX is required for graph analysis. "
-                "Install with: pip install 'indianconstitution[data]'"
+                "NetworkX is required for graph analysis. Install with: pip install 'indianconstitution[data]'"
             )
         return self._graph_obj.graph
 
@@ -170,8 +169,7 @@ class Constitution:
             from sentence_transformers import SentenceTransformer  # type: ignore[import-untyped]
         except ImportError:
             raise ImportError(
-                "Semantic search requires sentence-transformers. "
-                "Install with: pip install 'indianconstitution[ai]'"
+                "Semantic search requires sentence-transformers. Install with: pip install 'indianconstitution[ai]'"
             ) from None
 
         self._ensure_loaded()
@@ -179,9 +177,7 @@ class Constitution:
 
         # Pre-encode all article texts
         texts = [f"{a.title}. {a.content}" for a in self.data.articles]
-        self._semantic_embeddings = self._semantic_model.encode(
-            texts, show_progress_bar=False, convert_to_tensor=False
-        )
+        self._semantic_embeddings = self._semantic_model.encode(texts, show_progress_bar=False, convert_to_tensor=False)
 
     def semantic_search(self, query: str, top_k: int = 5) -> List[SearchResult]:
         """Contextual retrieval beyond keyword matching.
@@ -209,8 +205,7 @@ class Constitution:
             from sentence_transformers import util as st_util  # type: ignore[import-untyped]
         except ImportError:
             raise ImportError(
-                "Semantic search requires sentence-transformers. "
-                "Install with: pip install 'indianconstitution[ai]'"
+                "Semantic search requires sentence-transformers. Install with: pip install 'indianconstitution[ai]'"
             ) from None
 
         query_embedding = self._semantic_model.encode(query, convert_to_tensor=False)
@@ -262,9 +257,7 @@ class Constitution:
         try:
             import pandas as pd  # type: ignore[import-untyped]
         except ImportError:
-            raise ImportError(
-                "pandas is required. Install with: pip install 'indianconstitution[data]'"
-            ) from None
+            raise ImportError("pandas is required. Install with: pip install 'indianconstitution[data]'") from None
 
         self._ensure_loaded()
         return pd.DataFrame([a.model_dump() for a in self.data.articles])

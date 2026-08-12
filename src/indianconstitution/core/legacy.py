@@ -2697,7 +2697,7 @@ class IndianConstitution:
         Returns:
             Dictionary mapping part names to lists of articles
         """
-        parts = {}
+        parts: Dict[str, List[Dict[str, Any]]] = {}
         current_part = "General"
         
         for article in self.data:

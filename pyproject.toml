@@ -200,10 +200,7 @@ strict              = false
 warn_return_any     = true
 warn_unused_configs = true
 ignore_missing_imports = true
-exclude = [
-  "src/indianconstitution/core/legacy.py",
-  "tests/",
-]
+exclude = "(?:src/indianconstitution/core/legacy\\.py|tests/)"
 
 # ─── Testing (Pytest) ────────────────────────────────────────────────────────
 

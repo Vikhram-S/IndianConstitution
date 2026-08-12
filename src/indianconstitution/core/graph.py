@@ -6,7 +6,7 @@ access to the underlying ``networkx.DiGraph``.
 """
 
 import re
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Set, Tuple
 
 from .models import Article
 

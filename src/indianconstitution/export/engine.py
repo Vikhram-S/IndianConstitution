@@ -33,13 +33,15 @@ class Exporter:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             for a in self.articles:
-                writer.writerow({
-                    "number": a.number,
-                    "title": a.title,
-                    "content": a.content,
-                    "part": a.part,
-                    "chapter": a.chapter,
-                })
+                writer.writerow(
+                    {
+                        "number": a.number,
+                        "title": a.title,
+                        "content": a.content,
+                        "part": a.part,
+                        "chapter": a.chapter,
+                    }
+                )
 
     def to_markdown(self, path: Union[str, Path]) -> None:
         """Export articles to a Markdown file."""
