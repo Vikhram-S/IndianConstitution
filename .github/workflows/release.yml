@@ -1,15 +1,26 @@
+# .github/workflows/release.yml
 name: Release
 
 on:
+  # Existing manual trigger – any push of a tag that starts with “v”
   push:
     tags:
       - 'v*'
+
+  # NEW: scheduled run on 15 August 2026 (UTC)
+  schedule:
+    #   └─ minute hour day month day‑of‑week
+    - cron: '0 0 15 8 *'   # 00:00 UTC on 15‑08‑2026
 
 permissions:
   contents: read
   id-token: write
 
 jobs:
+  # ----------------------------------------------------------------
+  # Build and publish job – runs for both manual tag pushes and the
+  # scheduled run.
+  # ----------------------------------------------------------------
   build-n-publish:
     name: Build and publish to PyPI
     runs-on: ubuntu-latest
@@ -17,18 +28,55 @@ jobs:
       name: pypi
       url: https://pypi.org/p/indianconstitution
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.11"
-    - name: Clean dist directory
-      run: rm -rf dist/
-    - name: Install pypa/build
-      run: |
-        python -m pip install --upgrade pip build setuptools wheel
-    - name: Build a binary wheel and a source tarball
-      run: |
-        python -m build --sdist --wheel --outdir dist/
-    - name: Publish distribution to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Clean dist directory
+        run: rm -rf dist/
+
+      - name: Install build tools
+        run: |
+          python -m pip install --upgrade pip build setuptools wheel
+
+      - name: Build a binary wheel and a source tarball
+        run: |
+          python -m build --sdist --wheel --outdir dist/
+
+      - name: Publish distribution to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+
+  # ----------------------------------------------------------------
+  # Optional tag creation – runs ONLY on the scheduled trigger.
+  # It creates the v1.5.0 tag (if it does not already exist) so the
+  # release appears in the repository history.
+  # ----------------------------------------------------------------
+  create-release-tag:
+    name: Create v1.5.0 tag (scheduled run)
+    needs: build-n-publish
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # fetch all refs so we can tag
+
+      - name: Configure Git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create and push v1.5.0 tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Only create the tag if it does not already exist
+          if ! git rev-parse "refs/tags/v1.5.0" >/dev/null 2>&1; then
+            git tag -a v1.5.0 -m "Release v1.5.0 – Independence Day"
+            git push origin v1.5.0
+          else
+            echo "Tag v1.5.0 already exists – nothing to do."
+          fi
