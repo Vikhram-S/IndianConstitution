@@ -4,13 +4,11 @@
 
 ### *A Developer-First, Research-Grade Python Framework for the Constitution of India*
 
-
 [![PyPI](https://img.shields.io/pypi/v/indianconstitution?logo=pypi&logoColor=white&color=006DAE&style=for-the-badge)](https://pypi.org/project/indianconstitution/)
-[![Total Downloads](https://img.shields.io/pepy/dt/indianconstitution?style=for-the-badge&color=blue)](https://pepy.tech/project/indianconstitution)
 [![Downloads](https://img.shields.io/pypi/dm/indianconstitution?logo=pypi&logoColor=white&color=FF6B35&style=for-the-badge)](https://pypi.org/project/indianconstitution/)
+[![Total Downloads](https://img.shields.io/pepy/dt/indianconstitution?style=for-the-badge&color=blue)](https://pepy.tech/project/indianconstitution)
 [![CI](https://img.shields.io/github/actions/workflow/status/Vikhram-S/IndianConstitution/ci.yml?branch=main&style=for-the-badge&logo=github&label=CI)](https://github.com/Vikhram-S/IndianConstitution/actions)
 [![Codecov](https://img.shields.io/codecov/c/github/Vikhram-S/IndianConstitution?logo=codecov&style=for-the-badge)](https://codecov.io/gh/Vikhram-S/IndianConstitution)
-
 [![OpenSSF Scorecard](https://img.shields.io/ossf-scorecard/github.com/Vikhram-S/IndianConstitution?label=OpenSSF%20Scorecard&style=for-the-badge)](https://securityscorecards.dev/viewer/?uri=github.com/Vikhram-S/IndianConstitution)
 
 
@@ -20,7 +18,6 @@
 [![Ruff](https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge)](https://github.com/astral-sh/ruff)
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21407500-blue?style=for-the-badge)](https://doi.org/10.5281/zenodo.21407500)
-
 
 > **Sub-millisecond search · Strictly-typed API · Graph analysis · AI/RAG-ready · Zero external dependencies in core**
 
