@@ -6,7 +6,8 @@ access to the underlying ``networkx.DiGraph``.
 """
 
 import re
-from typing import Any, Dict, List, Set, Tuple
+from pathlib import Path
+from typing import Any, Dict, List, Set, Tuple, Union
 
 from .models import Article
 
@@ -104,3 +105,20 @@ class ConstitutionGraph:
 
         undirected = self._graph.to_undirected()
         return [set(c) for c in greedy_modularity_communities(undirected)]
+
+    def export_gexf(self, path: Union[str, Path]) -> None:
+        """Export cross-reference graph to GEXF format (openable in Gephi)."""
+        if not NETWORKX_AVAILABLE or self._graph is None:
+            raise RuntimeError(
+                "NetworkX is required for graph export. Install with: pip install 'indianconstitution[data]'"
+            )
+        nx.write_gexf(self._graph, str(path))
+
+    def export_graphml(self, path: Union[str, Path]) -> None:
+        """Export cross-reference graph to GraphML format."""
+        if not NETWORKX_AVAILABLE or self._graph is None:
+            raise RuntimeError(
+                "NetworkX is required for graph export. Install with: pip install 'indianconstitution[data]'"
+            )
+        nx.write_graphml(self._graph, str(path))
+
