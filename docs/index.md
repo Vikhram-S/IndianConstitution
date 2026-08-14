@@ -2,7 +2,7 @@
 
 <div align="center">
 
-### *A Developer-First, Research-Grade Python Framework for the Constitution of India*
+## *A Developer-First, Research-Grade Python Framework for the Constitution of India*
 
 </div>
 
