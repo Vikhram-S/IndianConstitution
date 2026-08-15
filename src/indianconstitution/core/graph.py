@@ -121,4 +121,3 @@ class ConstitutionGraph:
                 "NetworkX is required for graph export. Install with: pip install 'indianconstitution[data]'"
             )
         nx.write_graphml(self._graph, str(path))
-

@@ -214,4 +214,3 @@ class DutyCrossReference(BaseModel):
     duty_clause: str
     duty_text: str
     rationale: str
-

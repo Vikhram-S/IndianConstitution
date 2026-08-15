@@ -52,7 +52,6 @@ class Constitution:
         self._duties_list: Optional[List[DutyCrossReference]] = None
         self._i18n_data: Optional[Dict[str, Any]] = None
 
-
     # ── Data loading ─────────────────────────────────────────────────────
 
     @property
@@ -206,12 +205,20 @@ class Constitution:
         text_before = (
             from_events[-1].text_after
             if from_events and from_events[-1].text_after
-            else (from_events[0].text_before if from_events and from_events[0].text_before else f"Article {number} prior to {from_year}")
+            else (
+                from_events[0].text_before
+                if from_events and from_events[0].text_before
+                else f"Article {number} prior to {from_year}"
+            )
         )
         text_after = (
             to_events[-1].text_after
             if to_events and to_events[-1].text_after
-            else (to_events[0].text_after if to_events and to_events[0].text_after else f"Article {number} as of {to_year}")
+            else (
+                to_events[0].text_after
+                if to_events and to_events[0].text_after
+                else f"Article {number} as of {to_year}"
+            )
         )
 
         diff = difflib.unified_diff(
@@ -412,7 +419,6 @@ class Constitution:
             self._graph_obj.export_graphml(path)
         else:
             raise ValueError(f"Unsupported export format: {format}")
-
 
     # ── DataFrame ────────────────────────────────────────────────────────
 

@@ -92,4 +92,3 @@ def get_translation(number: Union[int, str], lang: str = "hi") -> Optional[Dict[
 def get_translated_preamble(lang: str = "hi") -> str:
     """Get translated Preamble text."""
     return get_constitution().get_translated_preamble(lang)
-

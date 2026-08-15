@@ -9,7 +9,7 @@ version = "1.5.0"
 description = "A developer-first, research-grade Python framework for programmatic access to the Constitution of India — built for legal NLP, RAG, civic AI, and constitutional informatics."
 readme = "README.md"
 requires-python = ">=3.8"
-license = { text = "Apache-2.0" }
+license = "Apache-2.0"
 keywords = [
   "constitution",
   "india",
