@@ -1,0 +1,56 @@
+[
+  {
+    "amendment_number": "1st Amendment Act",
+    "year": 1951,
+    "title": "Reasonable restrictions on speech and insertion of Ninth Schedule",
+    "description": "Inserted reasonable restrictions to Article 19(2) (public order, friendly relations with foreign states, incitement to an offence) and introduced Articles 31A and 31B.",
+    "article_number": "19",
+    "text_before": "Freedom of speech and expression without specific restrictions on public order or incitement.",
+    "text_after": "Freedom of speech and expression subject to reasonable restrictions in interests of sovereignty and integrity of India, security of the State, friendly relations with foreign States, public order, decency or morality, or in relation to contempt of court, defamation or incitement to an offence."
+  },
+  {
+    "amendment_number": "44th Amendment Act",
+    "year": 1978,
+    "title": "Right to Property removed from Fundamental Rights",
+    "description": "Omitted Article 31 (Right to Property) from Part III Fundamental Rights and reinserted it as a legal right under Article 300A.",
+    "article_number": "31",
+    "text_before": "Article 31: Compulsory acquisition of property as a Fundamental Right.",
+    "text_after": "Article 31 omitted from Part III. Article 300A added: No person shall be deprived of his property save by authority of law."
+  },
+  {
+    "amendment_number": "42nd Amendment Act",
+    "year": 1976,
+    "title": "Insertion of Fundamental Duties (Part IVA)",
+    "description": "Inserted Part IVA and Article 51A specifying 10 Fundamental Duties for citizens of India upon recommendation of the Swaran Singh Committee.",
+    "article_number": "51A",
+    "text_before": "No explicit Fundamental Duties chapter in the Constitution.",
+    "text_after": "Article 51A added containing fundamental duties (a) to (j)."
+  },
+  {
+    "amendment_number": "86th Amendment Act",
+    "year": 2002,
+    "title": "Right to Education inserted as Article 21A",
+    "description": "Inserted Article 21A making free and compulsory education for children aged 6 to 14 a Fundamental Right, substituted Article 45, and added duty 51A(k).",
+    "article_number": "21A",
+    "text_before": "Right to education was a Directive Principle under Article 45.",
+    "text_after": "Article 21A: The State shall provide free and compulsory education to all children of the age of six to fourteen years in such manner as the State may, by law, determine."
+  },
+  {
+    "amendment_number": "103rd Amendment Act",
+    "year": 2019,
+    "title": "Economically Weaker Sections (EWS) Reservation",
+    "description": "Amended Articles 15 and 16 to enable up to 10% reservation for Economically Weaker Sections (EWS) of citizens in education and government jobs.",
+    "article_number": "15",
+    "text_before": "Reservations permitted primarily for Socially and Educationally Backward Classes (SEBC), SC, and ST.",
+    "text_after": "Inserted Articles 15(6) and 16(6) allowing up to 10% reservation for Economically Weaker Sections."
+  },
+  {
+    "amendment_number": "42nd Amendment Act",
+    "year": 1976,
+    "title": "Preamble amended",
+    "description": "Added words 'SOCIALIST', 'SECULAR', and 'INTEGRITY' to the Preamble.",
+    "article_number": "0",
+    "text_before": "SOVEREIGN DEMOCRATIC REPUBLIC ... unity of the Nation",
+    "text_after": "SOVEREIGN SOCIALIST SECULAR DEMOCRATIC REPUBLIC ... unity and integrity of the Nation"
+  }
+]

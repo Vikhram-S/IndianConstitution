@@ -1,0 +1,138 @@
+[
+  {
+    "case_name": "Kesavananda Bharati v. State of Kerala",
+    "year": 1973,
+    "holding": "Established the 'Basic Structure Doctrine', holding that Parliament cannot amend the basic structure or essential features of the Constitution.",
+    "article_number": "368",
+    "citation": "AIR 1973 SC 1461",
+    "bench": "13-Judge Bench"
+  },
+  {
+    "case_name": "Maneka Gandhi v. Union of India",
+    "year": 1978,
+    "holding": "Expanded Article 21 right to life and personal liberty to mandate that procedure established by law must be just, fair, and reasonable, incorporating due process.",
+    "article_number": "21",
+    "citation": "AIR 1978 SC 597",
+    "bench": "7-Judge Bench"
+  },
+  {
+    "case_name": "E.P. Royappa v. State of Tamil Nadu",
+    "year": 1974,
+    "holding": "Formulated the new doctrine of equality under Article 14, holding that equality is a dynamic concept opposed to arbitrariness.",
+    "article_number": "14",
+    "citation": "AIR 1974 SC 555",
+    "bench": "5-Judge Bench"
+  },
+  {
+    "case_name": "K.S. Puttaswamy v. Union of India",
+    "year": 2017,
+    "holding": "Unanimously affirmed the Right to Privacy as a fundamental right guaranteed under Article 21 and Part III of the Constitution.",
+    "article_number": "21",
+    "citation": "(2017) 10 SCC 1",
+    "bench": "9-Judge Bench"
+  },
+  {
+    "case_name": "A.K. Gopalan v. State of Madras",
+    "year": 1950,
+    "holding": "Initial narrow interpretation of Article 21 restricting 'procedure established by law' strictly to enacted statutory procedure (later overruled by Maneka Gandhi).",
+    "article_number": "21",
+    "citation": "AIR 1950 SC 27",
+    "bench": "6-Judge Bench"
+  },
+  {
+    "case_name": "Unni Krishnan v. State of Andhra Pradesh",
+    "year": 1993,
+    "holding": "Held that right to education up to age 14 is a fundamental right flowing directly from Article 21, paving the way for Article 21A.",
+    "article_number": "21A",
+    "citation": "AIR 1993 SC 2178",
+    "bench": "5-Judge Bench"
+  },
+  {
+    "case_name": "Society for Unaided Private Schools of Rajasthan v. Union of India",
+    "year": 2012,
+    "holding": "Upheld constitutional validity of Right to Education Act 2009 under Article 21A, mandating 25% reservation for underprivileged children in private schools.",
+    "article_number": "21A",
+    "citation": "(2012) 6 SCC 1",
+    "bench": "3-Judge Bench"
+  },
+  {
+    "case_name": "Shreya Singhal v. Union of India",
+    "year": 2015,
+    "holding": "Struck down Section 66A of the Information Technology Act as unconstitutional under Article 19(1)(a) for overbreadth and restricting free speech.",
+    "article_number": "19",
+    "citation": "AIR 2015 SC 1523",
+    "bench": "2-Judge Bench"
+  },
+  {
+    "case_name": "Bennett Coleman & Co. v. Union of India",
+    "year": 1972,
+    "holding": "Affirmed that freedom of the press is an integral part of freedom of speech and expression under Article 19(1)(a).",
+    "article_number": "19",
+    "citation": "AIR 1973 SC 106",
+    "bench": "5-Judge Bench"
+  },
+  {
+    "case_name": "Bijoe Emmanuel v. State of Kerala",
+    "year": 1986,
+    "holding": "Upheld Jehovah's Witnesses students' right to refrain from singing the National Anthem under Article 19(1)(a) and Article 25 freedom of conscience.",
+    "article_number": "25",
+    "citation": "AIR 1987 SC 748",
+    "bench": "2-Judge Bench"
+  },
+  {
+    "case_name": "Indian Young Lawyers Association v. State of Kerala (Sabarimala Case)",
+    "year": 2018,
+    "holding": "Held that excluding women aged 10-50 from Sabarimala temple violated Articles 14, 15, 21, and 25, ruling religious customs subject to constitutional morality.",
+    "article_number": "25",
+    "citation": "(2019) 11 SCC 1",
+    "bench": "5-Judge Bench"
+  },
+  {
+    "case_name": "L. Chandra Kumar v. Union of India",
+    "year": 1997,
+    "holding": "Held judicial review under Article 32 and Article 226 as part of basic structure, making decisions of tribunals subject to High Court jurisdiction.",
+    "article_number": "32",
+    "citation": "AIR 1997 SC 1125",
+    "bench": "7-Judge Bench"
+  },
+  {
+    "case_name": "Prem Chand Garg v. Supreme Court of India",
+    "year": 1962,
+    "holding": "Rule that right to move the Supreme Court under Article 32 for enforcement of Fundamental Rights is itself a fundamental right.",
+    "article_number": "32",
+    "citation": "AIR 1963 SC 996",
+    "bench": "5-Judge Bench"
+  },
+  {
+    "case_name": "S.R. Bommai v. Union of India",
+    "year": 1994,
+    "holding": "Curbed arbitrary misuse of President's Rule under Article 356, establishing that proclamation is subject to judicial review and federalism is basic structure.",
+    "article_number": "356",
+    "citation": "AIR 1994 SC 1918",
+    "bench": "9-Judge Bench"
+  },
+  {
+    "case_name": "Minerva Mills Ltd. v. Union of India",
+    "year": 1980,
+    "holding": "Struck down clauses (4) and (5) of Article 368 inserted by 42nd Amendment, reiterating that Parliament's amending power is limited.",
+    "article_number": "368",
+    "citation": "AIR 1980 SC 1789",
+    "bench": "5-Judge Bench"
+  },
+  {
+    "case_name": "In re Article 370 of the Constitution",
+    "year": 2023,
+    "holding": "Unanimously upheld the constitutional validity of C.O. 272 and C.O. 273 abrogating special status under Article 370 and reorganizing Jammu and Kashmir.",
+    "article_number": "370",
+    "citation": "2023 INSC 1060",
+    "bench": "5-Judge Bench"
+  },
+  {
+    "case_name": "AIIMS Students Union v. AIIMS",
+    "year": 2002,
+    "holding": "Held that Fundamental Duties under Article 51A, though unenforceable directly, must be used to interpret constitutional provisions and statutes.",
+    "article_number": "51A",
+    "citation": "AIR 2002 SC 87",
+    "bench": "3-Judge Bench"
+  }
+]

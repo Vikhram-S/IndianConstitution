@@ -16,9 +16,13 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from ..export.engine import Exporter
 from ..search.engine import SearchEngine
 from .graph import ConstitutionGraph
-from .models import Article, ConstitutionData, SearchResult
+from .models import AmendmentEvent, Article, CaseLaw, ConstitutionData, DutyCrossReference, SearchResult
 
 DATA_PATH = Path(__file__).parent.parent / "data" / "constitution.json"
+CASE_LAW_PATH = Path(__file__).parent.parent / "data" / "case_law.json"
+AMENDMENTS_PATH = Path(__file__).parent.parent / "data" / "amendments.json"
+DUTIES_PATH = Path(__file__).parent.parent / "data" / "duties.json"
+I18N_PATH = Path(__file__).parent.parent / "data" / "i18n.json"
 
 
 class Constitution:
@@ -43,6 +47,11 @@ class Constitution:
         self._graph_obj: Optional[ConstitutionGraph] = None
         self._semantic_model: Any = None
         self._semantic_embeddings: Any = None
+        self._case_law_list: Optional[List[CaseLaw]] = None
+        self._amendments_list: Optional[List[AmendmentEvent]] = None
+        self._duties_list: Optional[List[DutyCrossReference]] = None
+        self._i18n_data: Optional[Dict[str, Any]] = None
+
 
     # ── Data loading ─────────────────────────────────────────────────────
 
@@ -105,6 +114,156 @@ class Constitution:
     def articles(self) -> List[Article]:
         """Return all articles in the Constitution."""
         return self.data.articles
+
+    # ── Feature Loaders & Landmark Cases / Amendments / Duties / i18n ────────
+
+    def _ensure_case_law(self) -> List[CaseLaw]:
+        if self._case_law_list is None:
+            if not CASE_LAW_PATH.exists():
+                self._case_law_list = []
+            else:
+                with open(CASE_LAW_PATH, encoding="utf-8") as f:
+                    raw = json.load(f)
+                self._case_law_list = [CaseLaw(**item) for item in raw]
+        return self._case_law_list
+
+    def _ensure_amendments(self) -> List[AmendmentEvent]:
+        if self._amendments_list is None:
+            if not AMENDMENTS_PATH.exists():
+                self._amendments_list = []
+            else:
+                with open(AMENDMENTS_PATH, encoding="utf-8") as f:
+                    raw = json.load(f)
+                self._amendments_list = [AmendmentEvent(**item) for item in raw]
+        return self._amendments_list
+
+    def _ensure_duties(self) -> List[DutyCrossReference]:
+        if self._duties_list is None:
+            if not DUTIES_PATH.exists():
+                self._duties_list = []
+            else:
+                with open(DUTIES_PATH, encoding="utf-8") as f:
+                    raw = json.load(f)
+                self._duties_list = [DutyCrossReference(**item) for item in raw]
+        return self._duties_list
+
+    def _ensure_i18n(self) -> Dict[str, Any]:
+        if self._i18n_data is None:
+            if not I18N_PATH.exists():
+                self._i18n_data = {}
+            else:
+                with open(I18N_PATH, encoding="utf-8") as f:
+                    self._i18n_data = json.load(f)
+        return self._i18n_data
+
+    def get_related_cases(self, number: Union[int, str]) -> List[CaseLaw]:
+        """Retrieve landmark Supreme Court judgments for an article.
+
+        Args:
+            number: Article number (e.g. 14, '21', '368').
+
+        Returns:
+            A list of :class:`CaseLaw` objects.
+        """
+        cases = self._ensure_case_law()
+        num_str = str(number).strip()
+        return [c for c in cases if c.article_number == num_str]
+
+    def get_amendment_history(self, number: Union[int, str]) -> List[AmendmentEvent]:
+        """Retrieve historical amendment events for an article.
+
+        Args:
+            number: Article number (e.g. '19', '21A', '31').
+
+        Returns:
+            A list of :class:`AmendmentEvent` objects ordered by year.
+        """
+        events = self._ensure_amendments()
+        num_str = str(number).strip()
+        filtered = [e for e in events if e.article_number == num_str]
+        return sorted(filtered, key=lambda x: x.year)
+
+    def diff_amendment(self, number: Union[int, str], from_year: int = 1950, to_year: int = 2026) -> str:
+        """Compute textual delta between amendment states of an article using stdlib difflib.
+
+        Args:
+            number: Article number (e.g. '19', '21A').
+            from_year: Starting year cutoff.
+            to_year: Ending year cutoff.
+
+        Returns:
+            A unified diff string showing changes.
+        """
+        import difflib
+
+        history = self.get_amendment_history(number)
+        if not history:
+            return f"No amendment history found for Article {number}."
+
+        from_events = [e for e in history if e.year <= from_year]
+        to_events = [e for e in history if e.year <= to_year]
+
+        text_before = (
+            from_events[-1].text_after
+            if from_events and from_events[-1].text_after
+            else (from_events[0].text_before if from_events and from_events[0].text_before else f"Article {number} prior to {from_year}")
+        )
+        text_after = (
+            to_events[-1].text_after
+            if to_events and to_events[-1].text_after
+            else (to_events[0].text_after if to_events and to_events[0].text_after else f"Article {number} as of {to_year}")
+        )
+
+        diff = difflib.unified_diff(
+            text_before.splitlines(keepends=True),
+            text_after.splitlines(keepends=True),
+            fromfile=f"Article_{number}_{from_year}",
+            tofile=f"Article_{number}_{to_year}",
+        )
+        return "".join(diff)
+
+    def get_related_duties(self, number: Union[int, str]) -> List[DutyCrossReference]:
+        """Cross-reference Part III Fundamental Rights to Part IVA Fundamental Duties.
+
+        Args:
+            number: Right article number (e.g. '21A', '21', '14') or duty clause.
+
+        Returns:
+            A list of :class:`DutyCrossReference` objects.
+        """
+        duties = self._ensure_duties()
+        num_str = str(number).strip()
+        return [d for d in duties if d.right_article == num_str or d.duty_clause == num_str]
+
+    def get_translation(self, number: Union[int, str], lang: str = "hi") -> Optional[Dict[str, str]]:
+        """Get translated article title and content.
+
+        Args:
+            number: Article number.
+            lang: Language code (e.g. 'hi').
+
+        Returns:
+            Dict containing 'title' and 'content' or None if not available.
+        """
+        data = self._ensure_i18n()
+        articles_data = data.get("articles", {})
+        art_lang = articles_data.get(str(number), {}).get(lang)
+        if art_lang and isinstance(art_lang, dict):
+            return {"title": str(art_lang.get("title", "")), "content": str(art_lang.get("content", ""))}
+        return None
+
+    def get_translated_preamble(self, lang: str = "hi") -> str:
+        """Get translated Preamble text.
+
+        Args:
+            lang: Language code (e.g. 'hi').
+
+        Returns:
+            Translated Preamble string or empty string.
+        """
+        data = self._ensure_i18n()
+        preambles = data.get("preamble", {})
+        return str(preambles.get(lang, ""))
 
     # ── Keyword search ───────────────────────────────────────────────────
 
@@ -226,10 +385,10 @@ class Constitution:
     # ── Export ────────────────────────────────────────────────────────────
 
     def export(self, format: str, path: Union[str, Path]) -> None:
-        """Export the constitution to JSON, CSV, or Markdown.
+        """Export the constitution to JSON, CSV, Markdown, GEXF, or GraphML.
 
         Args:
-            format: One of ``'json'``, ``'csv'``, ``'markdown'`` (or ``'md'``).
+            format: One of ``'json'``, ``'csv'``, ``'markdown'`` (or ``'md'``), ``'gexf'``, ``'graphml'``.
             path: Output file path.
 
         Raises:
@@ -238,14 +397,22 @@ class Constitution:
         self._ensure_loaded()
         assert self._exporter is not None
 
-        if format == "json":
+        fmt_lower = format.lower()
+        if fmt_lower == "json":
             self._exporter.to_json(path)
-        elif format == "csv":
+        elif fmt_lower == "csv":
             self._exporter.to_csv(path)
-        elif format in ("markdown", "md"):
+        elif fmt_lower in ("markdown", "md"):
             self._exporter.to_markdown(path)
+        elif fmt_lower == "gexf":
+            assert self._graph_obj is not None
+            self._graph_obj.export_gexf(path)
+        elif fmt_lower == "graphml":
+            assert self._graph_obj is not None
+            self._graph_obj.export_graphml(path)
         else:
             raise ValueError(f"Unsupported export format: {format}")
+
 
     # ── DataFrame ────────────────────────────────────────────────────────
 

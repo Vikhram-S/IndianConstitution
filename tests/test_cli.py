@@ -1,5 +1,7 @@
 """Tests for the IndianConstitution CLI interface."""
 
+from pathlib import Path
+
 from typer.testing import CliRunner
 
 from indianconstitution.cli.main import app
@@ -62,9 +64,10 @@ def test_cli_related():
     assert result.exit_code == 0
 
 
-def test_cli_export(tmp_path):
+def test_cli_export(tmp_path: Path):
     """CLI export command exports dataset."""
     out_file = tmp_path / "out.json"
     result = runner.invoke(app, ["export", "json", str(out_file)])
     assert result.exit_code == 0
     assert out_file.exists()
+

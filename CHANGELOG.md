@@ -7,14 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [Unreleased]
+## [1.5.0] - 2026-08-15 — Independence Day Release
 
-### Planned
-- Transformer-based semantic search via `sentence-transformers` (optional `[ai]` extra).
-- Amendment timeline API: retrieve constitutional history per article.
-- Hindi language support for the preamble and article summaries.
-- Async I/O adapter (`asyncio`-compatible data loading for FastAPI/Starlette apps).
-- Zenodo DOI registration for persistent academic citation.
+### Added
+- **Landmark Judgments Linker**: Direct mapping of Supreme Court precedents (e.g. *Kesavananda Bharati*, *Maneka Gandhi*, *Puttaswamy*) to constitutional articles (`ic.get_related_cases()`).
+- **Amendment Timeline & Diff View**: Complete historical tracking of constitutional amendments with unified diff generation (`ic.get_amendment_history()`, `ic.diff_amendment()`).
+- **Fundamental Rights ↔ Fundamental Duties Cross-Reference**: Reciprocal cross-referencing linking Part III fundamental rights to Part IVA fundamental duties (`ic.get_related_duties()`).
+- **Multilingual Support (i18n)**: Native Hindi language translation support for the Preamble and key articles (`ic.get_translation()`, `ic.get_translated_preamble()`).
+- **Graph Export to GEXF / GraphML**: Cross-reference network exports to `.gexf` (openable in Gephi) and `.graphml` formats (`ic.export("gexf", path)`).
+- **Lightweight REST API (`[api]` extra)**: Ready-to-run FastAPI REST API endpoints (`indianconstitution serve`).
+- **"Know Your Constitution" Quiz Mode (CLI)**: Interactive CLI quiz mode (`indianconstitution quiz`) and new CLI sub-commands (`cases`, `amendments`, `duties`, `serve`).
+
+---
+
+## [1.4.0] - 2026-08-12
+
+### Added
+- Enhanced vector retrieval and semantic search integration (`[ai]` extra).
+- Performance optimizations for memory-efficient lazy loading.
 
 ---
 

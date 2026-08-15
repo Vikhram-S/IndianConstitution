@@ -45,9 +45,15 @@ The library implements a **zero-dependency inverted-index search engine** (O(1) 
 |:---|:---|:---:|
 | **Typed Article API** | Fully annotated `Article`, `Part`, `Schedule`, `Preamble` Pydantic v2 models | *core* |
 | **Inverted-Index Search** | Sub-millisecond lexical search via built-in inverted index — O(1) per token | *core* |
-| **Graph Analysis** | NetworkX-backed relational graph of constitutional cross-references | `[data]` |
+| **Landmark Judgments** | Supreme Court precedents (e.g. *Kesavananda Bharati*, *Puttaswamy*) linked per article | *core* |
+| **Amendment Timelines** | Historical amendment events & unified diff generator for text changes | *core* |
+| **Rights-Duties Cross-Ref** | Reciprocal cross-referencing between Part III rights and Part IVA duties | *core* |
+| **Multilingual (i18n)** | Native Hindi translation support for Preamble & key articles | *core* / `[i18n]` |
+| **Graph Export (GEXF)** | NetworkX cross-reference network exports to `.gexf` (Gephi) & `.graphml` | `[data]` |
+| **Lightweight REST API** | Ready-to-run FastAPI REST HTTP endpoints & OpenAPI docs | `[api]` |
+| **Interactive Quiz CLI** | Terminal-native "Know Your Constitution" trivia quiz & deep lookup sub-commands | *core* |
 | **Semantic / AI Search** | Sentence-Transformers embeddings for contextual RAG retrieval | `[ai]` |
-| **Multi-Format Export** | Export to JSON, CSV, and Markdown with a single call | *core* |
+| **Multi-Format Export** | Export to JSON, CSV, Markdown, GEXF, and GraphML | *core* / `[data]` |
 | **pandas Integration** | Direct `DataFrame` output of articles for data science workflows | `[data]` |
 | **Rich CLI** | Terminal-native interface powered by Typer + Rich with syntax highlighting | *core* |
 | **Fully Offline** | No API keys, no rate limits, no network calls required in core mode | *core* |
@@ -182,6 +188,30 @@ for r in results:
     print(f"[{r.number}] {r.title}  (score: {r.score:.4f})")
 ```
 
+### Landmark Judgments & Amendment History (v1.5.0)
+
+```python
+from indianconstitution import get_constitution, get_related_cases, diff_amendment
+
+ic = get_constitution()
+
+# Landmark Supreme Court judgments linked to Article 21
+cases = get_related_cases("21")
+for c in cases:
+    print(f"{c.case_name} ({c.year}): {c.holding[:80]}...")
+
+# Amendment history and textual delta for Article 21A
+events = ic.get_amendment_history("21A")
+print("Amendment:", events[0].amendment_number)
+
+diff_text = diff_amendment("21A")
+print(diff_text)
+
+# Multilingual translation (Hindi)
+hi_article = ic.get_translation("21A", lang="hi")
+print("Hindi Title:", hi_article["title"])
+```
+
 ### RAG Pipeline Integration
 
 ```python
@@ -208,11 +238,15 @@ context = build_rag_context("right to life and personal liberty")
 ## 🖥️ Command-Line Interface
 
 ```bash
-indianconstitution get 21                        # Retrieve article
-indianconstitution search "equality before law"  # Full-text search
-indianconstitution stats                         # Metadata summary
-indianconstitution export --format json -o out.json
-indianconstitution --version
+indianconstitution quiz                           # Know Your Constitution interactive trivia quiz
+indianconstitution cases 21                       # View landmark SC cases for Article 21
+indianconstitution amendments 21A                 # View amendment history & diff
+indianconstitution duties 21A                     # Cross-reference Fundamental Rights to Duties
+indianconstitution serve                          # Launch REST API server (http://127.0.0.1:8000)
+indianconstitution get 21                         # Retrieve article with rich styling
+indianconstitution search "equality before law"   # Full-text search
+indianconstitution stats                          # Metadata summary
+indianconstitution export json out.json           # Export dataset
 ```
 
 ---
@@ -227,6 +261,8 @@ Measured on a commodity laptop (Intel i7-11th Gen, 16 GB RAM, Python 3.11, singl
 | Subsequent calls | ~0 ms | In-process singleton cache — zero I/O |
 | Keyword search (1 token) | **< 0.1 ms** | Inverted-index O(1) lookup |
 | Keyword search (3 tokens) | **< 0.5 ms** | Set intersection over index |
+| Landmark cases lookup | **< 0.1 ms** | O(1) dictionary lookup |
+| Amendment history & diff | **< 1.0 ms** | Fast standard difflib computation |
 | Full CSV export | ~12 ms | Streaming writer |
 | Full JSON export | ~8 ms | `orjson`-compatible output |
 | Graph construction | ~30 ms | One-time, lazy; cached thereafter |
@@ -269,7 +305,7 @@ If you use `indianconstitution` in academic research, a thesis, or any published
   title        = {{IndianConstitution: A Developer-First, Research-Grade
                    Python Framework for the Constitution of India}},
   year         = {2026},
-  version      = {1.3.1},
+  version      = {1.5.0},
   publisher    = {PyPI},
   url          = {https://github.com/Vikhram-S/IndianConstitution},
   doi          = {10.5281/zenodo.18200429},
@@ -281,17 +317,17 @@ If you use `indianconstitution` in academic research, a thesis, or any published
 
 ### APA 7th Edition
 
-> S, Vikhram. (2026). *IndianConstitution: A Developer-First, Research-Grade Python Framework for the Constitution of India* (Version 1.3.1) [Software]. PyPI. https://doi.org/10.5281/zenodo.18200429
+> S, Vikhram. (2026). *IndianConstitution: A Developer-First, Research-Grade Python Framework for the Constitution of India* (Version 1.5.0) [Software]. PyPI. https://doi.org/10.5281/zenodo.18200429
 
 ### IEEE
 
-> V. S, "IndianConstitution: A Developer-First, Research-Grade Python Framework for the Constitution of India," version 1.3.1, 2026. [Online]. Available: https://github.com/Vikhram-S/IndianConstitution. DOI: 10.5281/zenodo.18200429.
+> V. S, "IndianConstitution: A Developer-First, Research-Grade Python Framework for the Constitution of India," version 1.5.0, 2026. [Online]. Available: https://github.com/Vikhram-S/IndianConstitution. DOI: 10.5281/zenodo.18200429.
 
 ### ACL Anthology
 
 ```
 Vikhram S. 2026. IndianConstitution: A Developer-First, Research-Grade Python Framework
-for the Constitution of India. Software release v1.3.1.
+for the Constitution of India. Software release v1.5.0.
 Available: https://github.com/Vikhram-S/IndianConstitution
 ```
 

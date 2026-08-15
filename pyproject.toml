@@ -4,11 +4,12 @@ build-backend = "hatchling.build"
 
 [project]
 name = "indianconstitution"
-version = "1.4.0"
+version = "1.5.0"
+
 description = "A developer-first, research-grade Python framework for programmatic access to the Constitution of India — built for legal NLP, RAG, civic AI, and constitutional informatics."
 readme = "README.md"
 requires-python = ">=3.8"
-license = "Apache-2.0"
+license = { text = "Apache-2.0" }
 keywords = [
   "constitution",
   "india",
@@ -114,10 +115,18 @@ docs = [
   "mkdocs-literate-nav>=0.6.0",
   "mkdocs-section-index>=0.3.0",
 ]
+# Multilingual features
+i18n = []
+# Lightweight REST API server
+api = [
+  "fastapi>=0.100.0",
+  "uvicorn>=0.20.0",
+]
 # All optional dependencies
 all = [
-  "indianconstitution[data,ai,dev,docs]",
+  "indianconstitution[data,ai,dev,docs,i18n,api]",
 ]
+
 
 [project.urls]
 Homepage       = "https://vikhram-s.github.io/IndianConstitution/"
@@ -195,7 +204,7 @@ known-first-party = ["indianconstitution"]
 # ─── Type Checking (Mypy) ────────────────────────────────────────────────────
 
 [tool.mypy]
-python_version      = "3.9"
+python_version      = "3.10"
 strict              = false
 warn_return_any     = true
 warn_unused_configs = true

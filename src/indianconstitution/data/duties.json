@@ -1,0 +1,38 @@
+[
+  {
+    "right_article": "21A",
+    "duty_clause": "51A(k)",
+    "duty_text": "Duty of parent or guardian to provide opportunities for education to child aged 6 to 14 years.",
+    "rationale": "Direct constitutional complement: The State guarantees Right to Education under 21A, while parents/guardians carry the corresponding duty under 51A(k)."
+  },
+  {
+    "right_article": "21",
+    "duty_clause": "51A(g)",
+    "duty_text": "Duty to protect and improve the natural environment including forests, lakes, rivers and wildlife, and to have compassion for living creatures.",
+    "rationale": "Right to Life under Article 21 encompasses clean environment (Subhash Kumar v. State of Bihar), matched by civic duty 51A(g) to preserve nature."
+  },
+  {
+    "right_article": "19",
+    "duty_clause": "51A(e)",
+    "duty_text": "Duty to promote harmony and the spirit of common brotherhood amongst all people of India transcending religious, linguistic and regional diversities.",
+    "rationale": "Freedom of speech and expression under Article 19(1)(a) must be exercised responsibly without inciting communal discord or hatred."
+  },
+  {
+    "right_article": "14",
+    "duty_clause": "51A(e)",
+    "duty_text": "Duty to renounce practices derogatory to the dignity of women.",
+    "rationale": "Equality before law and prohibition of discrimination (Articles 14 & 15) requires active societal commitment to dignity of women."
+  },
+  {
+    "right_article": "32",
+    "duty_clause": "51A(a)",
+    "duty_text": "Duty to abide by the Constitution and respect its ideals and institutions, the National Flag and the National Anthem.",
+    "rationale": "The constitutional remedy framework under Article 32 requires respect for constitutional institutions and constitutionalism."
+  },
+  {
+    "right_article": "25",
+    "duty_clause": "51A(h)",
+    "duty_text": "Duty to develop scientific temper, humanism and the spirit of inquiry and reform.",
+    "rationale": "Freedom of conscience and religion under Article 25 is balanced by duty to foster rational, scientific inquiry and reform."
+  }
+]

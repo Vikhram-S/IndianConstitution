@@ -156,3 +156,62 @@ class ConstitutionData(BaseModel):
     articles: List[Article]
     parts: List[Part] = []
     schedules: List[Schedule] = []
+
+
+class CaseLaw(BaseModel):
+    """Represents a landmark Supreme Court judgment linked to an article.
+
+    Attributes:
+        case_name: Title of the landmark case.
+        year: Year of the judgment.
+        holding: A concise summary of the court's holding.
+        article_number: Article number (e.g. '21', '368').
+        citation: Official citation string, if available.
+        bench: Bench size or description, if available.
+    """
+
+    case_name: str
+    year: int
+    holding: str
+    article_number: str
+    citation: Optional[str] = None
+    bench: Optional[str] = None
+
+
+class AmendmentEvent(BaseModel):
+    """Represents an amendment event affecting an article.
+
+    Attributes:
+        amendment_number: Amendment name/number (e.g. '86th Amendment Act').
+        year: Year of enactment.
+        title: Short title of the change.
+        description: Description of textual/structural alterations.
+        article_number: Target article number (e.g. '21A').
+        text_before: Optional text before the amendment.
+        text_after: Optional text after the amendment.
+    """
+
+    amendment_number: str
+    year: int
+    title: str
+    description: str
+    article_number: str
+    text_before: Optional[str] = None
+    text_after: Optional[str] = None
+
+
+class DutyCrossReference(BaseModel):
+    """Cross-reference linking a Fundamental Right to a Fundamental Duty.
+
+    Attributes:
+        right_article: Article number of the Fundamental Right (e.g. '21A').
+        duty_clause: Clause in Article 51A (e.g. '51A(k)').
+        duty_text: Summary of the fundamental duty.
+        rationale: Legal/civic relationship rationale.
+    """
+
+    right_article: str
+    duty_clause: str
+    duty_text: str
+    rationale: str
+

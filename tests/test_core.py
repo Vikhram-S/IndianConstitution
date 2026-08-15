@@ -1,8 +1,9 @@
-"""Tests for the core Constitution engine and models."""
+from pathlib import Path
 
 import pytest
+
 from indianconstitution import get_article, get_constitution, search
-from indianconstitution.core.models import Article, SearchResult
+from indianconstitution.core.models import SearchResult
 
 
 def test_load_constitution():
@@ -71,9 +72,9 @@ def test_get_graph():
         return  # Skip if networkx not installed
 
     ic = get_constitution()
-    G = ic.get_graph()
-    assert isinstance(G, nx.DiGraph)
-    assert G.number_of_nodes() > 0
+    graph_obj = ic.get_graph()
+    assert isinstance(graph_obj, nx.DiGraph)
+    assert graph_obj.number_of_nodes() > 0
 
 
 def test_get_central_articles():
@@ -131,8 +132,8 @@ def test_to_dataframe():
     assert len(df) == len(ic)
 
 
-def test_export_all_formats(tmp_path):
-    """export handles json, csv, and markdown."""
+def test_export_all_formats(tmp_path: Path):
+    """Export handles json, csv, and markdown."""
     ic = get_constitution()
     ic.export("json", tmp_path / "out.json")
     ic.export("csv", tmp_path / "out.csv")
@@ -143,8 +144,8 @@ def test_export_all_formats(tmp_path):
     assert (tmp_path / "out.md").exists()
 
 
-def test_export_invalid_format(tmp_path):
-    """export raises ValueError on invalid format."""
+def test_export_invalid_format(tmp_path: Path):
+    """Export raises ValueError on invalid format."""
     ic = get_constitution()
     with pytest.raises(ValueError, match="Unsupported export format"):
         ic.export("invalid_format", tmp_path / "out.xyz")
@@ -154,3 +155,4 @@ def test_repr():
     """__repr__ returns string representation."""
     ic = get_constitution()
     assert "<Constitution:" in repr(ic)
+
