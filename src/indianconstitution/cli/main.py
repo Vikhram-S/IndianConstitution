@@ -1,3 +1,5 @@
+"""Command Line Interface for IndianConstitution package using Typer and Rich."""
+
 import time
 from pathlib import Path
 
@@ -10,12 +12,12 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.text import Text
 
 from .. import __version__, get_constitution
+from ..core.engine import Constitution
+from ..exceptions import IndianConstitutionError
 from . import rich_utils
 
-# Initialize global console
 console = Console()
 
-# Sleek ASCII Logo
 LOGO = """
   ___           _ _               ___                _   _ _         _   _             
  |_ _|_ __   __| (_) __ _ _ __   / __\\___  _ __  ___| |_(_) |_ _   _| |_(_) ___  _ __  
@@ -25,13 +27,12 @@ LOGO = """
 """
 
 
-def display_header():
-    """Displays a beautiful, top-tier logo and creator details."""
+def display_header() -> None:
+    """Display CLI header with version metadata."""
     logo_text = Text(LOGO, style="bold gold1")
-
     creator_text = Text()
-    creator_text.append("\nAn Elite CLI Tool for the Sovereign Democratic Republic", style="italic cyan")
-    creator_text.append("\n\nCreated by: ", style="bold white")
+    creator_text.append("\nCommand Line Interface for the Constitution of India", style="italic cyan")
+    creator_text.append("\n\nAuthor: ", style="bold white")
     creator_text.append("Vikhram S", style="bold green")
     creator_text.append(f" | Version: {__version__}\n", style="bold magenta")
 
@@ -39,15 +40,15 @@ def display_header():
         Align.center(logo_text + creator_text),
         border_style="gold1",
         padding=(1, 2),
-        title="[bold white]Satyameva Jayate[/bold white]",
+        title="[bold white]Constitution of India[/bold white]",
         title_align="center",
     )
     console.print(panel)
     console.print()
 
 
-def get_const_instance():
-    """Fetches the constitution instance with a sleek loading animation."""
+def get_const_instance() -> Constitution:
+    """Fetch lazy-loaded Constitution instance with status spinner."""
     with Progress(
         SpinnerColumn(spinner_name="dots", style="gold1"),
         TextColumn("[progress.description]{task.description}"),
@@ -55,22 +56,22 @@ def get_const_instance():
         console=console,
     ) as progress:
         progress.add_task(description="[cyan]Initializing Constitution Engine...", total=None)
-        time.sleep(0.1)
+        time.sleep(0.05)
         return get_constitution()
 
 
 app = typer.Typer(
     name="indianconstitution",
-    help="[bold gold1]Explore the Constitution of India[/bold gold1] with unparalleled elegance.",
+    help="Programmatic CLI interface for querying and analyzing the Constitution of India.",
     no_args_is_help=True,
     rich_markup_mode="rich",
-    epilog="[dim]Designed for legal professionals, scholars, and citizens.[/dim]",
+    epilog="Designed for legal researchers, developers, and citizens.",
 )
 
 
 @app.callback(invoke_without_command=True)
-def main_callback(ctx: typer.Context):
-    """[bold gold1]IndianConstitution CLI[/bold gold1] - A premium terminal experience."""
+def main_callback(ctx: typer.Context) -> None:
+    """IndianConstitution CLI entry point."""
     if ctx.invoked_subcommand is None:
         display_header()
         rprint(ctx.get_help())
@@ -78,35 +79,35 @@ def main_callback(ctx: typer.Context):
 
 @app.command()
 def get(
-    number: str = typer.Argument(..., help="Article number (e.g., [cyan]14[/cyan], [cyan]21A[/cyan])"),
-):
-    """[bold blue]Retrieve[/bold blue] and display a specific article with rich formatting."""
+    number: str = typer.Argument(..., help="Article number (e.g., 14, 21A)"),
+) -> None:
+    """Retrieve and display a specific article."""
     display_header()
     const = get_const_instance()
 
     with Progress(SpinnerColumn(), TextColumn(f"[cyan]Fetching Article {number}..."), transient=True) as progress:
         progress.add_task(description="", total=None)
-        time.sleep(0.1)
+        time.sleep(0.05)
         article = const.get_article(number)
 
     if article:
         rich_utils.print_article(article)
     else:
-        console.print(f"[bold red]Error:[/bold red] Article {number} not found.")
+        console.print(f"[bold red]Error:[/bold red] Article '{number}' not found.")
 
 
 @app.command()
 def search(
     query: str = typer.Argument(..., help="Search term"),
-    limit: int = typer.Option(10, "--limit", "-l", help="Number of results to show"),
-):
-    """[bold green]Search[/bold green] the Constitution for specific keywords or phrases."""
+    limit: int = typer.Option(10, "--limit", "-l", help="Number of results to return"),
+) -> None:
+    """Search articles using inverted keyword index."""
     display_header()
     const = get_const_instance()
 
     with Progress(SpinnerColumn(), TextColumn(f"[cyan]Searching for '{query}'..."), transient=True) as progress:
         progress.add_task(description="", total=None)
-        time.sleep(0.1)
+        time.sleep(0.05)
         results = const.search(query, limit=limit)
 
     if results:
@@ -116,8 +117,8 @@ def search(
 
 
 @app.command()
-def preamble():
-    """[bold gold1]Display[/bold gold1] the beautifully formatted Preamble."""
+def preamble() -> None:
+    """Display the Preamble text."""
     display_header()
     const = get_const_instance()
     rich_utils.print_preamble(const.preamble)
@@ -125,10 +126,10 @@ def preamble():
 
 @app.command()
 def export(
-    format: str = typer.Argument(..., help="Export format ([cyan]json[/cyan], [cyan]csv[/cyan], [cyan]md[/cyan])"),
+    format: str = typer.Argument(..., help="Export format (json, csv, md, gexf, graphml)"),
     output: Path = typer.Argument(..., help="Output file path"),
-):
-    """[bold red]Export[/bold red] the complete Constitution dataset."""
+) -> None:
+    """Export constitution dataset to specified file format."""
     display_header()
     const = get_const_instance()
 
@@ -137,13 +138,15 @@ def export(
         try:
             const.export(format, output)
             console.print(f"[bold green]Successfully exported to [underline]{output}[/underline][/bold green]")
+        except IndianConstitutionError as e:
+            console.print(f"[bold red]Export failed:[/bold red] {e.message}")
         except Exception as e:
-            console.print(f"[bold red]Failed to export:[/bold red] {e}")
+            console.print(f"[bold red]Unexpected error during export:[/bold red] {e}")
 
 
 @app.command()
-def related(number: str = typer.Argument(..., help="Article number")):
-    """[bold magenta]View[/bold magenta] articles referenced by or referencing this article."""
+def related(number: str = typer.Argument(..., help="Article number")) -> None:
+    """View cross-references and relationships for an article."""
     display_header()
     const = get_const_instance()
 
@@ -151,7 +154,7 @@ def related(number: str = typer.Argument(..., help="Article number")):
         SpinnerColumn(), TextColumn(f"[cyan]Finding relationships for Article {number}..."), transient=True
     ) as progress:
         progress.add_task(description="", total=None)
-        time.sleep(0.1)
+        time.sleep(0.05)
         related_data = const.get_related_articles(number)
 
     if related_data["references"]:
@@ -169,14 +172,14 @@ def related(number: str = typer.Argument(..., help="Article number")):
 
 
 @app.command()
-def stats():
-    """[bold cyan]Discover[/bold cyan] detailed statistics about the Constitution."""
+def stats() -> None:
+    """Calculate and output statistics about the Constitution corpus."""
     display_header()
     const = get_const_instance()
 
     with Progress(SpinnerColumn(), TextColumn("[cyan]Calculating Statistics..."), transient=True) as progress:
         progress.add_task(description="", total=None)
-        time.sleep(0.1)
+        time.sleep(0.05)
         articles = const.data.articles
         total_words = sum(len(a.content.split()) for a in articles)
 
@@ -200,16 +203,16 @@ QUIZ_QUESTIONS = [
         "question": "Which Constitutional Amendment Act inserted Article 21A (Right to Education)?",
         "options": ["A. 42nd Amendment", "B. 44th Amendment", "C. 86th Amendment", "D. 103rd Amendment"],
         "answer": "C",
-        "explanation": "The 86th Amendment Act, 2002 made free and compulsory education for children aged 6–14 a Fundamental Right under Article 21A.",
+        "explanation": "The 86th Amendment Act, 2002 inserted Article 21A.",
     },
     {
-        "question": "Which article of the Indian Constitution is known as the 'Heart and Soul' of the Constitution?",
+        "question": "Which article of the Indian Constitution covers the Right to Constitutional Remedies?",
         "options": ["A. Article 14", "B. Article 19", "C. Article 21", "D. Article 32"],
         "answer": "D",
-        "explanation": "Dr. B.R. Ambedkar famously referred to Article 32 (Right to Constitutional Remedies) as the heart and soul of the Constitution.",
+        "explanation": "Article 32 provides the right to move the Supreme Court for enforcement of Fundamental Rights.",
     },
     {
-        "question": "In which landmark case did a 9-judge bench unanimously affirm the Right to Privacy as a Fundamental Right under Article 21?",
+        "question": "In which case did a 9-judge bench affirm the Right to Privacy under Article 21?",
         "options": [
             "A. K.S. Puttaswamy (2017)",
             "B. Shreya Singhal (2015)",
@@ -217,13 +220,13 @@ QUIZ_QUESTIONS = [
             "D. S.R. Bommai (1994)",
         ],
         "answer": "A",
-        "explanation": "Justice K.S. Puttaswamy (Retd.) v. Union of India (2017) declared Privacy a fundamental right under Article 21.",
+        "explanation": "Justice K.S. Puttaswamy v. Union of India (2017) declared Privacy a fundamental right.",
     },
     {
-        "question": "Article 51A specifying Fundamental Duties was inserted into the Constitution by which Amendment?",
+        "question": "Article 51A (Fundamental Duties) was inserted by which Amendment?",
         "options": ["A. 1st Amendment", "B. 42nd Amendment", "C. 44th Amendment", "D. 73rd Amendment"],
         "answer": "B",
-        "explanation": "The 42nd Amendment Act, 1976 added Part IVA and Article 51A upon recommendation of the Swaran Singh Committee.",
+        "explanation": "The 42nd Amendment Act, 1976 added Part IVA and Article 51A.",
     },
 ]
 
@@ -231,14 +234,14 @@ QUIZ_QUESTIONS = [
 @app.command()
 def quiz(
     questions: int = typer.Option(5, "--questions", "-n", help="Number of questions (1-5)"),
-):
-    """[bold gold1]Know Your Constitution[/bold gold1] — Interactive trivia quiz session."""
+) -> None:
+    """Run interactive trivia quiz session."""
     display_header()
     console.print(
         Panel(
-            "[bold green]Welcome to Know Your Constitution Quiz Mode![/bold green]\n"
+            "[bold green]Constitution Knowledge Quiz[/bold green]\n"
             "Test your knowledge of constitutional law, landmark cases, and fundamental rights.",
-            title="Independence Day Special",
+            title="Interactive Quiz",
         )
     )
 
@@ -267,8 +270,8 @@ def quiz(
 @app.command()
 def cases(
     number: str = typer.Argument(..., help="Article number (e.g. 14, 21, 368)"),
-):
-    """[bold magenta]View[/bold magenta] landmark Supreme Court judgments linked to an article."""
+) -> None:
+    """View landmark Supreme Court judgments linked to an article."""
     display_header()
     const = get_const_instance()
     cases_list = const.get_related_cases(number)
@@ -292,8 +295,8 @@ def cases(
 @app.command()
 def amendments(
     number: str = typer.Argument(..., help="Article number (e.g. 19, 21A, 31)"),
-):
-    """[bold green]View[/bold green] amendment history and textual diff for an article."""
+) -> None:
+    """View amendment history and textual diff for an article."""
     display_header()
     const = get_const_instance()
     events = const.get_amendment_history(number)
@@ -315,8 +318,8 @@ def amendments(
 @app.command()
 def duties(
     number: str = typer.Argument(..., help="Article number (e.g. 21A, 14, 32)"),
-):
-    """[bold yellow]Cross-reference[/bold yellow] Fundamental Rights to Part IVA Fundamental Duties."""
+) -> None:
+    """Cross-reference Fundamental Rights to Part IVA Fundamental Duties."""
     display_header()
     const = get_const_instance()
     d_list = const.get_related_duties(number)
@@ -341,11 +344,11 @@ def duties(
 def serve(
     port: int = typer.Option(8000, "--port", "-p", help="Port number"),
     host: str = typer.Option("127.0.0.1", "--host", "-h", help="Host address"),
-):
-    """[bold red]Launch[/bold red] lightweight REST API server (requires [api] extra)."""
+) -> None:
+    """Launch REST API server."""
     display_header()
     try:
-        import uvicorn  # type: ignore[import-untyped]
+        import uvicorn
     except ImportError:
         console.print(
             "[bold red]FastAPI/Uvicorn not installed.[/bold red] Install with: [cyan]pip install 'indianconstitution[api]'[/cyan]"

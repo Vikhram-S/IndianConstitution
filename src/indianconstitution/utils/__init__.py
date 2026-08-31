@@ -1,1 +1,1 @@
-# Utilities module - Caching and helper functions.
+"""Utility modules including disk caching for performance optimization."""

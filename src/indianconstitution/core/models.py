@@ -4,13 +4,30 @@ All public models are fully typed, serializable, and validated on construction.
 """
 
 import re
-from typing import List, Optional
+from typing import List, Optional, TypeVar
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+TArticle = TypeVar("TArticle", bound="Article")
+
 
 def infer_part(number: str) -> Optional[int]:
-    """Infer the Part number (1..22) for a given article number."""
+    """Infer the Part number (1..22) for a given article number.
+
+    Args:
+        number: The article number string (e.g., '14', '21A').
+
+    Returns:
+        Part number as int (1..22), or None if number cannot be inferred.
+
+    Examples:
+        >>> infer_part("14")
+        3
+        >>> infer_part("21A")
+        3
+        >>> infer_part("368")
+        20
+    """
     m = re.match(r"^(\d+)", str(number).strip())
     if not m:
         return None
@@ -62,7 +79,7 @@ def infer_part(number: str) -> Optional[int]:
     return None
 
 
-class Article(BaseModel):
+class Article(BaseModel):  # type: ignore[misc]
     """Represents a single article in the Constitution.
 
     Attributes:
@@ -90,18 +107,18 @@ class Article(BaseModel):
 
     @property
     def text(self) -> str:
-        """Alias for ``content`` — provides compatibility with README examples."""
+        """Alias for content attribute."""
         return self.content
 
 
-class SearchResult(BaseModel):
+class SearchResult(BaseModel):  # type: ignore[misc]
     """An article paired with a relevance score from semantic search.
 
     Attributes:
         number: The article number.
         title: The article title.
         content: Full article text.
-        score: Similarity / relevance score (0.0 – 1.0).
+        score: Similarity / relevance score (0.0 - 1.0).
         part: Part number, if any.
         chapter: Chapter number, if any.
     """
@@ -117,12 +134,12 @@ class SearchResult(BaseModel):
 
     @property
     def text(self) -> str:
-        """Alias for ``content``."""
+        """Alias for content attribute."""
         return self.content
 
     @classmethod
-    def from_article(cls, article: "Article", score: float = 0.0) -> "SearchResult":
-        """Construct a ``SearchResult`` from an ``Article`` and a score."""
+    def from_article(cls, article: Article, score: float = 0.0) -> "SearchResult":
+        """Construct a SearchResult from an Article and a score."""
         return cls(
             number=article.number,
             title=article.title,
@@ -133,15 +150,15 @@ class SearchResult(BaseModel):
         )
 
 
-class Part(BaseModel):
+class Part(BaseModel):  # type: ignore[misc]
     """Represents a Part of the Constitution (group of articles)."""
 
     number: int
     title: str
-    articles: List[Article] = []
+    articles: List[Article] = Field(default_factory=list)
 
 
-class Schedule(BaseModel):
+class Schedule(BaseModel):  # type: ignore[misc]
     """Represents a Schedule in the Constitution."""
 
     number: int
@@ -149,16 +166,16 @@ class Schedule(BaseModel):
     content: str
 
 
-class ConstitutionData(BaseModel):
+class ConstitutionData(BaseModel):  # type: ignore[misc]
     """The full constitution data structure."""
 
     preamble: str
     articles: List[Article]
-    parts: List[Part] = []
-    schedules: List[Schedule] = []
+    parts: List[Part] = Field(default_factory=list)
+    schedules: List[Schedule] = Field(default_factory=list)
 
 
-class CaseLaw(BaseModel):
+class CaseLaw(BaseModel):  # type: ignore[misc]
     """Represents a landmark Supreme Court judgment linked to an article.
 
     Attributes:
@@ -178,7 +195,7 @@ class CaseLaw(BaseModel):
     bench: Optional[str] = None
 
 
-class AmendmentEvent(BaseModel):
+class AmendmentEvent(BaseModel):  # type: ignore[misc]
     """Represents an amendment event affecting an article.
 
     Attributes:
@@ -200,7 +217,7 @@ class AmendmentEvent(BaseModel):
     text_after: Optional[str] = None
 
 
-class DutyCrossReference(BaseModel):
+class DutyCrossReference(BaseModel):  # type: ignore[misc]
     """Cross-reference linking a Fundamental Right to a Fundamental Duty.
 
     Attributes:

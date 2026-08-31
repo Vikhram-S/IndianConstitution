@@ -1,1 +1,1 @@
-# Search module - Inverted index and semantic search engines.
+"""Search engines for inverted keyword index and fuzzy string similarity search."""

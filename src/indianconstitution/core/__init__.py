@@ -1,1 +1,1 @@
-# Core module - Constitution engine, models, and graph analysis.
+"""Core models, graph engine, and primary Constitution orchestration engine."""

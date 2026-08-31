@@ -4,9 +4,9 @@ build-backend = "hatchling.build"
 
 [project]
 name = "indianconstitution"
-version = "1.5.0"
+version = "1.5.1"
 
-description = "A developer-first, research-grade Python framework for programmatic access to the Constitution of India — built for legal NLP, RAG, civic AI, and constitutional informatics."
+description = "Programmatic Python framework for accessing the Constitution of India — supporting legal NLP, structure analysis, and retrieval applications."
 readme = "README.md"
 requires-python = ">=3.8"
 license = "Apache-2.0"
@@ -17,25 +17,11 @@ keywords = [
   "legal-nlp",
   "nlp",
   "information-retrieval",
-  "civic-technology",
   "law",
   "data-science",
   "graph-analysis",
-  "rag",
-  "retrieval-augmented-generation",
   "cli",
   "pydantic",
-  "constitutional-informatics",
-  "legal-ai",
-  "civic-ai",
-  "semantic-search",
-  "sentence-transformers",
-  "inverted-index",
-  "research-software",
-  "reproducibility",
-  "networkx",
-  "legal-tech",
-  "open-data",
 ]
 authors = [
   { name = "Vikhram S", email = "vikhrams@saveetha.ac.in" },
@@ -44,29 +30,17 @@ maintainers = [
   { name = "Vikhram S", email = "vikhrams@saveetha.ac.in" },
 ]
 classifiers = [
-  # Maturity
   "Development Status :: 5 - Production/Stable",
-  # Audiences
   "Intended Audience :: Developers",
   "Intended Audience :: Legal Industry",
   "Intended Audience :: Science/Research",
   "Intended Audience :: Education",
-  "Intended Audience :: Information Technology",
-  # Topics
   "Topic :: Software Development :: Libraries :: Python Modules",
   "Topic :: Scientific/Engineering :: Artificial Intelligence",
   "Topic :: Scientific/Engineering :: Information Analysis",
-  "Topic :: Text Processing :: Linguistic",
-  "Topic :: Text Processing :: Indexing",
-  "Topic :: Database",
-  "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
-  # License
   "License :: OSI Approved :: Apache Software License",
-  # Type hints
   "Typing :: Typed",
-  # Natural Language
   "Natural Language :: English",
-  # Python versions
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
@@ -74,8 +48,6 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
-  "Programming Language :: Python :: 3 :: Only",
-  # OS
   "Operating System :: OS Independent",
 ]
 dependencies = [
@@ -86,28 +58,24 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# Development toolchain
 dev = [
   "pytest>=7.0.0",
   "pytest-cov>=4.0.0",
-  "pytest-xdist>=3.0.0",        # parallel test execution
+  "pytest-xdist>=3.0.0",
   "ruff>=0.4.0",
   "mypy>=1.0.0",
-  "hypothesis>=6.0.0",          # property-based testing
+  "hypothesis>=6.0.0",
   "pre-commit>=3.0.0",
 ]
-# Data science and graph analysis
 data = [
   "pandas>=2.0.0",
   "networkx>=3.0.0",
   "scipy>=1.10.0",
 ]
-# AI / semantic search capabilities
 ai = [
   "sentence-transformers>=2.2.0",
   "torch>=2.0.0",
 ]
-# Documentation build
 docs = [
   "mkdocs-material>=9.5.0",
   "mkdocstrings[python]>=0.24.0",
@@ -115,18 +83,14 @@ docs = [
   "mkdocs-literate-nav>=0.6.0",
   "mkdocs-section-index>=0.3.0",
 ]
-# Multilingual features
 i18n = []
-# Lightweight REST API server
 api = [
   "fastapi>=0.100.0",
   "uvicorn>=0.20.0",
 ]
-# All optional dependencies
 all = [
   "indianconstitution[data,ai,dev,docs,i18n,api]",
 ]
-
 
 [project.urls]
 Homepage       = "https://vikhram-s.github.io/IndianConstitution/"
@@ -163,7 +127,6 @@ include = [
 line-length = 120
 target-version = "py38"
 exclude = [
-  "src/indianconstitution/core/legacy.py",
   "*.pyi",
   ".git",
   "__pycache__",
@@ -182,17 +145,16 @@ select = [
   "B",   # flake8-bugbear
   "T20", # flake8-print
   "SIM", # flake8-simplify
-  "ANN", # flake8-annotations (public API coverage)
-  "D",   # pydocstyle (docstrings)
+  "ANN", # flake8-annotations
+  "D",   # pydocstyle
 ]
 ignore = [
   "E501",   # line too long (handled by formatter)
   "B008",   # do not perform function calls in default arguments
   "T201",   # print statements (allowed in CLI)
   "D107",   # missing docstring in __init__ (prefer class docstring)
-  "D203",   # one-blank-line-before-class (conflicts with D211)
-  "D213",   # multi-line-summary-second-line (conflicts with D212)
-  "ANN201", "ANN204", "ANN401", "D100", "D102", "D205", "D212", "D104", "D105", "D200", "SIM102", # Relax strict doc/type rules to pass CI
+  "D203",   # one-blank-line-before-class
+  "D213",   # multi-line-summary-second-line
 ]
 
 [tool.ruff.lint.pydocstyle]
@@ -204,12 +166,17 @@ known-first-party = ["indianconstitution"]
 # ─── Type Checking (Mypy) ────────────────────────────────────────────────────
 
 [tool.mypy]
-python_version      = "3.10"
-strict              = false
-warn_return_any     = true
-warn_unused_configs = true
+python_version          = "3.10"
+strict                  = true
+warn_return_any         = true
+warn_unused_configs     = true
+disallow_untyped_decorators = false
+ignore_missing_imports  = true
+follow_imports          = "skip"
+
+[[tool.mypy.overrides]]
+module = ["typer.*", "rich.*", "diskcache.*", "networkx.*", "sentence_transformers.*", "fastapi.*", "uvicorn.*", "pandas.*"]
 ignore_missing_imports = true
-exclude = "(?:src/indianconstitution/core/legacy\\.py|tests/)"
 
 # ─── Testing (Pytest) ────────────────────────────────────────────────────────
 
@@ -220,12 +187,14 @@ addopts      = [
   "--cov-report=term-missing",
   "--cov-report=xml:coverage.xml",
   "--cov-report=html:htmlcov",
-  "--cov-fail-under=75",
+  "--cov-fail-under=90",
+  "--doctest-modules",
   "-v",
   "--tb=short",
 ]
 filterwarnings = [
   "ignore::DeprecationWarning",
+  "ignore::ResourceWarning",
 ]
 
 # ─── Coverage (Coverage.py) ──────────────────────────────────────────────────
@@ -242,7 +211,7 @@ branch      = true
 [tool.coverage.report]
 show_missing   = true
 skip_covered   = false
-fail_under     = 75
+fail_under     = 90
 exclude_lines  = [
   "pragma: no cover",
   "def __repr__",

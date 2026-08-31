@@ -2,72 +2,67 @@
 
 # IndianConstitution
 
-### *A Developer-First, Research-Grade Python Framework for the Constitution of India*
+### *High-Performance Algorithmic Infrastructure & Deterministic Corpus Engine for the Constitution of India*
 
 [![PyPI](https://img.shields.io/pypi/v/indianconstitution?logo=pypi&logoColor=white&color=006DAE&style=for-the-badge)](https://pypi.org/project/indianconstitution/)
-[![Downloads](https://img.shields.io/pypi/dm/indianconstitution?logo=pypi&logoColor=white&color=FF6B35&style=for-the-badge)](https://pypi.org/project/indianconstitution/)
 [![Total Downloads](https://img.shields.io/pepy/dt/indianconstitution?style=for-the-badge&color=blue)](https://pepy.tech/project/indianconstitution)
 [![CI](https://img.shields.io/github/actions/workflow/status/Vikhram-S/IndianConstitution/ci.yml?branch=main&style=for-the-badge&logo=github&label=CI)](https://github.com/Vikhram-S/IndianConstitution/actions)
 [![Codecov](https://img.shields.io/codecov/c/github/Vikhram-S/IndianConstitution?logo=codecov&style=for-the-badge)](https://codecov.io/gh/Vikhram-S/IndianConstitution)
-[![OpenSSF Scorecard](https://img.shields.io/ossf-scorecard/github.com/Vikhram-S/IndianConstitution?label=OpenSSF%20Scorecard&style=for-the-badge)](https://securityscorecards.dev/viewer/?uri=github.com/Vikhram-S/IndianConstitution)
-
-
 [![License](https://img.shields.io/pypi/l/indianconstitution?color=brightgreen&style=for-the-badge)](LICENSE)
 [![Python](https://img.shields.io/pypi/pyversions/indianconstitution?style=for-the-badge&logo=python)](https://pypi.org/project/indianconstitution/)
-[![Typed](https://img.shields.io/badge/type%20checked-mypy-blue?style=for-the-badge)](http://mypy-lang.org/)
+[![Typed](https://img.shields.io/badge/type%20checked-mypy%20strict-blue?style=for-the-badge)](http://mypy-lang.org/)
 [![Ruff](https://img.shields.io/badge/code%20style-ruff-261230?style=for-the-badge)](https://github.com/astral-sh/ruff)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18200429-blue?style=for-the-badge)](https://doi.org/10.5281/zenodo.18200429)
 
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21407500-blue?style=for-the-badge)](https://doi.org/10.5281/zenodo.21407500)
+> **CPU-Only Deterministic Execution · Strict Mypy Static Type Safety · Sub-Millisecond Inverted Index Search · Formal Exception Invariants · Zero Remote API Dependencies**
 
-> **Sub-millisecond search · Strictly-typed API · Graph analysis · AI/RAG-ready · Zero external dependencies in core**
-
-[📖 **Docs**](https://vikhram-s.github.io/IndianConstitution/) &nbsp;·&nbsp;
-[🚀 **Quick Start**](#-quick-start) &nbsp;·&nbsp;
-[🔬 **Research Use**](#-research--academic-use) &nbsp;·&nbsp;
-[📊 **Benchmarks**](#-performance-benchmarks) &nbsp;·&nbsp;
-[📜 **Cite**](#-citation)
+[📖 **Documentation**](https://vikhram-s.github.io/IndianConstitution/) &nbsp;·&nbsp;
+[🚀 **Quickstart**](#-quickstart) &nbsp;·&nbsp;
+[📐 **System Architecture**](#-system-architecture) &nbsp;·&nbsp;
+[📊 **Empirical Performance**](#-empirical-performance) &nbsp;·&nbsp;
+[📜 **Citation**](#-citation)
 
 </div>
 
 ---
 
-## Abstract
+## Executive Summary
 
-`indianconstitution` is a production-grade Python library providing **programmatic, structured, and type-safe access** to the complete text of the Constitution of India — including all 448 articles, 12 schedules, the Preamble, and 106 amendments through the **Constitution (One Hundred and Sixth Amendment) Act, 2023**.
+`indianconstitution` is a production-grade Python infrastructure package engineered for high-throughput, deterministic algorithmic analysis of the Constitution of India. It provides formalized programmatic representations of all 464 articles, 12 schedules, the Preamble, landmark Supreme Court precedent mappings, amendment timelines, fundamental rights/duties cross-references, and multilingual translations — up to and including the **Constitution (One Hundred and Sixth Amendment) Act, 2023**.
 
-The library implements a **zero-dependency inverted-index search engine** (O(1) token lookup), a **Pydantic v2 data model layer** for type-safe constitutional data access, a **NetworkX-backed relational graph** for cross-article analysis, and a **multi-format export engine**. It is designed for deployment in legal AI, retrieval-augmented generation (RAG), civic NLP, and constitutional informatics research — with full reproducibility, strict typing, and offline-first guarantees.
-
----
-
-## ✨ Key Capabilities
-
-| Capability | Description | Install Extra |
-|:---|:---|:---:|
-| **Typed Article API** | Fully annotated `Article`, `Part`, `Schedule`, `Preamble` Pydantic v2 models | *core* |
-| **Inverted-Index Search** | Sub-millisecond lexical search via built-in inverted index — O(1) per token | *core* |
-| **Landmark Judgments** | Supreme Court precedents (e.g. *Kesavananda Bharati*, *Puttaswamy*) linked per article | *core* |
-| **Amendment Timelines** | Historical amendment events & unified diff generator for text changes | *core* |
-| **Rights-Duties Cross-Ref** | Reciprocal cross-referencing between Part III rights and Part IVA duties | *core* |
-| **Multilingual (i18n)** | Native Hindi translation support for Preamble & key articles | *core* / `[i18n]` |
-| **Graph Export (GEXF)** | NetworkX cross-reference network exports to `.gexf` (Gephi) & `.graphml` | `[data]` |
-| **Lightweight REST API** | Ready-to-run FastAPI REST HTTP endpoints & OpenAPI docs | `[api]` |
-| **Interactive Quiz CLI** | Terminal-native "Know Your Constitution" trivia quiz & deep lookup sub-commands | *core* |
-| **Semantic / AI Search** | Sentence-Transformers embeddings for contextual RAG retrieval | `[ai]` |
-| **Multi-Format Export** | Export to JSON, CSV, Markdown, GEXF, and GraphML | *core* / `[data]` |
-| **pandas Integration** | Direct `DataFrame` output of articles for data science workflows | `[data]` |
-| **Rich CLI** | Terminal-native interface powered by Typer + Rich with syntax highlighting | *core* |
-| **Fully Offline** | No API keys, no rate limits, no network calls required in core mode | *core* |
-| **Type Safety** | 100% mypy strict-mode compliance across all public APIs | *core* |
-| **Reproducible** | Deterministic outputs; hermetic data layer pinned to 106th Amendment | *core* |
+Designed to serve as a foundational corpus infrastructure for legal NLP, Retrieval-Augmented Generation (RAG) pipelines, and civic data science, the engine operates under strict **CPU-only execution guarantees** with zero required network calls or cloud API keys.
 
 ---
 
-## 📐 Architecture
+## ⚡ Algorithmic Complexity & Guarantees
+
+| Operation Component | Algorithm / Invariant | Time Complexity | Space Complexity |
+| :--- | :--- | :---: | :---: |
+| **Article Lookup** | Hash map lookup by normalized string identifier | $\mathcal{O}(1)$ | $\mathcal{O}(N)$ memory |
+| **Keyword Search** | Tokenized inverted posting-list intersection | $\mathcal{O}(K)$ for $K$ tokens | $\mathcal{O}(V + P)$ index size |
+| **Fuzzy Matching** | Character ratio matrix calculation | $\mathcal{O}(N \times M)$ | $\mathcal{O}(1)$ dynamic RAM |
+| **Relational Graph Construction** | Directed citation adjacency graph assembly | $\mathcal{O}(\vert V \vert + \vert E \vert)$ | $\mathcal{O}(\vert V \vert + \vert E \vert)$ graph space |
+| **Amendment Text Delta** | Unified sequence difference computation | $\mathcal{O}(L_1 \times L_2)$ | $\mathcal{O}(L_1 + L_2)$ diff text |
+| **Corpus Integrity Verification** | Streaming cryptographic SHA-256 validation | $\mathcal{O}(S)$ for $S$ bytes | $\mathcal{O}(1)$ buffer |
+
+---
+
+## 💻 Hardware Requirements & CPU Constraints
+
+`indianconstitution` strictly enforces **hardware portability and zero-GPU execution dependencies**:
+
+- **Runtime Target**: Runs on commodity x86_64 and ARM64 single-core or multi-core CPU dev machines.
+- **Hardware Isolation**: AI and semantic retrieval pipelines (`indianconstitution[ai]`) disable GPU acceleration paths (`CUDA_VISIBLE_DEVICES=""`, `torch.set_num_threads(...)`) to guarantee deterministic offline CPU execution without GPU driver dependencies.
+- **Memory Overhead**: Instance heap footprint remains under **15 MB RAM**, enabling microservice, serverless (AWS Lambda, Google Cloud Run), and embedded CLI execution.
+
+---
+
+## 📐 System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                        Public API Layer                         │
-│          get_article()  ·  search()  ·  get_constitution()      │
+│   get_article() · search() · fuzzy_search() · get_constitution()│
 └───────────────────────────────┬─────────────────────────────────┘
                                 │
                ┌────────────────▼────────────────┐
@@ -77,305 +72,167 @@ The library implements a **zero-dependency inverted-index search engine** (O(1) 
                   │              │
      ┌────────────▼───┐  ┌───────▼───────────┐  ┌──────────────────┐
      │  SearchEngine  │  │  ConstitutionGraph │  │    Exporter      │
-     │ (inverted idx) │  │  (NetworkX graph)  │  │  JSON · CSV · MD │
+     │ (inverted idx) │  │  (NetworkX graph)  │  │ JSON · CSV · MD  │
      └────────────────┘  └────────────────────┘  └──────────────────┘
-                  │
-     ┌────────────▼──────────────────────────────────┐
-     │             Pydantic v2 Data Layer             │
-     │   Article · Part · Schedule · Preamble ·       │
-     │   ConstitutionData · Amendment                 │
-     └───────────────────────────────────────────────┘
-                  │
-     ┌────────────▼──────────────────────────────────┐
-     │      constitution.json  (data/)                │
-     │   Authoritative corpus — 106th Amendment 2023  │
-     └────────────────────────────────────────────────┘
+                  │              │
+     ┌────────────▼──────────────▼──────────────────┐
+     │            Pydantic v2 Data Models           │
+     │   Article · Part · Schedule · SearchResult   │
+     │   CaseLaw · AmendmentEvent · DutyCrossRef    │
+     └──────────────────────┬───────────────────────┘
+                            │
+     ┌──────────────────────▼───────────────────────┐
+     │         Custom Typed Exception Hierarchy     │
+     │  IndianConstitutionError (BaseException)     │
+     │  ├── ArticleNotFoundError                    │
+     │  ├── CorpusIntegrityError                    │
+     │  ├── InvalidAmendmentRangeError              │
+     │  ├── DependencyMissingError                  │
+     │  └── UnsupportedFormatError                  │
+     └──────────────────────────────────────────────┘
 ```
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quickstart
 
 ### Installation
 
 ```bash
-# Core (zero external dependencies)
+# Core package (zero external runtime dependencies)
 pip install indianconstitution
 
-# With data science integrations (pandas, NetworkX, SciPy)
+# With network analysis & data science utilities (NetworkX, pandas)
 pip install "indianconstitution[data]"
 
-# With AI/semantic search (sentence-transformers)
+# With offline CPU semantic embeddings (sentence-transformers)
 pip install "indianconstitution[ai]"
 
-# Full
-pip install "indianconstitution[data,ai]"
+# Full installation suite
+pip install "indianconstitution[all]"
 ```
 
-### Programmatic Access
+### Deterministic Python Usage
 
 ```python
-from indianconstitution import get_article, search, get_constitution
+>>> from indianconstitution import get_article, search, get_constitution
 
-# Type-safe article retrieval
-article = get_article("21A")
-print(f"Article {article.number}: {article.title}")
-# → Article 21A: Right to Education
+>>> # Type-safe article retrieval (O(1) lookup)
+>>> article = get_article("21A")
+>>> article.number
+'21A'
+>>> article.title
+'Right to Education'
 
-# Sub-millisecond keyword search
-results = search("right to equality", limit=5)
-for r in results:
-    print(f"  [{r.number}] {r.title}")
+>>> # Sub-millisecond inverted posting-list search
+>>> results = search("equality before law", limit=3)
+>>> [r.number for r in results]
+['14', '15']
 
-# Full Constitution object
-ic = get_constitution()
-print(ic.preamble[:200])
-print(f"Total Articles: {len(ic.data.articles)}")
-```
-
-### Graph Analysis
-
-```python
-from indianconstitution import get_constitution
-import networkx as nx
-
-ic = get_constitution()
-
-# Cross-article relational structure
-related = ic.get_related_articles("32")
-print("Article 32 references   :", related["references"])
-print("Articles referencing 32 :", related["referenced_by"])
-
-# Centrality analysis
-G = ic.get_graph()
-centrality = nx.degree_centrality(G)
-top_5 = sorted(centrality, key=centrality.get, reverse=True)[:5]
-print("Most referenced articles:", top_5)
-```
-
-### Data Science Integration
-
-```python
-from indianconstitution import get_constitution
-import pandas as pd
-
-ic = get_constitution()
-
-# Direct pandas DataFrame
-df = pd.DataFrame([a.model_dump() for a in ic.data.articles])
-print(df[["number", "title", "part"]].head(10))
-
-# Multi-format export
-ic.export("json",     "constitution_export.json")
-ic.export("csv",      "constitution_export.csv")
-ic.export("markdown", "constitution_export.md")
-```
-
-### Semantic Search (AI)
-
-```python
-from indianconstitution import get_constitution
-
-ic = get_constitution()
-
-# Contextual retrieval beyond keyword matching
-# Requires: pip install "indianconstitution[ai]"
-results = ic.semantic_search(
-    "protection against arbitrary state action",
-    top_k=5
-)
-for r in results:
-    print(f"[{r.number}] {r.title}  (score: {r.score:.4f})")
-```
-
-### Landmark Judgments & Amendment History (v1.5.0)
-
-```python
-from indianconstitution import get_constitution, get_related_cases, diff_amendment
-
-ic = get_constitution()
-
-# Landmark Supreme Court judgments linked to Article 21
-cases = get_related_cases("21")
-for c in cases:
-    print(f"{c.case_name} ({c.year}): {c.holding[:80]}...")
-
-# Amendment history and textual delta for Article 21A
-events = ic.get_amendment_history("21A")
-print("Amendment:", events[0].amendment_number)
-
-diff_text = diff_amendment("21A")
-print(diff_text)
-
-# Multilingual translation (Hindi)
-hi_article = ic.get_translation("21A", lang="hi")
-print("Hindi Title:", hi_article["title"])
-```
-
-### RAG Pipeline Integration
-
-```python
-from indianconstitution import get_constitution
-
-ic = get_constitution()
-
-def build_rag_context(query: str, top_k: int = 3) -> str:
-    """Build a constitutional context block for LLM prompting."""
-    results = ic.search(query, limit=top_k)
-    context_blocks = []
-    for article in results:
-        context_blocks.append(
-            f"**Article {article.number} — {article.title}**\n"
-            f"{article.text}\n"
-        )
-    return "\n---\n".join(context_blocks)
-
-context = build_rag_context("right to life and personal liberty")
+>>> # Full Constitution engine instance
+>>> const = get_constitution()
+>>> len(const) > 0
+True
 ```
 
 ---
 
-## 🖥️ Command-Line Interface
+## 🛡️ Formal Exception Invariants
+
+The library enforces fail-fast error reporting through a strict exception hierarchy derived from `IndianConstitutionError`:
+
+```python
+from indianconstitution import (
+    Constitution,
+    ArticleNotFoundError,
+    InvalidAmendmentRangeError,
+    UnsupportedFormatError,
+)
+
+const = Constitution()
+
+# 1. Missing Article Access Guard
+try:
+    article = const.require_article("99999")
+except ArticleNotFoundError as err:
+    print(f"Article identifier missing: {err.article_number}")
+
+# 2. Year Bound Invariant Check
+try:
+    diff = const.diff_amendment("21A", from_year=2026, to_year=2010)
+except InvalidAmendmentRangeError as err:
+    print(f"Invalid temporal range: {err.from_year} > {err.to_year}")
+
+# 3. Export Specification Enforcement
+try:
+    const.export("unsupported_fmt", "output.dat")
+except UnsupportedFormatError as err:
+    print(f"Format rejected: {err.format_requested}")
+```
+
+---
+
+## 📊 Empirical Performance
+
+Empirical execution benchmarks gathered via `python scripts/benchmark.py` over 1,000 iterations on a single CPU core:
+
+| Benchmark Target | Samples | p50 Latency | p95 Latency | p99 Latency | Throughput (QPS) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Article Lookup (by num)** | 2,000 | `0.0002 ms` | `0.0003 ms` | `0.0004 ms` | **2,591,680 QPS** |
+| **Inverted Index Keyword Search** | 1,000 | `0.0026 ms` | `0.0029 ms` | `0.0058 ms` | **255,180 QPS** |
+| **Fuzzy Similarity Search** | 500 | `36.2227 ms` | `38.6790 ms` | `40.8080 ms` | **27.4 QPS** |
+| **Graph Relational Traversal** | 1,000 | `0.0014 ms` | `0.0015 ms` | `0.0017 ms` | **653,295 QPS** |
+| **Amendment Diff (Art 21A)** | 1,000 | `0.0147 ms` | `0.0158 ms` | `0.0210 ms` | **59,606 QPS** |
+| **Graph Reconstruction** | 100 | `46.0691 ms` | `51.9408 ms` | `54.7579 ms` | **21.5 QPS** |
+
+---
+
+## 🛠️ Verification & Quality Assurance Matrix
+
+Every code modification and mathematical claim is verifiable via standard verification targets:
 
 ```bash
-indianconstitution quiz                           # Know Your Constitution interactive trivia quiz
-indianconstitution cases 21                       # View landmark SC cases for Article 21
-indianconstitution amendments 21A                 # View amendment history & diff
-indianconstitution duties 21A                     # Cross-reference Fundamental Rights to Duties
-indianconstitution serve                          # Launch REST API server (http://127.0.0.1:8000)
-indianconstitution get 21                         # Retrieve article with rich styling
-indianconstitution search "equality before law"   # Full-text search
-indianconstitution stats                          # Metadata summary
-indianconstitution export json out.json           # Export dataset
+# 1. Static code quality analysis (Ruff)
+ruff check src/indianconstitution
+
+# 2. Code formatting verification (Ruff)
+ruff format --check src/indianconstitution
+
+# 3. Strict static type safety analysis (Mypy --strict)
+mypy src/indianconstitution
+
+# 4. Property-based & unit test suite (>90% coverage enforcement)
+pytest
+
+# 5. SHA-256 data integrity & schema validation
+python scripts/validate_corpus.py
+
+# 6. Local CPU empirical benchmark suite
+python scripts/benchmark.py
 ```
-
----
-
-## 📊 Performance Benchmarks
-
-Measured on a commodity laptop (Intel i7-11th Gen, 16 GB RAM, Python 3.11, single thread, 1,000 iterations).
-
-| Operation | Latency | Notes |
-|:---|---:|:---|
-| Initial data load | ~45 ms | First call; lazy-loaded from bundled JSON |
-| Subsequent calls | ~0 ms | In-process singleton cache — zero I/O |
-| Keyword search (1 token) | **< 0.1 ms** | Inverted-index O(1) lookup |
-| Keyword search (3 tokens) | **< 0.5 ms** | Set intersection over index |
-| Landmark cases lookup | **< 0.1 ms** | O(1) dictionary lookup |
-| Amendment history & diff | **< 1.0 ms** | Fast standard difflib computation |
-| Full CSV export | ~12 ms | Streaming writer |
-| Full JSON export | ~8 ms | `orjson`-compatible output |
-| Graph construction | ~30 ms | One-time, lazy; cached thereafter |
-| Semantic search | ~80 ms | GPU-accelerated with `[ai]` extra |
-
-> All benchmarks are deterministic. The bundled corpus is static and version-pinned. No external I/O is required in core mode.
-
----
-
-## 🔬 Research & Academic Use
-
-`indianconstitution` is designed as a corpus infrastructure layer for:
-
-- **Constitutional NLP** — structured retrieval for legal reasoning models, clause boundary detection
-- **RAG pipelines** — grounding LLM outputs with authoritative, citation-traceable constitutional text
-- **Civic data science** — network analysis of rights inter-dependencies and amendment history
-- **Legal education technology** — interactive constitutional exploration platforms
-- **Comparative constitutional law** — structured data enabling cross-jurisdictional studies
-
-### Data Provenance
-
-The constitutional corpus (`constitution.json`) is derived from the **official text of the Constitution of India** as published by the **Ministry of Law and Justice, Government of India**. The data is:
-
-- Curated and validated to the **Constitution (One Hundred and Sixth Amendment) Act, 2023**
-- Structured against the Pydantic v2 schema — every field is validated on load
-- Versioned alongside the library — data updates are tracked via `CHANGELOG.md`
-- Reproducible — the corpus is deterministic and hermetically bundled in the wheel
 
 ---
 
 ## 📜 Citation
 
-If you use `indianconstitution` in academic research, a thesis, or any published work, please cite:
-
-### BibTeX
+If you incorporate `indianconstitution` into software systems, research papers, or legal informatics benchmarks, please cite:
 
 ```bibtex
 @software{vikhram2026indianconstitution,
   author       = {S, Vikhram},
-  title        = {{IndianConstitution: A Developer-First, Research-Grade
-                   Python Framework for the Constitution of India}},
+  title        = {{IndianConstitution: High-Performance Algorithmic Infrastructure
+                   \& Deterministic Corpus Engine for the Constitution of India}},
   year         = {2026},
-  version      = {1.5.0},
+  version      = {1.5.1},
   publisher    = {PyPI},
   url          = {https://github.com/Vikhram-S/IndianConstitution},
   doi          = {10.5281/zenodo.18200429},
-  note         = {Available on PyPI: \url{https://pypi.org/project/indianconstitution/}.
-                  Corpus pinned to the Constitution (106th Amendment) Act, 2023.},
   license      = {Apache-2.0},
 }
 ```
-
-### APA 7th Edition
-
-> S, Vikhram. (2026). *IndianConstitution: A Developer-First, Research-Grade Python Framework for the Constitution of India* (Version 1.5.0) [Software]. PyPI. https://doi.org/10.5281/zenodo.18200429
-
-### IEEE
-
-> V. S, "IndianConstitution: A Developer-First, Research-Grade Python Framework for the Constitution of India," version 1.5.0, 2026. [Online]. Available: https://github.com/Vikhram-S/IndianConstitution. DOI: 10.5281/zenodo.18200429.
-
-### ACL Anthology
-
-```
-Vikhram S. 2026. IndianConstitution: A Developer-First, Research-Grade Python Framework
-for the Constitution of India. Software release v1.5.0.
-Available: https://github.com/Vikhram-S/IndianConstitution
-```
-
-A machine-readable `CITATION.cff` is provided at the repository root for use with GitHub's "Cite this repository" feature and Zenodo DOI minting.
-
----
-
-## 🛡️ Security
-
-Security vulnerabilities should be reported **privately** via the [GitHub Security Advisory](https://github.com/Vikhram-S/IndianConstitution/security/advisories/new) mechanism. Do **not** open public issues for security reports.
-
-- All GitHub Actions pinned to immutable SHA hashes (OSSF Scorecard compliant)
-- Automated Dependabot PRs for dependency updates
-- CodeQL scanning on every push to `main`
-- See [`SECURITY.md`](SECURITY.md) for the full disclosure policy
-
----
-
-## 🤝 Contributing
-
-We welcome contributions from researchers, legal professionals, and developers. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for:
-
-- Development environment setup
-- Test suite (pytest + Hypothesis property-based testing)
-- Code quality standards (Ruff + Mypy strict mode)
-- Pull request checklist and review process
-
----
-
-## 🙏 Acknowledgements
-
-Developed and maintained by [**Vikhram S**](https://vikhram-s.github.io).
-
-- The **Ministry of Law and Justice, Government of India** for maintaining the authoritative constitutional text
-- [Pydantic](https://docs.pydantic.dev/), [Typer](https://typer.tiangolo.com/), [Rich](https://rich.readthedocs.io/), [NetworkX](https://networkx.org/), and [sentence-transformers](https://www.sbert.net/) — foundational libraries powering this framework
-- The open-source community for feedback and contributions
 
 ---
 
 ## 📄 License
 
-Copyright © 2026 Vikhram S. Released under the **Apache License 2.0**. See [`LICENSE`](LICENSE).
-
----
-
-<div align="center">
-
-[![GitHub Stars](https://img.shields.io/github/stars/Vikhram-S/IndianConstitution?style=social)](https://github.com/Vikhram-S/IndianConstitution)
-[![GitHub Forks](https://img.shields.io/github/forks/Vikhram-S/IndianConstitution?style=social)](https://github.com/Vikhram-S/IndianConstitution/fork)
-
-</div>
+Copyright © 2026 Vikhram S. Distributed under the terms of the **Apache License 2.0**. See [`LICENSE`](LICENSE).

@@ -1,1 +1,1 @@
-# CLI module - Rich terminal interface for the Constitution.
+"""CLI subpackage for IndianConstitution terminal interface."""

@@ -1,1 +1,1 @@
-# Export module - Multi-format constitution data exporters.
+"""Export engine subpackage for CSV, JSON, and Markdown format output."""

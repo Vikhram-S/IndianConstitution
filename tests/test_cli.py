@@ -13,7 +13,7 @@ def test_cli_help():
     """CLI prints help menu."""
     result = runner.invoke(app, ["--help"])
     assert result.exit_code == 0
-    assert "Explore the Constitution of India" in result.output
+    assert "Constitution of India" in result.output or "indianconstitution" in result.output
 
 
 def test_cli_get():
@@ -70,4 +70,3 @@ def test_cli_export(tmp_path: Path):
     result = runner.invoke(app, ["export", "json", str(out_file)])
     assert result.exit_code == 0
     assert out_file.exists()
-

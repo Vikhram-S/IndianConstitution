@@ -85,14 +85,18 @@ def test_diff_amendment():
 def test_diff_amendment_unamended():
     """diff_amendment handles unamended articles gracefully."""
     diff = diff_amendment("9999Z")
-    assert "No amendment history found" in diff
+    assert diff == ""
 
 
 @given(st.text(), st.integers(min_value=1900, max_value=2100), st.integers(min_value=1900, max_value=2100))
 def test_hypothesis_diff_amendment(article_num: str, from_year: int, to_year: int):
     """Property test: diff_amendment handles arbitrary inputs safely."""
-    res = diff_amendment(article_num, from_year, to_year)
-    assert isinstance(res, str)
+    if from_year > to_year:
+        with pytest.raises(Exception):
+            diff_amendment(article_num, from_year, to_year)
+    else:
+        res = diff_amendment(article_num, from_year, to_year)
+        assert isinstance(res, str)
 
 
 # ── 3. Fundamental Rights ↔ Fundamental Duties Cross-Reference ────────────────
