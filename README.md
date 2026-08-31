@@ -6,7 +6,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/indianconstitution?logo=pypi&logoColor=white&color=006DAE&style=for-the-badge)](https://pypi.org/project/indianconstitution/)
 [![Total Downloads](https://img.shields.io/pepy/dt/indianconstitution?style=for-the-badge&color=blue)](https://pepy.tech/project/indianconstitution)
-[![CI](https://img.shields.io/github/actions/workflow/status/Vikhram-S/IndianConstitution/ci.yml?branch=main&style=for-the-badge&logo=github&label=CI)](https://github.com/Vikhram-S/IndianConstitution/actions)
+[![CI](https://img.shields.io/github/actions/workflow/status/Vikhram-S/IndianConstitution/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/Vikhram-S/IndianConstitution/actions)
 [![Codecov](https://img.shields.io/codecov/c/github/Vikhram-S/IndianConstitution?logo=codecov&style=for-the-badge)](https://codecov.io/gh/Vikhram-S/IndianConstitution)
 [![License](https://img.shields.io/pypi/l/indianconstitution?color=brightgreen&style=for-the-badge)](LICENSE)
 [![Python](https://img.shields.io/pypi/pyversions/indianconstitution?style=for-the-badge&logo=python)](https://pypi.org/project/indianconstitution/)
@@ -16,11 +16,11 @@
 
 > **CPU-Only Deterministic Execution · Strict Mypy Static Type Safety · Sub-Millisecond Inverted Index Search · Formal Exception Invariants · Zero Remote API Dependencies**
 
-[📖 **Documentation**](https://vikhram-s.github.io/IndianConstitution/) &nbsp;·&nbsp;
-[🚀 **Quickstart**](#-quickstart) &nbsp;·&nbsp;
-[📐 **System Architecture**](#-system-architecture) &nbsp;·&nbsp;
-[📊 **Empirical Performance**](#-empirical-performance) &nbsp;·&nbsp;
-[📜 **Citation**](#-citation)
+[**Documentation**](https://vikhram-s.github.io/IndianConstitution/) &nbsp;·&nbsp;
+[**Quickstart**](#quickstart) &nbsp;·&nbsp;
+[**System Architecture**](#system-architecture) &nbsp;·&nbsp;
+[**Empirical Performance**](#empirical-performance) &nbsp;·&nbsp;
+[**Citation**](#citation)
 
 </div>
 
@@ -34,7 +34,7 @@ Designed to serve as a foundational corpus infrastructure for legal NLP, Retriev
 
 ---
 
-## ⚡ Algorithmic Complexity & Guarantees
+## Algorithmic Complexity & Guarantees
 
 | Operation Component | Algorithm / Invariant | Time Complexity | Space Complexity |
 | :--- | :--- | :---: | :---: |
@@ -47,7 +47,7 @@ Designed to serve as a foundational corpus infrastructure for legal NLP, Retriev
 
 ---
 
-## 💻 Hardware Requirements & CPU Constraints
+## Hardware Requirements & CPU Constraints
 
 `indianconstitution` strictly enforces **hardware portability and zero-GPU execution dependencies**:
 
@@ -57,7 +57,7 @@ Designed to serve as a foundational corpus infrastructure for legal NLP, Retriev
 
 ---
 
-## 📐 System Architecture
+## System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -94,7 +94,7 @@ Designed to serve as a foundational corpus infrastructure for legal NLP, Retriev
 
 ---
 
-## 🚀 Quickstart
+## Quickstart
 
 ### Installation
 
@@ -137,7 +137,7 @@ True
 
 ---
 
-## 🛡️ Formal Exception Invariants
+## Formal Exception Invariants
 
 The library enforces fail-fast error reporting through a strict exception hierarchy derived from `IndianConstitutionError`:
 
@@ -172,7 +172,7 @@ except UnsupportedFormatError as err:
 
 ---
 
-## 📊 Empirical Performance
+## Empirical Performance
 
 Empirical execution benchmarks gathered via `python scripts/benchmark.py` over 1,000 iterations on a single CPU core:
 
@@ -187,7 +187,7 @@ Empirical execution benchmarks gathered via `python scripts/benchmark.py` over 1
 
 ---
 
-## 🛠️ Verification & Quality Assurance Matrix
+## Verification & Quality Assurance Matrix
 
 Every code modification and mathematical claim is verifiable via standard verification targets:
 
@@ -213,7 +213,7 @@ python scripts/benchmark.py
 
 ---
 
-## 📜 Citation
+## Citation
 
 If you incorporate `indianconstitution` into software systems, research papers, or legal informatics benchmarks, please cite:
 
@@ -233,6 +233,6 @@ If you incorporate `indianconstitution` into software systems, research papers, 
 
 ---
 
-## 📄 License
+## License
 
 Copyright © 2026 Vikhram S. Distributed under the terms of the **Apache License 2.0**. See [`LICENSE`](LICENSE).

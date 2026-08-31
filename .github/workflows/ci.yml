@@ -29,7 +29,7 @@ jobs:
     - name: Install dev dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -e ".[dev,data]"
+        pip install -e ".[dev,data,api]"
     - name: Lint with Ruff
       run: ruff check src/
     - name: Check formatting with Ruff
@@ -64,7 +64,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -e ".[dev,data]"
+        pip install -e ".[dev,data,api]"
     - name: Run tests with coverage
       run: pytest tests/ --cov=src/indianconstitution --cov-report=term-missing --cov-report=xml:coverage.xml --cov-fail-under=75 -v
     - name: Upload coverage to Codecov
@@ -72,6 +72,7 @@ jobs:
       uses: codecov/codecov-action@v4
       with:
         files: coverage.xml
+        token: ${{ secrets.CODECOV_TOKEN }}
         fail_ci_if_error: false
 
   # ─── Build Verification ───────────────────────────────────────────────────

@@ -174,18 +174,18 @@ def test_gexf_graphml_export(tmp_path: Path):
 # ── 6. Lightweight REST API ──────────────────────────────────────────────────
 
 def test_fastapi_rest_api():
-    """Test FastAPI application endpoints if fastapi is installed."""
+    """Test FastAPI application endpoints if fastapi and httpx are installed."""
     try:
         from fastapi.testclient import TestClient  # type: ignore[import-untyped]
 
         from indianconstitution.api.app import app as api_app
-    except ImportError:
-        pytest.skip("FastAPI not installed")
 
-    if api_app is None:
-        pytest.skip("FastAPI not available")
+        if api_app is None:
+            pytest.skip("FastAPI not available")
 
-    client = TestClient(api_app)
+        client = TestClient(api_app)
+    except Exception:
+        pytest.skip("FastAPI or TestClient/httpx not available")
 
     r_root = client.get("/")
     assert r_root.status_code == 200

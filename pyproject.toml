@@ -87,6 +87,7 @@ i18n = []
 api = [
   "fastapi>=0.100.0",
   "uvicorn>=0.20.0",
+  "httpx>=0.24.0",
 ]
 all = [
   "indianconstitution[data,ai,dev,docs,i18n,api]",
