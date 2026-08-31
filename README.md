@@ -223,7 +223,7 @@ If you incorporate `indianconstitution` into software systems, research papers, 
   title        = {{IndianConstitution: High-Performance Algorithmic Infrastructure
                    \& Deterministic Corpus Engine for the Constitution of India}},
   year         = {2026},
-  version      = {1.5.1},
+  version      = {1.5.2},
   publisher    = {PyPI},
   url          = {https://github.com/Vikhram-S/IndianConstitution},
   doi          = {10.5281/zenodo.18200429},

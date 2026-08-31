@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "indianconstitution"
-version = "1.5.1"
+version = "1.5.2"
 
 description = "Programmatic Python framework for accessing the Constitution of India — supporting legal NLP, structure analysis, and retrieval applications."
 readme = "README.md"

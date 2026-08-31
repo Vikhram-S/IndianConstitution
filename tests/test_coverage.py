@@ -1,5 +1,6 @@
 """Targeted unit tests to achieve >90% code coverage across all modules."""
 
+import sys
 from pathlib import Path
 
 import pytest
@@ -142,9 +143,9 @@ def test_caching_clear(tmp_path: Path) -> None:
 def test_engine_missing_dependency_raises(monkeypatch: pytest.MonkeyPatch) -> None:
     """Test engine dependency missing error branches."""
     const = get_constitution()
-    
-    # Test pandas import error
-    monkeypatch.setattr("builtins.__import__", lambda name, *args, **kwargs: (_ for _ in ()).throw(ImportError("No pandas")) if name == "pandas" else __import__(name, *args, **kwargs))
+
+    # Test pandas import error safely via sys.modules
+    monkeypatch.setitem(sys.modules, "pandas", None)
     with pytest.raises(DependencyMissingError):
         const.to_dataframe()
 
