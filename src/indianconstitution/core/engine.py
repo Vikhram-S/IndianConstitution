@@ -375,22 +375,32 @@ class Constitution:
         assert self._semantic_model is not None
         assert self._semantic_embeddings is not None
 
+        query_embedding = self._semantic_model.encode(query, convert_to_tensor=False)
         try:
             from sentence_transformers import util as st_util
-        except ImportError:
-            raise DependencyMissingError("Semantic search", "ai") from None
 
-        query_embedding = self._semantic_model.encode(query, convert_to_tensor=False)
-        scores = st_util.cos_sim(query_embedding, self._semantic_embeddings)[0]
+            scores_tensor = st_util.cos_sim(query_embedding, self._semantic_embeddings)[0]
+            scores = [float(s) for s in scores_tensor]
+        except (ImportError, Exception):  # pragma: no cover
+            import math
 
-        top_indices = scores.argsort(descending=True)[:top_k]
+            q_vec = list(query_embedding) if not isinstance(query_embedding, list) else query_embedding
+            q_norm = math.sqrt(sum(float(x) * float(x) for x in q_vec)) or 1.0
+            scores = []
+            for doc_vec in self._semantic_embeddings:
+                d_vec = list(doc_vec) if not isinstance(doc_vec, list) else doc_vec
+                d_norm = math.sqrt(sum(float(y) * float(y) for y in d_vec)) or 1.0
+                dot = sum(float(x) * float(y) for x, y in zip(q_vec, d_vec))
+                scores.append(dot / (q_norm * d_norm))
+
+        indexed_scores = list(enumerate(scores))
+        indexed_scores.sort(key=lambda item: item[1], reverse=True)
+        top_indices = indexed_scores[:top_k]
 
         results: List[SearchResult] = []
-        for idx in top_indices:
-            idx_int = int(idx)
+        for idx_int, score in top_indices:
             article = self.data.articles[idx_int]
-            score = float(scores[idx_int])
-            results.append(SearchResult.from_article(article, score=score))
+            results.append(SearchResult.from_article(article, score=float(score)))
 
         return results
 

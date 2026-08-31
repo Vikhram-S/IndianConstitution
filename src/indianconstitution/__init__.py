@@ -26,7 +26,7 @@ from .exceptions import (
     UnsupportedFormatError,
 )
 
-__version__ = "1.5.2"
+__version__ = "1.5.3"
 __author__ = "Vikhram S"
 __email__ = "vikhrams@saveetha.ac.in"
 

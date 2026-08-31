@@ -20,7 +20,7 @@ def create_app() -> Optional[Any]:  # noqa: ANN401
     app = FastAPI(
         title="IndianConstitution REST API",
         description="Programmatic HTTP REST endpoints for the Constitution of India.",
-        version="1.5.2",
+        version="1.5.3",
     )
     ic = Constitution()
 
@@ -29,7 +29,7 @@ def create_app() -> Optional[Any]:  # noqa: ANN401
         """API Root health check endpoint."""
         return {
             "name": "IndianConstitution REST API",
-            "version": "1.5.2",
+            "version": "1.5.3",
             "docs": "/docs",
             "status": "healthy",
         }

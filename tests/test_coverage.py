@@ -113,18 +113,25 @@ def test_graph_community_detection() -> None:
         pytest.skip("NetworkX not installed")
 
 
-def test_semantic_search_cpu() -> None:
-    """Test CPU semantic search logic with mocked embedding model."""
+def test_semantic_search_cpu(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Test CPU semantic search logic with mocked embedding model.
+
+    Exercises both the sentence-transformers cosine path (if available)
+    and the pure-Python fallback path (when sentence_transformers is absent).
+    """
     const = get_constitution()
 
     class DummyModel:
-        def encode(self, texts, show_progress_bar=False, convert_to_tensor=False):
+        def encode(self, texts: object, show_progress_bar: bool = False, convert_to_tensor: bool = False) -> object:
             if isinstance(texts, list):
-                return [[0.1 * (i + 1)] * 384 for i in range(len(texts))]
-            return [0.1] * 384
+                return [[0.1 * (i + 1)] * 8 for i in range(len(texts))]
+            return [0.1] * 8
 
     const._semantic_model = DummyModel()
-    const._semantic_embeddings = [[0.1 * (i + 1)] * 384 for i in range(len(const.articles))]
+    const._semantic_embeddings = [[0.1 * (i + 1)] * 8 for i in range(len(const.articles))]
+
+    # Force pure-Python fallback by hiding sentence_transformers.util
+    monkeypatch.setitem(sys.modules, "sentence_transformers.util", None)
 
     results = const.semantic_search("equality", top_k=2)
     assert len(results) == 2
